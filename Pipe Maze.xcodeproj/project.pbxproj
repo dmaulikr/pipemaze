@@ -10,11 +10,24 @@
 		2E0DD6821A6459B90076C5B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E0DD6811A6459B90076C5B6 /* main.m */; };
 		2E0DD6851A6459B90076C5B6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E0DD6841A6459B90076C5B6 /* AppDelegate.m */; };
 		2E0DD6881A6459B90076C5B6 /* Pipe_Maze.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2E0DD6861A6459B90076C5B6 /* Pipe_Maze.xcdatamodeld */; };
-		2E0DD68B1A6459B90076C5B6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E0DD68A1A6459B90076C5B6 /* ViewController.m */; };
 		2E0DD68E1A6459B90076C5B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E0DD68C1A6459B90076C5B6 /* Main.storyboard */; };
 		2E0DD6901A6459B90076C5B6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E0DD68F1A6459B90076C5B6 /* Images.xcassets */; };
 		2E0DD6931A6459B90076C5B6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E0DD6911A6459B90076C5B6 /* LaunchScreen.xib */; };
 		2E0DD69F1A6459B90076C5B6 /* Pipe_MazeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E0DD69E1A6459B90076C5B6 /* Pipe_MazeTests.m */; };
+		2E0DD6AD1A6459F40076C5B6 /* MazeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E0DD6AC1A6459F40076C5B6 /* MazeViewController.m */; };
+		2E0DD6B01A647D520076C5B6 /* LevelCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E0DD6AF1A647D520076C5B6 /* LevelCollectionViewController.m */; };
+		2E0DD6B31A6481620076C5B6 /* LevelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E0DD6B21A6481620076C5B6 /* LevelView.m */; };
+		2E0DD6B71A64907D0076C5B6 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0DD6B61A64907D0076C5B6 /* star.png */; };
+		2E0DD6BA1A6490960076C5B6 /* StarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E0DD6B91A6490960076C5B6 /* StarView.m */; };
+		2E0DD6BC1A6492220076C5B6 /* starhighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0DD6BB1A6492220076C5B6 /* starhighlighted.png */; };
+		2E0DD6BF1A649C360076C5B6 /* MazeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E0DD6BE1A649C360076C5B6 /* MazeView.m */; };
+		2E0DD6C21A64BE8C0076C5B6 /* World.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E0DD6C11A64BE8C0076C5B6 /* World.m */; };
+		2EDBAF441A659C4A006566BD /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDBAF431A659C4A006566BD /* settings@2x.png */; };
+		2EDBAF4A1A65ADD2006566BD /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDBAF451A65ADD2006566BD /* settings.png */; };
+		2EDBAF4B1A65ADD2006566BD /* settings@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDBAF461A65ADD2006566BD /* settings@3x.png */; };
+		2EDBAF4C1A65ADD2006566BD /* undo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDBAF471A65ADD2006566BD /* undo.png */; };
+		2EDBAF4D1A65ADD2006566BD /* undo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDBAF481A65ADD2006566BD /* undo@2x.png */; };
+		2EDBAF4E1A65ADD2006566BD /* undo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDBAF491A65ADD2006566BD /* undo@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,14 +47,32 @@
 		2E0DD6831A6459B90076C5B6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2E0DD6841A6459B90076C5B6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		2E0DD6871A6459B90076C5B6 /* Pipe_Maze.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pipe_Maze.xcdatamodel; sourceTree = "<group>"; };
-		2E0DD6891A6459B90076C5B6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		2E0DD68A1A6459B90076C5B6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		2E0DD68D1A6459B90076C5B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2E0DD68F1A6459B90076C5B6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2E0DD6921A6459B90076C5B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		2E0DD6981A6459B90076C5B6 /* Pipe MazeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Pipe MazeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E0DD69D1A6459B90076C5B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E0DD69E1A6459B90076C5B6 /* Pipe_MazeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Pipe_MazeTests.m; sourceTree = "<group>"; };
+		2E0DD6AB1A6459F40076C5B6 /* MazeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MazeViewController.h; path = ../MazeViewController.h; sourceTree = "<group>"; };
+		2E0DD6AC1A6459F40076C5B6 /* MazeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MazeViewController.m; path = ../MazeViewController.m; sourceTree = "<group>"; };
+		2E0DD6AE1A647D520076C5B6 /* LevelCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelCollectionViewController.h; sourceTree = "<group>"; };
+		2E0DD6AF1A647D520076C5B6 /* LevelCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelCollectionViewController.m; sourceTree = "<group>"; };
+		2E0DD6B11A6481620076C5B6 /* LevelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelView.h; sourceTree = "<group>"; };
+		2E0DD6B21A6481620076C5B6 /* LevelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelView.m; sourceTree = "<group>"; };
+		2E0DD6B61A64907D0076C5B6 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star.png; path = images/star.png; sourceTree = "<group>"; };
+		2E0DD6B81A6490960076C5B6 /* StarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarView.h; sourceTree = "<group>"; };
+		2E0DD6B91A6490960076C5B6 /* StarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarView.m; sourceTree = "<group>"; };
+		2E0DD6BB1A6492220076C5B6 /* starhighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = starhighlighted.png; path = images/starhighlighted.png; sourceTree = "<group>"; };
+		2E0DD6BD1A649C360076C5B6 /* MazeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeView.h; sourceTree = "<group>"; };
+		2E0DD6BE1A649C360076C5B6 /* MazeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MazeView.m; sourceTree = "<group>"; };
+		2E0DD6C01A64BE8C0076C5B6 /* World.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = World.h; sourceTree = "<group>"; };
+		2E0DD6C11A64BE8C0076C5B6 /* World.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = World.m; sourceTree = "<group>"; };
+		2EDBAF431A659C4A006566BD /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings@2x.png"; path = "images/settings@2x.png"; sourceTree = "<group>"; };
+		2EDBAF451A65ADD2006566BD /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings.png; path = images/settings.png; sourceTree = "<group>"; };
+		2EDBAF461A65ADD2006566BD /* settings@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings@3x.png"; path = "images/settings@3x.png"; sourceTree = "<group>"; };
+		2EDBAF471A65ADD2006566BD /* undo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = undo.png; path = images/undo.png; sourceTree = "<group>"; };
+		2EDBAF481A65ADD2006566BD /* undo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "undo@2x.png"; path = "images/undo@2x.png"; sourceTree = "<group>"; };
+		2EDBAF491A65ADD2006566BD /* undo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "undo@3x.png"; path = "images/undo@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +96,7 @@
 		2E0DD6731A6459B90076C5B6 = {
 			isa = PBXGroup;
 			children = (
+				2EDBAF4F1A65B61B006566BD /* Images */,
 				2E0DD67E1A6459B90076C5B6 /* Pipe Maze */,
 				2E0DD69B1A6459B90076C5B6 /* Pipe MazeTests */,
 				2E0DD67D1A6459B90076C5B6 /* Products */,
@@ -85,9 +117,11 @@
 			children = (
 				2E0DD6831A6459B90076C5B6 /* AppDelegate.h */,
 				2E0DD6841A6459B90076C5B6 /* AppDelegate.m */,
-				2E0DD6891A6459B90076C5B6 /* ViewController.h */,
-				2E0DD68A1A6459B90076C5B6 /* ViewController.m */,
+				2E0DD6B51A6481740076C5B6 /* View Controllers */,
+				2E0DD6B41A6481680076C5B6 /* Views */,
 				2E0DD68C1A6459B90076C5B6 /* Main.storyboard */,
+				2E0DD6C01A64BE8C0076C5B6 /* World.h */,
+				2E0DD6C11A64BE8C0076C5B6 /* World.m */,
 				2E0DD68F1A6459B90076C5B6 /* Images.xcassets */,
 				2E0DD6911A6459B90076C5B6 /* LaunchScreen.xib */,
 				2E0DD6861A6459B90076C5B6 /* Pipe_Maze.xcdatamodeld */,
@@ -120,6 +154,45 @@
 				2E0DD69D1A6459B90076C5B6 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2E0DD6B41A6481680076C5B6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2E0DD6B81A6490960076C5B6 /* StarView.h */,
+				2E0DD6B91A6490960076C5B6 /* StarView.m */,
+				2E0DD6B11A6481620076C5B6 /* LevelView.h */,
+				2E0DD6B21A6481620076C5B6 /* LevelView.m */,
+				2E0DD6BD1A649C360076C5B6 /* MazeView.h */,
+				2E0DD6BE1A649C360076C5B6 /* MazeView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		2E0DD6B51A6481740076C5B6 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2E0DD6AB1A6459F40076C5B6 /* MazeViewController.h */,
+				2E0DD6AC1A6459F40076C5B6 /* MazeViewController.m */,
+				2E0DD6AE1A647D520076C5B6 /* LevelCollectionViewController.h */,
+				2E0DD6AF1A647D520076C5B6 /* LevelCollectionViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		2EDBAF4F1A65B61B006566BD /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				2EDBAF431A659C4A006566BD /* settings@2x.png */,
+				2E0DD6BB1A6492220076C5B6 /* starhighlighted.png */,
+				2E0DD6B61A64907D0076C5B6 /* star.png */,
+				2EDBAF451A65ADD2006566BD /* settings.png */,
+				2EDBAF461A65ADD2006566BD /* settings@3x.png */,
+				2EDBAF471A65ADD2006566BD /* undo.png */,
+				2EDBAF481A65ADD2006566BD /* undo@2x.png */,
+				2EDBAF491A65ADD2006566BD /* undo@3x.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,6 +244,7 @@
 				TargetAttributes = {
 					2E0DD67B1A6459B90076C5B6 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 35RV9RPQY7;
 					};
 					2E0DD6971A6459B90076C5B6 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -203,7 +277,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E0DD68E1A6459B90076C5B6 /* Main.storyboard in Resources */,
+				2EDBAF4A1A65ADD2006566BD /* settings.png in Resources */,
+				2EDBAF4E1A65ADD2006566BD /* undo@3x.png in Resources */,
+				2EDBAF4D1A65ADD2006566BD /* undo@2x.png in Resources */,
+				2EDBAF4C1A65ADD2006566BD /* undo.png in Resources */,
+				2EDBAF441A659C4A006566BD /* settings@2x.png in Resources */,
+				2E0DD6B71A64907D0076C5B6 /* star.png in Resources */,
+				2E0DD6BC1A6492220076C5B6 /* starhighlighted.png in Resources */,
 				2E0DD6931A6459B90076C5B6 /* LaunchScreen.xib in Resources */,
+				2EDBAF4B1A65ADD2006566BD /* settings@3x.png in Resources */,
 				2E0DD6901A6459B90076C5B6 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -222,9 +304,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E0DD6BA1A6490960076C5B6 /* StarView.m in Sources */,
+				2E0DD6AD1A6459F40076C5B6 /* MazeViewController.m in Sources */,
 				2E0DD6881A6459B90076C5B6 /* Pipe_Maze.xcdatamodeld in Sources */,
+				2E0DD6C21A64BE8C0076C5B6 /* World.m in Sources */,
+				2E0DD6B01A647D520076C5B6 /* LevelCollectionViewController.m in Sources */,
+				2E0DD6B31A6481620076C5B6 /* LevelView.m in Sources */,
+				2E0DD6BF1A649C360076C5B6 /* MazeView.m in Sources */,
 				2E0DD6851A6459B90076C5B6 /* AppDelegate.m in Sources */,
-				2E0DD68B1A6459B90076C5B6 /* ViewController.m in Sources */,
 				2E0DD6821A6459B90076C5B6 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,9 +434,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Pipe Maze/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -357,9 +447,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Pipe Maze/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -416,6 +509,7 @@
 				2E0DD6A41A6459B90076C5B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2E0DD6A51A6459B90076C5B6 /* Build configuration list for PBXNativeTarget "Pipe MazeTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +518,7 @@
 				2E0DD6A71A6459B90076C5B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

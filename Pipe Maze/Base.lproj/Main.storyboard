@@ -1,13 +1,57 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C94b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="adM-Jg-rhx">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Pipe Maze-->
+        <scene sceneID="wfi-5M-oEr">
+            <objects>
+                <collectionViewController id="cWc-NB-PLw" customClass="LevelCollectionViewController" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="aQw-IC-Nvb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dKc-mt-nQj">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="jSh-Ej-OY1">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="cWc-NB-PLw" id="QCO-wU-To3"/>
+                            <outlet property="delegate" destination="cWc-NB-PLw" id="Vng-b2-UPu"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Pipe Maze" id="Bs6-Xh-p5Z">
+                        <barButtonItem key="backBarButtonItem" title=" " id="XzW-O4-JHP"/>
+                        <barButtonItem key="leftBarButtonItem" title="Store" id="6GH-VQ-zxB"/>
+                        <barButtonItem key="rightBarButtonItem" image="settings.png" id="a0S-NV-oa5"/>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="show" identifier="toMaze" id="B0d-C2-lpL"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cRq-eT-8Xp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="517.5" y="322"/>
+        </scene>
+        <!--Maze View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="MazeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -15,11 +59,82 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gaA-VW-dfL">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="zGO-0C-DUf"/>
+                                    <barButtonItem systemItem="refresh" id="l1O-wF-xiX">
+                                        <connections>
+                                            <action selector="restartMaze:" destination="vXZ-lx-hvc" id="xKb-Yt-sZ1"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Wmf-sp-063"/>
+                                    <barButtonItem systemItem="play" id="9kH-il-EFG">
+                                        <connections>
+                                            <action selector="checkMaze:" destination="vXZ-lx-hvc" id="rTj-sh-1ab"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="N8X-vk-V02"/>
+                                    <barButtonItem image="undo.png" id="wRW-TA-Q6d">
+                                        <connections>
+                                            <action selector="undoMove:" destination="vXZ-lx-hvc" id="yzR-XG-P51"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="zNo-2L-lMg"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="gaA-VW-dfL" secondAttribute="trailing" id="O77-NO-bUM"/>
+                            <constraint firstItem="gaA-VW-dfL" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="PRt-wu-GgY"/>
+                            <constraint firstAttribute="bottom" secondItem="gaA-VW-dfL" secondAttribute="bottom" id="SvL-8v-hQK"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="uQM-JZ-nIs">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="Q0W-iR-3Sf">
+                            <connections>
+                                <action selector="showActionItems:" destination="vXZ-lx-hvc" id="evy-to-sSS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="actionBarButtonItem" destination="Q0W-iR-3Sf" id="BoF-gs-vtS"/>
+                        <outlet property="playBarButtonItem" destination="9kH-il-EFG" id="vnL-uv-Kyj"/>
+                        <outlet property="restartBarButtonItem" destination="l1O-wF-xiX" id="Ea9-zT-oJQ"/>
+                        <outlet property="toolbar" destination="gaA-VW-dfL" id="AoU-7c-YVO"/>
+                        <outlet property="undoBarButtonItem" destination="wRW-TA-Q6d" id="Qzz-5j-1Kh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1345" y="323"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="mkl-tG-5Em">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="adM-Jg-rhx" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ixc-g8-gMj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="21"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cWc-NB-PLw" kind="relationship" relationship="rootViewController" id="S4A-Sy-rTZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LMo-hF-Nd7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-348" y="323"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="settings.png" width="22" height="22"/>
+        <image name="undo.png" width="22" height="22"/>
+    </resources>
 </document>
