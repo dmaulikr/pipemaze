@@ -14,6 +14,7 @@
     NSDate *time;
     NSInteger elapsed;
     BOOL updateTime;
+    BOOL toolbarVisible;
 }
 
 @end
@@ -23,14 +24,32 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationController.navigationBar.tintColor = self.world.mainColor;
-    self.toolbar.tintColor = self.world.mainColor;
+    self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - self.toolbar.bounds.size.height,self.view.bounds.size.width, 44)];
+    UIBarButtonItem *leftFixed = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    leftFixed.width = 50.0f;
+    UIBarButtonItem *rightFixed = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    rightFixed.width = 50.0f;
+    
+    self.toolbar.items = @[leftFixed, [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(restartMaze:)], [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil], [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(checkMaze:)], [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil], [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"undo"] style:UIBarButtonItemStylePlain target:self action:@selector(undoMove:)], rightFixed];
+    [self.view addSubview:self.toolbar];
+    
+    
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:[self.world.red floatValue] green:[self.world.green floatValue] blue:[self.world.blue floatValue] alpha:1];
+    self.toolbar.tintColor = [UIColor colorWithRed:[self.world.red floatValue] green:[self.world.green floatValue] blue:[self.world.blue floatValue] alpha:1];
     
     CGFloat height = self.navigationController.navigationBar.frame.size.height;
     CGFloat width = self.view.bounds.size.width;
-//    if(self.view.bounds.size.height == 480) {
-//        width = 280;
-//    }
+    if(self.view.bounds.size.height != 480) {
+        self.navigationItem.rightBarButtonItem = nil;
+        self.toolbar.frame = CGRectMake(0, self.view.bounds.size.height, width, self.toolbar.bounds.size.height);
+        toolbarVisible = NO;
+    }
+    else {
+        self.toolbar.frame = CGRectMake(0, self.view.bounds.size.height - self.toolbar.bounds.size.height, width, self.toolbar.bounds.size.height);
+        toolbarVisible = YES;
+    }
+    
+    
     MazeView *maze = [[MazeView alloc] initWithFrame:CGRectMake((self.view.bounds.size.width - width)/2, height +20, width, width)];
     [self.view addSubview:maze];
 
@@ -54,22 +73,20 @@
     self.navigationItem.titleView = titleView;
 }
 
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self showActionItems:self];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 -(void)updateTime {
-//    NSDate *date = [NSDate date];
-//    NSTimeInterval difference = [date timeIntervalSinceDate:time];
-//    NSDate *d = [NSDate dateWithTimeIntervalSinceNow:difference];
-//    NSDateFormatter *format = [[NSDateFormatter alloc] init];
-//    [format setDateFormat:@"mm:ss"];
-//    timeLabel.text = [format stringFromDate:d];
-    
     if(updateTime)
         elapsed++;
-    NSInteger seconds = elapsed/2;
+    NSInteger seconds = floor(elapsed/2);
     NSInteger minutes = seconds/60;
     seconds%=60;
     
@@ -87,6 +104,20 @@
 */
 
 - (IBAction)showActionItems:(id)sender {
+    if(toolbarVisible) {
+        [UIView animateKeyframesWithDuration:0.25 delay:0 options:UIViewKeyframeAnimationOptionAllowUserInteraction animations:^{
+            self.toolbar.frame = CGRectMake(0, self.view.bounds.size.height, self.toolbar.bounds.size.width, self.toolbar.bounds.size.height);
+        }completion:^(BOOL finished){
+        }];
+    }
+    else {
+        [UIView animateKeyframesWithDuration:0.25 delay:0 options:UIViewKeyframeAnimationOptionAllowUserInteraction animations:^{
+            self.toolbar.frame = CGRectMake(0, self.view.bounds.size.height - self.toolbar.bounds.size.height, self.toolbar.bounds.size.width, self.toolbar.bounds.size.height);
+        }completion:^(BOOL finished){
+        }];
+    }
+    
+    toolbarVisible = !toolbarVisible;
 }
 
 - (IBAction)restartMaze:(id)sender {

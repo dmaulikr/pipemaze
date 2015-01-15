@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WorldDAO.h"
 #import "World.h"
 
 @interface MazeViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *actionBarButtonItem;
-@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
+@property (strong, nonatomic) UIToolbar *toolbar;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *restartBarButtonItem;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *playBarButtonItem;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *undoBarButtonItem;

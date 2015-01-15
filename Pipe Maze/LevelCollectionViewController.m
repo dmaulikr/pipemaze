@@ -7,13 +7,14 @@
 //
 
 #import "LevelCollectionViewController.h"
+#import "WorldDAO.h"
 #import "World.h"
 #import "MazeViewController.h"
 
 @interface LevelCollectionViewController () {
     NSInteger sections;
-    NSMutableArray *worlds;
     BOOL transition;
+    WorldDAO *worldDA0;
 }
 
 @end
@@ -30,15 +31,8 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    worlds = [[NSMutableArray alloc] init];
-    [worlds addObject:[[World alloc] initWithColor:[UIColor colorWithRed:1.0 green:0.522 blue:0.106 alpha:1]]];
-    [worlds addObject:[[World alloc] initWithColor:[UIColor colorWithRed:0.18 green:0.80 blue:0.251 alpha:1]]];
-    [worlds addObject:[[World alloc] initWithColor:[UIColor colorWithRed:0.498 green:0.859 blue:1.0 alpha:1]]];
-    [worlds addObject:[[World alloc] initWithColor:[UIColor colorWithRed:.224 green:0.80 blue:0.80 alpha:1]]];
-    [worlds addObject:[[World alloc] initWithColor:[UIColor colorWithRed:1.0 green:0.252 blue:0.212 alpha:1]]];
-    
-    sections = [worlds count];
+    worldDA0 = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).worldDAO;
+    sections = [worldDA0 getNumberOfWorlds];
     // Register cell classes
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
@@ -74,7 +68,9 @@ static NSString * const reuseIdentifier = @"Cell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     cell.backgroundColor = [UIColor clearColor];
-    LevelView *level = [[LevelView alloc] initWithFrame:CGRectMake(0, 0, cell.bounds.size.width, cell.bounds.size.height) level:indexPath.section * 12 + indexPath.row + 1 completed:NO stars:indexPath.row % 6 color:((World *)worlds[indexPath.section]).mainColor];
+    World *world = [worldDA0 getWorldAtIndex:indexPath.section];
+    UIColor *worldColor = [UIColor colorWithRed:[world.red floatValue] green:[world.green floatValue] blue:[world.blue floatValue] alpha:1];
+    LevelView *level = [[LevelView alloc] initWithFrame:CGRectMake(0, 0, cell.bounds.size.width, cell.bounds.size.height) level:indexPath.section * 12 + indexPath.row + 1 completed:NO stars:indexPath.row % 6 color:worldColor];
     [cell addSubview:level];
     return cell;
 }
@@ -85,7 +81,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:@"toMaze" sender:indexPath];
+    [self performSegueWithIdentifier:@"toMaze" sender:[worldDA0 getWorldAtIndex:indexPath.section]];
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
@@ -112,7 +108,7 @@ static NSString * const reuseIdentifier = @"Cell";
     if([segue.identifier isEqualToString:@"toMaze"]) {
         transition = YES;
         MazeViewController *maze = [segue destinationViewController];
-        maze.world = worlds[((NSIndexPath *)sender).section];
+        maze.world = sender;
     }
 }
 
@@ -121,6 +117,7 @@ static NSString * const reuseIdentifier = @"Cell";
     
     
     NSInteger lowest = INT_MAX;
+    World *world;
     
     if(arr.count == 0) {
         lowest = 0;
@@ -132,7 +129,12 @@ static NSString * const reuseIdentifier = @"Cell";
             }
         }
     }
-    if(!transition)
-        self.navigationController.navigationBar.tintColor = ((World *)worlds[lowest]).mainColor;
+    
+    world = [worldDA0 getWorldAtIndex:lowest];
+    if(!transition){
+        self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:[world.red floatValue] green:[world.green floatValue] blue:[world.blue floatValue] alpha:1];
+    }
+    
+    
 }
 @end

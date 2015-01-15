@@ -21,13 +21,15 @@
 		2E0DD6BA1A6490960076C5B6 /* StarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E0DD6B91A6490960076C5B6 /* StarView.m */; };
 		2E0DD6BC1A6492220076C5B6 /* starhighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0DD6BB1A6492220076C5B6 /* starhighlighted.png */; };
 		2E0DD6BF1A649C360076C5B6 /* MazeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E0DD6BE1A649C360076C5B6 /* MazeView.m */; };
-		2E0DD6C21A64BE8C0076C5B6 /* World.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E0DD6C11A64BE8C0076C5B6 /* World.m */; };
+		2E0DD6C21A64BE8C0076C5B6 /* WorldDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E0DD6C11A64BE8C0076C5B6 /* WorldDAO.m */; };
 		2EDBAF441A659C4A006566BD /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDBAF431A659C4A006566BD /* settings@2x.png */; };
 		2EDBAF4A1A65ADD2006566BD /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDBAF451A65ADD2006566BD /* settings.png */; };
 		2EDBAF4B1A65ADD2006566BD /* settings@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDBAF461A65ADD2006566BD /* settings@3x.png */; };
 		2EDBAF4C1A65ADD2006566BD /* undo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDBAF471A65ADD2006566BD /* undo.png */; };
 		2EDBAF4D1A65ADD2006566BD /* undo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDBAF481A65ADD2006566BD /* undo@2x.png */; };
 		2EDBAF4E1A65ADD2006566BD /* undo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDBAF491A65ADD2006566BD /* undo@3x.png */; };
+		2EDBAF521A65CCD4006566BD /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EDBAF511A65CCD4006566BD /* Level.m */; };
+		2EDBAF551A65CCD5006566BD /* World.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EDBAF541A65CCD5006566BD /* World.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,14 +67,18 @@
 		2E0DD6BB1A6492220076C5B6 /* starhighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = starhighlighted.png; path = images/starhighlighted.png; sourceTree = "<group>"; };
 		2E0DD6BD1A649C360076C5B6 /* MazeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeView.h; sourceTree = "<group>"; };
 		2E0DD6BE1A649C360076C5B6 /* MazeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MazeView.m; sourceTree = "<group>"; };
-		2E0DD6C01A64BE8C0076C5B6 /* World.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = World.h; sourceTree = "<group>"; };
-		2E0DD6C11A64BE8C0076C5B6 /* World.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = World.m; sourceTree = "<group>"; };
+		2E0DD6C01A64BE8C0076C5B6 /* WorldDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldDAO.h; sourceTree = "<group>"; };
+		2E0DD6C11A64BE8C0076C5B6 /* WorldDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorldDAO.m; sourceTree = "<group>"; };
 		2EDBAF431A659C4A006566BD /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings@2x.png"; path = "images/settings@2x.png"; sourceTree = "<group>"; };
 		2EDBAF451A65ADD2006566BD /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings.png; path = images/settings.png; sourceTree = "<group>"; };
 		2EDBAF461A65ADD2006566BD /* settings@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings@3x.png"; path = "images/settings@3x.png"; sourceTree = "<group>"; };
 		2EDBAF471A65ADD2006566BD /* undo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = undo.png; path = images/undo.png; sourceTree = "<group>"; };
 		2EDBAF481A65ADD2006566BD /* undo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "undo@2x.png"; path = "images/undo@2x.png"; sourceTree = "<group>"; };
 		2EDBAF491A65ADD2006566BD /* undo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "undo@3x.png"; path = "images/undo@3x.png"; sourceTree = "<group>"; };
+		2EDBAF501A65CCD4006566BD /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
+		2EDBAF511A65CCD4006566BD /* Level.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Level.m; sourceTree = "<group>"; };
+		2EDBAF531A65CCD5006566BD /* World.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = World.h; sourceTree = "<group>"; };
+		2EDBAF541A65CCD5006566BD /* World.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = World.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,8 +126,7 @@
 				2E0DD6B51A6481740076C5B6 /* View Controllers */,
 				2E0DD6B41A6481680076C5B6 /* Views */,
 				2E0DD68C1A6459B90076C5B6 /* Main.storyboard */,
-				2E0DD6C01A64BE8C0076C5B6 /* World.h */,
-				2E0DD6C11A64BE8C0076C5B6 /* World.m */,
+				2EDBAF561A65CCDE006566BD /* Models */,
 				2E0DD68F1A6459B90076C5B6 /* Images.xcassets */,
 				2E0DD6911A6459B90076C5B6 /* LaunchScreen.xib */,
 				2E0DD6861A6459B90076C5B6 /* Pipe_Maze.xcdatamodeld */,
@@ -193,6 +198,27 @@
 				2EDBAF491A65ADD2006566BD /* undo@3x.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		2EDBAF561A65CCDE006566BD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2E0DD6C01A64BE8C0076C5B6 /* WorldDAO.h */,
+				2E0DD6C11A64BE8C0076C5B6 /* WorldDAO.m */,
+				2EDBAF571A65CCE8006566BD /* Core Data */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		2EDBAF571A65CCE8006566BD /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				2EDBAF531A65CCD5006566BD /* World.h */,
+				2EDBAF541A65CCD5006566BD /* World.m */,
+				2EDBAF501A65CCD4006566BD /* Level.h */,
+				2EDBAF511A65CCD4006566BD /* Level.m */,
+			);
+			name = "Core Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,10 +330,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EDBAF521A65CCD4006566BD /* Level.m in Sources */,
 				2E0DD6BA1A6490960076C5B6 /* StarView.m in Sources */,
 				2E0DD6AD1A6459F40076C5B6 /* MazeViewController.m in Sources */,
 				2E0DD6881A6459B90076C5B6 /* Pipe_Maze.xcdatamodeld in Sources */,
-				2E0DD6C21A64BE8C0076C5B6 /* World.m in Sources */,
+				2EDBAF551A65CCD5006566BD /* World.m in Sources */,
+				2E0DD6C21A64BE8C0076C5B6 /* WorldDAO.m in Sources */,
 				2E0DD6B01A647D520076C5B6 /* LevelCollectionViewController.m in Sources */,
 				2E0DD6B31A6481620076C5B6 /* LevelView.m in Sources */,
 				2E0DD6BF1A649C360076C5B6 /* MazeView.m in Sources */,
@@ -437,6 +465,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Pipe Maze/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -450,6 +479,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Pipe Maze/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

@@ -59,38 +59,7 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gaA-VW-dfL">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
-                                <items>
-                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="zGO-0C-DUf"/>
-                                    <barButtonItem systemItem="refresh" id="l1O-wF-xiX">
-                                        <connections>
-                                            <action selector="restartMaze:" destination="vXZ-lx-hvc" id="xKb-Yt-sZ1"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Wmf-sp-063"/>
-                                    <barButtonItem systemItem="play" id="9kH-il-EFG">
-                                        <connections>
-                                            <action selector="checkMaze:" destination="vXZ-lx-hvc" id="rTj-sh-1ab"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="N8X-vk-V02"/>
-                                    <barButtonItem image="undo.png" id="wRW-TA-Q6d">
-                                        <connections>
-                                            <action selector="undoMove:" destination="vXZ-lx-hvc" id="yzR-XG-P51"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="zNo-2L-lMg"/>
-                                </items>
-                            </toolbar>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="gaA-VW-dfL" secondAttribute="trailing" id="O77-NO-bUM"/>
-                            <constraint firstItem="gaA-VW-dfL" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="PRt-wu-GgY"/>
-                            <constraint firstAttribute="bottom" secondItem="gaA-VW-dfL" secondAttribute="bottom" id="SvL-8v-hQK"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="uQM-JZ-nIs">
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="Q0W-iR-3Sf">
@@ -101,10 +70,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="actionBarButtonItem" destination="Q0W-iR-3Sf" id="BoF-gs-vtS"/>
-                        <outlet property="playBarButtonItem" destination="9kH-il-EFG" id="vnL-uv-Kyj"/>
-                        <outlet property="restartBarButtonItem" destination="l1O-wF-xiX" id="Ea9-zT-oJQ"/>
-                        <outlet property="toolbar" destination="gaA-VW-dfL" id="AoU-7c-YVO"/>
-                        <outlet property="undoBarButtonItem" destination="wRW-TA-Q6d" id="Qzz-5j-1Kh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -135,6 +100,5 @@
     </scenes>
     <resources>
         <image name="settings.png" width="22" height="22"/>
-        <image name="undo.png" width="22" height="22"/>
     </resources>
 </document>
