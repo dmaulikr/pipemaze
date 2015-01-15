@@ -7,10 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MazePiece.h"
 
-@interface MazeView : UIView <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate>
+@protocol MazeViewDelegate <NSObject>
+
+-(MazePiece *)touchReceivedOnMaze;
+
+@end
+
+@interface MazeView : UIView <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, MazePieceDelegate>
 
 -(instancetype)init;
 -(instancetype)initWithFrame:(CGRect)frame;
+
+-(CGSize)getPieceSize;
+
+@property id<MazeViewDelegate> delegate;
+
 
 @end

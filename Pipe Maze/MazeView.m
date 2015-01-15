@@ -71,4 +71,34 @@ static NSString * const reuseIdentifier = @"Cell";
     return 0;
 }
 
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    MazePiece *piece = [self.delegate touchReceivedOnMaze];
+    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+    MazePiece *item = [[MazePiece alloc] initWithFrame:CGRectMake(0, 0, piece.frame.size.width, piece.frame.size.height) pieceType:piece.piece start:piece.startDirection end:piece.endDirection];
+    item.delegate = self;
+    [cell addSubview:item];
+}
+
+-(CGSize)getPieceSize {
+    return CGSizeMake(self.bounds.size.width/5, self.bounds.size.height/5);
+}
+
+#pragma mark - Maze Piece Delegate Methods
+
+-(BOOL)mazePieceCanMove:(id)sender {
+    return YES;
+}
+
+-(BOOL)mazePieceCanRotate:(id)sender {
+    return YES;
+}
+
+-(void)mazePieceDidBeginTouching:(id)sender {
+    
+}
+
+-(void)mazePieceDidEndTouching:(id)sender {
+    
+}
+
 @end

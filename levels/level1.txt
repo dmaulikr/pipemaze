@@ -1,0 +1,16 @@
+1
+
+S 0 0 0 0
+0 0 0 0 0
+0 0 0 0 0
+0 0 0 0 0
+0 0 0 0 E
+
+1 1
+2 1
+
+6
+4
+
+Demo level, not really important
+Don't give a fuck

@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "WorldDAO.h"
 #import "World.h"
+#import "MazePiece.h"
+#import "PiecesView.h"
+#import "MazeView.h"
 
-@interface MazeViewController : UIViewController
+
+@interface MazeViewController : UIViewController <PiecesViewDelegate, MazeViewDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *actionBarButtonItem;
 @property (strong, nonatomic) UIToolbar *toolbar;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *restartBarButtonItem;

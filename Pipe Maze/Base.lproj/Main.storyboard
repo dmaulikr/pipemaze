@@ -62,7 +62,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="uQM-JZ-nIs">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="Q0W-iR-3Sf">
+                        <barButtonItem key="rightBarButtonItem" image="more.png" id="Q0W-iR-3Sf">
                             <connections>
                                 <action selector="showActionItems:" destination="vXZ-lx-hvc" id="evy-to-sSS"/>
                             </connections>
@@ -99,6 +99,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="more.png" width="22" height="22"/>
         <image name="settings.png" width="22" height="22"/>
     </resources>
 </document>

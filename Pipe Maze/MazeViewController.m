@@ -7,7 +7,7 @@
 //
 
 #import "MazeViewController.h"
-#import "MazeView.h"
+#import "PMConstants.h"
 
 @interface MazeViewController (){
     UILabel *timeLabel;
@@ -15,6 +15,8 @@
     NSInteger elapsed;
     BOOL updateTime;
     BOOL toolbarVisible;
+    CGSize pieceFrame;
+    MazePiece *temp;
 }
 
 @end
@@ -31,7 +33,7 @@
     rightFixed.width = 50.0f;
     
     self.toolbar.items = @[leftFixed, [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(restartMaze:)], [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil], [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(checkMaze:)], [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil], [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"undo"] style:UIBarButtonItemStylePlain target:self action:@selector(undoMove:)], rightFixed];
-    [self.view addSubview:self.toolbar];
+    
     
     
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:[self.world.red floatValue] green:[self.world.green floatValue] blue:[self.world.blue floatValue] alpha:1];
@@ -49,10 +51,9 @@
         toolbarVisible = YES;
     }
     
+    MazeView *maze = [[MazeView alloc] initWithFrame:CGRectMake(0, height +20, width, width)];
+    maze.delegate = self;
     
-    MazeView *maze = [[MazeView alloc] initWithFrame:CGRectMake((self.view.bounds.size.width - width)/2, height +20, width, width)];
-    [self.view addSubview:maze];
-
     UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 50)];
     titleView.backgroundColor = [UIColor clearColor];
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, 200, 20)];
@@ -71,7 +72,22 @@
     NSTimer *timer = [NSTimer timerWithTimeInterval:0.5 target:self selector:@selector(updateTime) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
     self.navigationItem.titleView = titleView;
+    
+    
+    CGFloat pieceViewHeight = self.view.frame.size.height - maze.frame.origin.y - maze.frame.size.height - self.toolbar.frame.size.height;
+    if(self.view.frame.size.height == 480) {
+        pieceViewHeight = self.view.frame.size.height - maze.frame.origin.y - maze.frame.size.height;
+    }
+    
+    PiecesView *pieceView = [[PiecesView alloc] initWithFrame:CGRectMake(0 ,maze.frame.origin.y + maze.frame.size.height, self.view.frame.size.width, pieceViewHeight) straight:4 corner:2 pieceSize:[maze getPieceSize]];
+    pieceView.delegate = self;
+    
+    [self.view addSubview:pieceView];
+    [self.view addSubview:self.toolbar];
+    [self.view addSubview:maze];
 }
+
+
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -93,16 +109,7 @@
     timeLabel.text = [NSString stringWithFormat:@"%02li:%02li", (long)minutes, (long)seconds];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
+#pragma mark - IBActions
 - (IBAction)showActionItems:(id)sender {
     if(toolbarVisible) {
         [UIView animateKeyframesWithDuration:0.25 delay:0 options:UIViewKeyframeAnimationOptionAllowUserInteraction animations:^{
@@ -132,4 +139,15 @@
 - (IBAction)undoMove:(id)sender {
     NSLog(@"undo move");
 }
+
+
+#pragma mark - moving pieces methods
+-(void)piecesViewDidSelectMazePiece:(MazePiece *)piece {
+    temp = piece;
+}
+
+-(MazePiece *)touchReceivedOnMaze {
+    return temp;
+}
+
 @end
