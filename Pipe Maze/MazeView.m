@@ -39,7 +39,6 @@ static NSString * const reuseIdentifier = @"Cell";
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    
     [self addSubview:self.collectionView];
 }
 
@@ -99,6 +98,11 @@ static NSString * const reuseIdentifier = @"Cell";
 
 -(void)mazePieceDidEndTouching:(id)sender {
     
+}
+
+-(void)placePiece:(MazePiece *)piece atIndex:(NSInteger)index {
+    UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
+    [cell addSubview:piece];
 }
 
 @end

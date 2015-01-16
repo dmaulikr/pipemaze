@@ -24,6 +24,7 @@
 		2E61FCC31A68717700364C5E /* level1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2E61FCC21A68717700364C5E /* level1.txt */; };
 		2E61FCCA1A6871EA00364C5E /* LevelParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E61FCC91A6871EA00364C5E /* LevelParser.m */; };
 		2E61FCCD1A6871F800364C5E /* MazeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E61FCCC1A6871F800364C5E /* MazeViewController.m */; };
+		2E61FCD01A68745800364C5E /* Maze.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E61FCCF1A68745800364C5E /* Maze.m */; };
 		2EDBAF441A659C4A006566BD /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDBAF431A659C4A006566BD /* settings@2x.png */; };
 		2EDBAF4A1A65ADD2006566BD /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDBAF451A65ADD2006566BD /* settings.png */; };
 		2EDBAF4B1A65ADD2006566BD /* settings@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDBAF461A65ADD2006566BD /* settings@3x.png */; };
@@ -81,6 +82,8 @@
 		2E61FCC91A6871EA00364C5E /* LevelParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelParser.m; sourceTree = "<group>"; };
 		2E61FCCB1A6871F800364C5E /* MazeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeViewController.h; sourceTree = "<group>"; };
 		2E61FCCC1A6871F800364C5E /* MazeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MazeViewController.m; sourceTree = "<group>"; };
+		2E61FCCE1A68745800364C5E /* Maze.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Maze.h; sourceTree = "<group>"; };
+		2E61FCCF1A68745800364C5E /* Maze.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Maze.m; sourceTree = "<group>"; };
 		2EDBAF431A659C4A006566BD /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings@2x.png"; path = "images/settings@2x.png"; sourceTree = "<group>"; };
 		2EDBAF451A65ADD2006566BD /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings.png; path = images/settings.png; sourceTree = "<group>"; };
 		2EDBAF461A65ADD2006566BD /* settings@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings@3x.png"; path = "images/settings@3x.png"; sourceTree = "<group>"; };
@@ -244,6 +247,8 @@
 		2EDBAF561A65CCDE006566BD /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2E61FCCE1A68745800364C5E /* Maze.h */,
+				2E61FCCF1A68745800364C5E /* Maze.m */,
 				2E61FCC81A6871EA00364C5E /* LevelParser.h */,
 				2E61FCC91A6871EA00364C5E /* LevelParser.m */,
 				2EDBAF5E1A6811EE006566BD /* PMConstants.h */,
@@ -392,6 +397,7 @@
 				2E0DD6B31A6481620076C5B6 /* LevelView.m in Sources */,
 				2E61FCCD1A6871F800364C5E /* MazeViewController.m in Sources */,
 				2E0DD6BF1A649C360076C5B6 /* MazeView.m in Sources */,
+				2E61FCD01A68745800364C5E /* Maze.m in Sources */,
 				2E61FCCA1A6871EA00364C5E /* LevelParser.m in Sources */,
 				2E0DD6851A6459B90076C5B6 /* AppDelegate.m in Sources */,
 				2E0DD6821A6459B90076C5B6 /* main.m in Sources */,

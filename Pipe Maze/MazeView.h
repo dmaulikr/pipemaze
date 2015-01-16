@@ -21,6 +21,7 @@
 -(instancetype)initWithFrame:(CGRect)frame;
 
 -(CGSize)getPieceSize;
+-(void)placePiece:(MazePiece *)piece atIndex:(NSInteger)index;
 
 @property id<MazeViewDelegate> delegate;
 

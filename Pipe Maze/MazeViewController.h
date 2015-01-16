@@ -12,6 +12,7 @@
 #import "MazePiece.h"
 #import "PiecesView.h"
 #import "MazeView.h"
+#import "Maze.h"
 
 
 @interface MazeViewController : UIViewController <PiecesViewDelegate, MazeViewDelegate>
@@ -22,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *undoBarButtonItem;
 
 @property (nonatomic, strong) World *world;
+@property (nonatomic, strong) Maze *maze;
 
 - (IBAction)showActionItems:(id)sender;
 - (IBAction)restartMaze:(id)sender;

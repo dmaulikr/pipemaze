@@ -7,7 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Maze.h"
 
 @interface LevelParser : NSObject
+
+-(instancetype)init;
+-(instancetype)initWithFilename:(NSString *)fileName;
+
+-(Maze *)loadMaze;
+
+
 
 @end

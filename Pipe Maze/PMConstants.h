@@ -13,7 +13,8 @@
 enum {
     MazePieceStraight = 2,
     MazePieceCurved = 1,
-    MazePieceBlock = 0
+    MazePieceBlock = 0,
+    MazePieceEmpty = 3
     
 } typedef MazePieces;
 

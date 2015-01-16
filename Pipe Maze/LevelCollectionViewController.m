@@ -10,6 +10,7 @@
 #import "WorldDAO.h"
 #import "World.h"
 #import "MazeViewController.h"
+#import "LevelParser.h"
 
 @interface LevelCollectionViewController () {
     NSInteger sections;
@@ -109,6 +110,8 @@ static NSString * const reuseIdentifier = @"Cell";
         transition = YES;
         MazeViewController *maze = [segue destinationViewController];
         maze.world = sender;
+        LevelParser *parser = [[LevelParser alloc] initWithFilename:@"level1"];
+        maze.maze = [parser loadMaze];
     }
 }
 

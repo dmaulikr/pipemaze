@@ -17,6 +17,7 @@
     BOOL toolbarVisible;
     CGSize pieceFrame;
     MazePiece *temp;
+    MazeView *mazeView;
 }
 
 @end
@@ -51,8 +52,8 @@
         toolbarVisible = YES;
     }
     
-    MazeView *maze = [[MazeView alloc] initWithFrame:CGRectMake(0, height +20, width, width)];
-    maze.delegate = self;
+    mazeView = [[MazeView alloc] initWithFrame:CGRectMake(0, height +20, width, width)];
+    mazeView.delegate = self;
     
     UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 50)];
     titleView.backgroundColor = [UIColor clearColor];
@@ -74,23 +75,25 @@
     self.navigationItem.titleView = titleView;
     
     
-    CGFloat pieceViewHeight = self.view.frame.size.height - maze.frame.origin.y - maze.frame.size.height - self.toolbar.frame.size.height;
+    CGFloat pieceViewHeight = self.view.frame.size.height - mazeView.frame.origin.y - mazeView.frame.size.height - self.toolbar.frame.size.height;
     if(self.view.frame.size.height == 480) {
-        pieceViewHeight = self.view.frame.size.height - maze.frame.origin.y - maze.frame.size.height;
+        pieceViewHeight = self.view.frame.size.height - mazeView.frame.origin.y - mazeView.frame.size.height;
     }
     
-    PiecesView *pieceView = [[PiecesView alloc] initWithFrame:CGRectMake(0 ,maze.frame.origin.y + maze.frame.size.height, self.view.frame.size.width, pieceViewHeight) straight:4 corner:2 pieceSize:[maze getPieceSize]];
+    pieceFrame = [mazeView getPieceSize];
+    PiecesView *pieceView = [[PiecesView alloc] initWithFrame:CGRectMake(0 ,mazeView.frame.origin.y + mazeView.frame.size.height, self.view.frame.size.width, pieceViewHeight) straight:4 corner:2 pieceSize:pieceFrame];
     pieceView.delegate = self;
     
     [self.view addSubview:pieceView];
     [self.view addSubview:self.toolbar];
-    [self.view addSubview:maze];
+    [self.view addSubview:mazeView];
 }
 
 
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    [self setupBoard];
     [self showActionItems:self];
 }
 
@@ -129,6 +132,8 @@
 
 - (IBAction)restartMaze:(id)sender {
     NSLog(@"restart maze");
+    [self setupBoard];
+    elapsed = 0;
 }
 
 - (IBAction)checkMaze:(id)sender {
@@ -148,6 +153,20 @@
 
 -(MazePiece *)touchReceivedOnMaze {
     return temp;
+}
+
+-(void)setupBoard {
+    CGRect frame = CGRectMake(0, 0,pieceFrame.width, pieceFrame.height);
+    for (int i = 0; i < 25; i++) {
+        MazePiece *piece = [self.maze getMazePieceAtIndex:i withFrame:frame];
+        if(piece.piece != MazePieceEmpty) {
+            [mazeView placePiece:piece atIndex:i];
+        }
+    }
+    
+    [mazeView placePiece:[self.maze getStartingMazePiece:frame] atIndex:0];
+    [mazeView placePiece:[self.maze getEndingMazePiece:frame] atIndex:24];
+    
 }
 
 @end

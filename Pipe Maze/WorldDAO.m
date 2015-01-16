@@ -121,6 +121,7 @@
     l.completed = [NSNumber numberWithBool:NO];
     l.available = world.unlocked;
     l.stars = [NSNumber numberWithInt:0];
+    l.fileName = @"level1";
     
     NSError *error;
     [self.managedObjectContext save:&error];
