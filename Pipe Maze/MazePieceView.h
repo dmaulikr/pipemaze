@@ -22,5 +22,8 @@
 -(instancetype)initWithFrame:(CGRect)frame;
 -(instancetype)initWithFrame:(CGRect)frame piece:(MazePieces)mazePiece size:(CGSize)size numOfPieces:(NSInteger)num;
 
+-(void)hightlightPiece:(BOOL)enabled;
+-(void)updateRemainingPieces:(NSInteger)remaining;
+
 @property id<MazePieceViewDelegate> delegate;
 @end

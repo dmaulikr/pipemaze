@@ -12,6 +12,9 @@
 @protocol MazeViewDelegate <NSObject>
 
 -(MazePiece *)touchReceivedOnMaze;
+-(void)mazePiecePlaced:(MazePiece *)piece atIndex:(NSInteger)index;
+-(void)mazePieceRotated:(MazePiece *)piece atIndex:(NSInteger)index;
+-(BOOL)canPlaceMazePiece:(MazePiece *)piece;
 
 @end
 
@@ -22,6 +25,7 @@
 
 -(CGSize)getPieceSize;
 -(void)placePiece:(MazePiece *)piece atIndex:(NSInteger)index;
+-(void)restartMaze;
 
 @property id<MazeViewDelegate> delegate;
 

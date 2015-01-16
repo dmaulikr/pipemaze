@@ -23,6 +23,8 @@
 -(instancetype)initWithFrame:(CGRect)frame;
 -(instancetype)initWithFrame:(CGRect)frame straight:(NSInteger)straightPieces corner:(NSInteger)cornerPieces pieceSize:(CGSize)size;
 
+-(void)updateRemainingStraightPieces:(NSInteger)straight curved:(NSInteger)corner;
+
 @property id<PiecesViewDelegate>delegate;
 
 @end

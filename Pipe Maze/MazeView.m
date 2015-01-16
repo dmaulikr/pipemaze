@@ -71,10 +71,17 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
     MazePiece *piece = [self.delegate touchReceivedOnMaze];
+    if(![self.delegate canPlaceMazePiece:piece]){
+        return;
+    }
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-    MazePiece *item = [[MazePiece alloc] initWithFrame:CGRectMake(0, 0, piece.frame.size.width, piece.frame.size.height) pieceType:piece.piece start:piece.startDirection end:piece.endDirection];
+    MazePiece *item = [[MazePiece alloc] initWithFrame:CGRectMake(0, 0, piece.frame.size.width, piece.frame.size.height) pieceType:piece.piece start:piece.startDirection end:piece.endDirection index:indexPath.row];
     item.delegate = self;
+    
+    [self.delegate mazePiecePlaced:piece atIndex:indexPath.row];
+    piece.index = [NSNumber numberWithInteger:indexPath.row];
     [cell addSubview:item];
 }
 
@@ -100,9 +107,19 @@ static NSString * const reuseIdentifier = @"Cell";
     
 }
 
+-(void)mazePieceDidRotate:(id)sender {
+    
+    MazePiece *piece = (MazePiece *)sender;
+    [self.delegate mazePiecePlaced:sender atIndex:[piece.index integerValue]];
+}
+
 -(void)placePiece:(MazePiece *)piece atIndex:(NSInteger)index {
     UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]];
     [cell addSubview:piece];
+}
+
+-(void)restartMaze {
+    
 }
 
 @end

@@ -9,6 +9,7 @@
 #import "MazeViewController.h"
 #import "PMConstants.h"
 
+
 @interface MazeViewController (){
     UILabel *timeLabel;
     NSDate *time;
@@ -18,6 +19,8 @@
     CGSize pieceFrame;
     MazePiece *temp;
     MazeView *mazeView;
+    MazeManager *manager;
+    PiecesView *pieceView;
 }
 
 @end
@@ -81,7 +84,7 @@
     }
     
     pieceFrame = [mazeView getPieceSize];
-    PiecesView *pieceView = [[PiecesView alloc] initWithFrame:CGRectMake(0 ,mazeView.frame.origin.y + mazeView.frame.size.height, self.view.frame.size.width, pieceViewHeight) straight:4 corner:2 pieceSize:pieceFrame];
+    pieceView = [[PiecesView alloc] initWithFrame:CGRectMake(0 ,mazeView.frame.origin.y + mazeView.frame.size.height, self.view.frame.size.width, pieceViewHeight) straight:0 corner:0 pieceSize:pieceFrame];
     pieceView.delegate = self;
     
     [self.view addSubview:pieceView];
@@ -93,8 +96,11 @@
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self setupBoard];
     [self showActionItems:self];
+    manager = [[MazeManager alloc] initWithMaze:self.maze size:pieceFrame];
+    manager.delegate = self;
+    [self setupBoard];
+    [pieceView updateRemainingStraightPieces:manager.straight curved:manager.corner];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -155,18 +161,29 @@
     return temp;
 }
 
+-(void)mazePiecePlaced:(MazePiece *)piece atIndex:(NSInteger)index{
+    [manager updatePiece:piece atIndex:index];
+}
+
+-(void)mazePieceRotated:(MazePiece *)piece atIndex:(NSInteger)index {
+    [manager updatePiece:piece atIndex:index];
+}
+
+-(BOOL)canPlaceMazePiece:(MazePiece *)piece {
+    return [manager canPlacePiece:piece];
+}
+
+
+-(void)updateStraightPieceCount:(NSInteger)straight corner:(NSInteger)corner {
+    [pieceView updateRemainingStraightPieces:straight curved:corner];
+}
+
 -(void)setupBoard {
-    CGRect frame = CGRectMake(0, 0,pieceFrame.width, pieceFrame.height);
-    for (int i = 0; i < 25; i++) {
-        MazePiece *piece = [self.maze getMazePieceAtIndex:i withFrame:frame];
-        if(piece.piece != MazePieceEmpty) {
+    for(int i = 0; i < self.maze.originalBoard.count; i++) {
+        MazePiece *piece = [manager getPieceForIndex:i];
+        if(piece.piece != MazePieceEmpty)
             [mazeView placePiece:piece atIndex:i];
-        }
     }
-    
-    [mazeView placePiece:[self.maze getStartingMazePiece:frame] atIndex:0];
-    [mazeView placePiece:[self.maze getEndingMazePiece:frame] atIndex:24];
-    
 }
 
 @end

@@ -59,6 +59,19 @@
     return self;
 }
 
+-(instancetype)initWithFrame:(CGRect)frame pieceType:(MazePieces)piece start:(PieceDirection)start end:(PieceDirection)end index:(NSInteger)index {
+    self = [super initWithFrame:frame];
+    if(self){
+        self.piece = piece;
+        self.startDirection = start;
+        self.endDirection = end;
+        self.originalFrame = frame;
+        self.index = [[NSNumber alloc] initWithInteger:index];
+        [self createView];
+    }
+    return self;
+}
+
 #pragma mark - View Creators
 
 -(void)createView {
@@ -149,13 +162,13 @@
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     if([self.delegate mazePieceCanMove:self]) {
-        CGRect frame = CGRectMake(self.frame.origin.x - 0.1*self.frame.size.width, self.frame.origin.y - 0.1*self.frame.size.height, 1.2 * self.frame.size.width, 1.2 * self.frame.size.height);
-        self.frame = frame;
+        //CGRect frame = CGRectMake(self.frame.origin.x - 0.1*self.frame.size.width, self.frame.origin.y - 0.1*self.frame.size.height, 1.2 * self.frame.size.width, 1.2 * self.frame.size.height);
+        self.frame = self.originalFrame;
         if(self.piece == MazePieceStraight){
-            [self enlargeStraightPiece:frame direction:self.startDirection];
+            [self enlargeStraightPiece:self.originalFrame direction:self.startDirection];
         }
         if(self.piece == MazePieceCurved) {
-            [self enlargeCurvedPiece:frame direction:self.startDirection];
+            [self enlargeCurvedPiece:self.originalFrame direction:self.startDirection];
         }
         [self enlarge];
     }
@@ -199,6 +212,8 @@
         [self changeStraightFrame:frame direction:self.startDirection];
     }completion:^(BOOL finished){
         [self rotatePiece];
+        if(self.delegate)
+            [self.delegate mazePieceDidRotate:self];
     }];
 
 }
@@ -236,6 +251,8 @@
     }completion:^(BOOL finished){
         self.startDirection = self.endDirection;
         [self rotatePiece];
+        if(self.delegate)
+           [self.delegate mazePieceDidRotate:self];
     }];
 }
 

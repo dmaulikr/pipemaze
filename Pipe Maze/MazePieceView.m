@@ -13,6 +13,8 @@
 @interface MazePieceView ()
 @property (nonatomic) NSInteger num;
 @property (nonatomic) MazePieces pieceType;
+@property (nonatomic, strong) MazePiece *backgroundPiece;
+@property (nonatomic, strong) UIView *backgroundView;
 @property (nonatomic, strong) UILabel *remainingLabel;
 @end
 
@@ -59,8 +61,6 @@
     [self addSubview:self.remainingLabel];
     
     MazePiece *piece;
-    MazePiece *backgroundPiece;
-    
     
     if(self.frame.size.height < 100) {
         height = 10;
@@ -71,21 +71,38 @@
 
     if(self.pieceType == MazePieceCurved) {
         piece = [[MazePiece alloc] initWithFrame:CGRectMake(xOff, height, size.width, size.height) pieceType:self.pieceType start:PieceDirectionNorth end:PieceDirectionEast];
-        backgroundPiece = [[MazePiece alloc] initWithFrame:piece.frame pieceType:self.pieceType start:PieceDirectionNorth end:PieceDirectionEast];
-        [self addSubview:backgroundPiece];
+        self.backgroundView = [[UIView alloc] initWithFrame:CGRectMake(xOff - 3, height - 3, size.width + 6, size.width + 6)];
+        [self addSubview:self.backgroundView];
         [self addSubview:piece];
     }
     else {
         piece = [[MazePiece alloc] initWithFrame:CGRectMake(xOff, height, size.width, size.height) pieceType:self.pieceType start:PieceDirectionNorth end:PieceDirectionSouth];
-        backgroundPiece = [[MazePiece alloc] initWithFrame:piece.frame pieceType:self.pieceType start:PieceDirectionNorth end:PieceDirectionSouth];
-        [self addSubview:backgroundPiece];
+        self.backgroundView = [[UIView alloc] initWithFrame:CGRectMake(xOff - 3, height - 3, size.width + 6, size.width + 6)];
+        [self addSubview:self.backgroundView];
         [self addSubview:piece];
     }
-    backgroundPiece.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    backgroundPiece.layer.borderWidth = 1.0;
+
     piece.layer.borderColor = [UIColor lightGrayColor].CGColor;
     piece.layer.borderWidth = 1.0;
     piece.delegate = self;
+}
+
+-(void)hightlightPiece:(BOOL)enabled {
+    if(enabled) {
+        self.backgroundView.layer.borderColor = [UIColor darkGrayColor].CGColor;
+        self.backgroundView.layer.borderWidth = 4.0;
+        
+    }
+    else {
+        self.backgroundView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+        self.backgroundView.layer.borderWidth = 0;
+        
+    }
+}
+
+-(void)updateRemainingPieces:(NSInteger)remaining {
+    self.num = remaining;
+    self.remainingLabel.text = [NSString stringWithFormat:@"x%li", self.num];
 }
 
 -(BOOL)mazePieceCanMove:(id)sender {

@@ -8,7 +8,10 @@
 
 #import "PiecesView.h"
 
-@interface PiecesView ()
+@interface PiecesView (){
+    BOOL straightSelected;
+    BOOL cornerSelected;
+}
 @property (nonatomic, strong) MazePieceView *straight;
 @property (nonatomic, strong) MazePieceView *corner;
 @end
@@ -41,32 +44,64 @@
 }
 
 -(void)createView:(NSInteger)straight corner:(NSInteger)corner size:(CGSize)size{
-    if(straight > 0 && corner > 0) {
+    cornerSelected = NO;
+    straightSelected = NO;
+    
+//    if(straight > 0 && corner > 0) {
         self.straight = [[MazePieceView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width/2, self.frame.size.height) piece:MazePieceStraight size:size numOfPieces:straight];
         self.straight.delegate = self;
         [self addSubview:self.straight];
         self.corner = [[MazePieceView alloc] initWithFrame:CGRectMake(self.frame.size.width/2, 0, self.frame.size.width/2, self.frame.size.height) piece:MazePieceCurved size:size numOfPieces:corner];
         self.corner.delegate = self;
         [self addSubview:self.corner];
-    }
-    
-    if(straight > 0 && corner <= 0) {
-        self.straight = [[MazePieceView alloc] initWithFrame:CGRectMake(self.frame.size.width/4, 0, self.frame.size.width/2, self.frame.size.height) piece:MazePieceStraight size:size numOfPieces:straight];
-        self.straight.delegate = self;
-        [self addSubview:self.straight];
-    }
-    
-    if(straight <= 0 && corner > 0) {
-        self.corner = [[MazePieceView alloc] initWithFrame:CGRectMake(self.frame.size.width/4, 0, self.frame.size.width/2, self.frame.size.height) piece:MazePieceCurved size:size numOfPieces:corner];
-        self.corner.delegate = self;
-        [self addSubview:self.corner];
-    }
+//    }
+//    
+//    if(straight > 0 && corner <= 0) {
+//        self.straight = [[MazePieceView alloc] initWithFrame:CGRectMake(self.frame.size.width/4, 0, self.frame.size.width/2, self.frame.size.height) piece:MazePieceStraight size:size numOfPieces:straight];
+//        self.straight.delegate = self;
+//        [self addSubview:self.straight];
+//    }
+//    
+//    if(straight <= 0 && corner > 0) {
+//        self.corner = [[MazePieceView alloc] initWithFrame:CGRectMake(self.frame.size.width/4, 0, self.frame.size.width/2, self.frame.size.height) piece:MazePieceCurved size:size numOfPieces:corner];
+//        self.corner.delegate = self;
+//        [self addSubview:self.corner];
+//    }
+}
+
+-(void)updateRemainingStraightPieces:(NSInteger)straight curved:(NSInteger)corner {
+    [self.straight updateRemainingPieces:straight];
+    [self.corner updateRemainingPieces:corner];
 }
 
 -(void)mazePieceDidSelectPiece:(MazePiece *)piece {
-    if(self.delegate){
-       [self.delegate piecesViewDidSelectMazePiece:piece];
+    if(piece.piece == MazePieceStraight) {
+        [self.straight hightlightPiece:!straightSelected];
+        straightSelected = !straightSelected;
+        [self.corner hightlightPiece:NO];
+        cornerSelected = NO;
+        
+        if(self.delegate && straightSelected){
+            [self.delegate piecesViewDidSelectMazePiece:piece];
+        }
+        else {
+            [self.delegate piecesViewDidSelectMazePiece:nil];
+        }
     }
+    
+    if(piece.piece == MazePieceCurved) {
+        [self.corner hightlightPiece:!cornerSelected];
+        cornerSelected = !cornerSelected;
+        [self.straight hightlightPiece:NO];
+        straightSelected = NO;
+        if(self.delegate && cornerSelected){
+            [self.delegate piecesViewDidSelectMazePiece:piece];
+        }
+        else {
+            [self.delegate piecesViewDidSelectMazePiece:nil];
+        }
+    }
+    
 }
 
 @end

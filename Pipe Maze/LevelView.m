@@ -89,20 +89,7 @@
     level.textColor = [UIColor darkGrayColor];
     level.font = [UIFont fontWithName:@"STHeitiTC-Light" size:self.bounds.size.width/3.214];
     [self addSubview:level];
-    
-//    UILabel *time = [[UILabel alloc] initWithFrame:CGRectMake(0, banner.bounds.size.height * 0.3, banner.bounds.size.width, banner.bounds.size.height * 0.7)];
-//    if(self.completed) {
-//        time.text = @"completed"; //fix for date formatting
-//    }
-//    
-//    else {
-//        time.text = @"not completed";
-//    }
-//    
-//    time.textAlignment = NSTextAlignmentCenter;
-//    time.font = [UIFont fontWithName:@"STHeitiTC-Light" size:self.bounds.size.width/8.125];
-//    [banner addSubview:time];
-    
+        
     StarView *stars = [[StarView alloc] initWithFrame:CGRectMake(0, banner.bounds.size.height * 0.5, banner.bounds.size.width, banner.bounds.size.height * 0.5) stars:self.stars];
     
     [banner addSubview:stars];

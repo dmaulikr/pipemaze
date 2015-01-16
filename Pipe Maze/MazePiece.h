@@ -13,8 +13,11 @@
 
 -(BOOL)mazePieceCanMove:(id)sender;
 -(BOOL)mazePieceCanRotate:(id)sender;
+
+@optional
 -(void)mazePieceDidEndTouching:(id)sender;
 -(void)mazePieceDidBeginTouching:(id)sender;
+-(void)mazePieceDidRotate:(id)sender;
 
 @end
 
@@ -23,10 +26,12 @@
 -(instancetype)init;
 -(instancetype)initWithFrame:(CGRect)frame;
 -(instancetype)initWithFrame:(CGRect)frame pieceType:(MazePieces)piece start:(PieceDirection)start end:(PieceDirection)end;
+-(instancetype)initWithFrame:(CGRect)frame pieceType:(MazePieces)piece start:(PieceDirection)start end:(PieceDirection)end index:(NSInteger)index;
 
 @property (nonatomic) MazePieces piece;
 @property (nonatomic) PieceDirection startDirection;
 @property (nonatomic) PieceDirection endDirection;
+@property (nonatomic, strong) NSNumber * index;
 @property id<MazePieceDelegate> delegate;
 
 @end

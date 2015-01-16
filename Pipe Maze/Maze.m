@@ -19,7 +19,7 @@
     return self;
 }
 
-
+//Not right at all
 -(MazePiece *)getMazePieceAtIndex:(NSInteger)index withFrame:(CGRect)frame{
     NSString *piece = self.originalBoard[index];
     MazePieces p = [self getPiece:piece];
