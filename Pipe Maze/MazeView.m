@@ -129,4 +129,26 @@ static NSString * const reuseIdentifier = @"Cell";
     }
 }
 
+-(void)undoMove:(MazeMove *)move {
+    UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:move.newIndex inSection:0]];
+    NSArray *arr = [cell subviews];
+    if(arr.count > 1) {
+        MazePiece *piece = arr[1];
+        if(move.oldPiece == MazePieceEmpty) {
+            [piece removeFromSuperview];
+        }
+        if(move.oldPiece == MazePieceCurved) {
+            [piece undoRotateCurvedPiece:piece.frame direction:move.newStartDirection];
+            piece.startDirection = move.oldStartDirection;
+            piece.endDirection = move.oldEndDirection;
+        }
+        
+        if(move.oldPiece == MazePieceStraight) {
+            [piece undoRotateStraightPiece:piece.frame direction:move.newStartDirection];
+            piece.startDirection = move.oldStartDirection;
+            piece.endDirection = move.oldEndDirection;
+        }
+    }
+}
+
 @end

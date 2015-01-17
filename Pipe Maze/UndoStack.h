@@ -7,7 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PMConstants.h"
+#import "MazeMove.h"
 
 @interface UndoStack : NSObject
+
+-(instancetype)init;
+
+-(void)pushMove:(MazeMove *)move;
+-(MazeMove *)popMove;
 
 @end

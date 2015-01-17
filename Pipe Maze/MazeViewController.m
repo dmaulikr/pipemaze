@@ -142,7 +142,7 @@
     [manager restartMaze];
     [mazeView restartMaze];
     [self setupBoard];
-    elapsed = 0;
+    elapsed = -1;
 }
 
 - (IBAction)checkMaze:(id)sender {
@@ -175,6 +175,11 @@
 
 - (IBAction)undoMove:(id)sender {
     NSLog(@"undo move");
+    MazeMove *move = [manager undo];
+    if(move.didRemove){
+        [pieceView updateRemainingStraightPieces:manager.straight curved:manager.corner];
+    }
+    [mazeView undoMove:move];
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {

@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "Maze.h"
 #import "MazePiece.h"
+#import "UndoStack.h"
+#import "MazeMove.h"
 
 @protocol MazeManagerDelegate <NSObject>
 
@@ -25,6 +27,8 @@
 -(BOOL)canPlacePiece:(MazePiece *)piece;
 -(void)restartMaze;
 -(NSString *)checkMaze;
+
+-(MazeMove *)undo;
 
 -(NSInteger)saveTime:(NSInteger)time;
 

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MazePiece.h"
+#import "MazeMove.h"
 
 @protocol MazeViewDelegate <NSObject>
 
@@ -26,6 +27,7 @@
 -(CGSize)getPieceSize;
 -(void)placePiece:(MazePiece *)piece atIndex:(NSInteger)index;
 -(void)restartMaze;
+-(void)undoMove:(MazeMove *)move;
 
 @property id<MazeViewDelegate> delegate;
 

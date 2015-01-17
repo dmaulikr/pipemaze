@@ -16,6 +16,7 @@
 @property (nonatomic) CGSize pieceSize;
 @property (nonatomic) NSInteger startIndex;
 @property (nonatomic) NSInteger endIndex;
+@property (nonatomic, strong) UndoStack *stack;
 
 @end
 
@@ -27,6 +28,7 @@
         self.maze = nil;
         self.straight = 0;
         self.corner = 0;
+        self.stack = [[UndoStack alloc] init];
     }
     return self;
 }
@@ -38,6 +40,7 @@
         self.pieceSize = size;
         self.straight = maze.straightPieces;
         self.corner = maze.curvedPieces;
+        self.stack = [[UndoStack alloc] init];
         [self setupManager];
     }
     return self;
@@ -85,11 +88,44 @@
 
 -(void)updatePiece:(MazePiece *)piece atIndex:(NSInteger)index {
     MazeStruct s = mazeArray[index];
+    
+    MazeMove *move = [[MazeMove alloc] init];
+    move.piece = piece.piece;
+    move.oldPiece = s.piece;
+    move.oldStartDirection = s.start;
+    move.oldEndDirection = s.end;
+    move.newIndex = index;
+    move.newStartDirection = piece.startDirection;
+    move.newEndDirection = piece.endDirection;
+    
+    [self.stack pushMove:move];
+    
     s.piece = piece.piece;
     s.start = piece.startDirection;
     s.end = piece.endDirection;
     s.index = index;
     mazeArray[index] = s;
+}
+
+-(MazeMove *)undo {
+    MazeMove *move = [self.stack popMove];
+    MazeStruct s = mazeArray[move.newIndex];
+    s.piece = move.oldPiece;
+    s.start = move.oldStartDirection;
+    s.end = move.oldEndDirection;
+    mazeArray[move.newIndex] = s;
+    
+    if(s.piece == MazePieceEmpty){
+        move.didRemove = YES;
+        if(move.piece == MazePieceStraight) {
+            self.straight++;
+        }
+        if(move.piece == MazePieceCurved) {
+            self.corner++;
+        }
+    }
+    
+    return move;
 }
 
 -(BOOL)canPlacePiece:(MazePiece *)piece {

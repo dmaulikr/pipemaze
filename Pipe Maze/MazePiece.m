@@ -256,6 +256,15 @@
     }];
 }
 
+-(void)undoRotateCurvedPiece:(CGRect)frame direction:(PieceDirection)direction {
+    [UIView animateKeyframesWithDuration:0.2 delay:0 options:UIViewKeyframeAnimationOptionAllowUserInteraction animations:^{
+        [self undoCurvedFrame:frame direction:direction];
+    }completion:^(BOOL finished){
+    }];
+
+}
+
+
 -(void)changeCurvedFrame:(CGRect)frame direction:(PieceDirection)direction{
     if(direction == PieceDirectionNorth){
         self.curvedOuterView.frame = CGRectMake(floor(self.frame.size.width/4), -self.bounds.size.height/2 + floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height);
@@ -276,6 +285,44 @@
         self.curvedInnerView.frame =CGRectMake(0, 0, floor(self.frame.size.width/4), floor(self.frame.size.height/4));
     }
 
+}
+
+-(void)undoCurvedFrame:(CGRect)frame direction:(PieceDirection)direction {
+    if(direction == PieceDirectionNorth){
+        self.curvedOuterView.frame = CGRectMake(-self.frame.size.width/2 + floor(self.frame.size.width/4), -self.frame.size.height/2 + floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height);
+        self.curvedInnerView.frame =CGRectMake(0, 0, floor(self.frame.size.width/4), floor(self.frame.size.height/4));
+    }
+    if(direction == PieceDirectionEast) {
+        self.curvedOuterView.frame = CGRectMake(floor(self.frame.size.width/4), -self.bounds.size.height/2 + floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height);
+        self.curvedInnerView.frame = CGRectMake(floor(self.frame.size.width/4) + self.frame.size.width/2, 0, self.frame.size.width/2, floor(self.frame.size.height/4)); //east
+    }
+    
+    if(direction == PieceDirectionSouth) {
+        self.curvedOuterView.frame = CGRectMake(floor(self.frame.size.width/4), floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height);
+        self.curvedInnerView.frame = CGRectMake(floor(self.frame.size.width/4) + self.frame.size.width/2, floor(self.frame.size.height/4) + self.frame.size.height/2, self.frame.size.width/2, self.frame.size.height/2); //south
+    }
+    
+    if(direction == PieceDirectionWest) {
+        self.curvedOuterView.frame = CGRectMake(-self.frame.size.width/2 + floor(self.frame.size.width/4), floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height);
+        self.curvedInnerView.frame = CGRectMake(0, floor(self.frame.size.width/4) + self.frame.size.width/2, floor(self.frame.size.width/4), self.frame.size.width/2); //west
+
+    }
+
+}
+
+-(void)undoRotateStraightPiece:(CGRect)frame direction:(PieceDirection)direction {
+    [UIView animateKeyframesWithDuration:0.2 delay:0 options:UIViewKeyframeAnimationOptionAllowUserInteraction animations:^{
+        [self undoStraigthPiece:frame direction:direction];
+    }completion:^(BOOL finished){
+    }];
+
+}
+
+-(void)undoStraigthPiece:(CGRect)frame direction:(PieceDirection)direction {
+    if(direction == PieceDirectionEast || direction == PieceDirectionWest) //enlarge horizontal
+        self.straight.frame = CGRectMake(floor(self.frame.size.width/4), 0, self.frame.size.width/2, self.frame.size.height);
+    else //enlarge vertical
+        self.straight.frame = CGRectMake(0, floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height/2);
 }
 
 #pragma mark - Methods to add borders when selected

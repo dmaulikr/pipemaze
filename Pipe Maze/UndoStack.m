@@ -8,6 +8,30 @@
 
 #import "UndoStack.h"
 
+@interface UndoStack ()
+@property (nonatomic, strong) NSMutableArray *stack;
+@end
+
 @implementation UndoStack
+
+-(instancetype)init {
+    self = [super init];
+    if(self) {
+        self.stack = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
+-(void)pushMove:(MazeMove *)move {
+    [self.stack insertObject:move atIndex:0];
+}
+
+-(MazeMove *)popMove {
+    if(self.stack.count == 0)
+        return nil;
+    MazeMove *move = [self.stack objectAtIndex:0];
+    [self.stack removeObjectAtIndex:0];
+    return move;
+}
 
 @end
