@@ -102,7 +102,7 @@
 
 -(void)updateRemainingPieces:(NSInteger)remaining {
     self.num = remaining;
-    self.remainingLabel.text = [NSString stringWithFormat:@"x%li", self.num];
+    self.remainingLabel.text = [NSString stringWithFormat:@"x%li", (long)self.num];
 }
 
 -(BOOL)mazePieceCanMove:(id)sender {

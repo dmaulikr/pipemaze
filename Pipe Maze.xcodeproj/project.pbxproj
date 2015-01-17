@@ -26,6 +26,8 @@
 		2E61FCCD1A6871F800364C5E /* MazeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E61FCCC1A6871F800364C5E /* MazeViewController.m */; };
 		2E61FCD01A68745800364C5E /* Maze.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E61FCCF1A68745800364C5E /* Maze.m */; };
 		2E61FCD31A69B74B00364C5E /* MazeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E61FCD21A69B74B00364C5E /* MazeManager.m */; };
+		2E61FCD61A6AC92900364C5E /* CompletedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E61FCD51A6AC92900364C5E /* CompletedView.m */; };
+		2E61FCD91A6AE6BC00364C5E /* UndoStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E61FCD81A6AE6BC00364C5E /* UndoStack.m */; };
 		2EDBAF441A659C4A006566BD /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDBAF431A659C4A006566BD /* settings@2x.png */; };
 		2EDBAF4A1A65ADD2006566BD /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDBAF451A65ADD2006566BD /* settings.png */; };
 		2EDBAF4B1A65ADD2006566BD /* settings@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDBAF461A65ADD2006566BD /* settings@3x.png */; };
@@ -87,6 +89,10 @@
 		2E61FCCF1A68745800364C5E /* Maze.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Maze.m; sourceTree = "<group>"; };
 		2E61FCD11A69B74B00364C5E /* MazeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazeManager.h; sourceTree = "<group>"; };
 		2E61FCD21A69B74B00364C5E /* MazeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MazeManager.m; sourceTree = "<group>"; };
+		2E61FCD41A6AC92900364C5E /* CompletedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompletedView.h; sourceTree = "<group>"; };
+		2E61FCD51A6AC92900364C5E /* CompletedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompletedView.m; sourceTree = "<group>"; };
+		2E61FCD71A6AE6BC00364C5E /* UndoStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UndoStack.h; sourceTree = "<group>"; };
+		2E61FCD81A6AE6BC00364C5E /* UndoStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UndoStack.m; sourceTree = "<group>"; };
 		2EDBAF431A659C4A006566BD /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings@2x.png"; path = "images/settings@2x.png"; sourceTree = "<group>"; };
 		2EDBAF451A65ADD2006566BD /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings.png; path = images/settings.png; sourceTree = "<group>"; };
 		2EDBAF461A65ADD2006566BD /* settings@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings@3x.png"; path = "images/settings@3x.png"; sourceTree = "<group>"; };
@@ -194,6 +200,8 @@
 		2E0DD6B41A6481680076C5B6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2E61FCD41A6AC92900364C5E /* CompletedView.h */,
+				2E61FCD51A6AC92900364C5E /* CompletedView.m */,
 				2E0DD6B81A6490960076C5B6 /* StarView.h */,
 				2E0DD6B91A6490960076C5B6 /* StarView.m */,
 				2E0DD6B11A6481620076C5B6 /* LevelView.h */,
@@ -256,6 +264,8 @@
 				2E61FCD21A69B74B00364C5E /* MazeManager.m */,
 				2E61FCC81A6871EA00364C5E /* LevelParser.h */,
 				2E61FCC91A6871EA00364C5E /* LevelParser.m */,
+				2E61FCD71A6AE6BC00364C5E /* UndoStack.h */,
+				2E61FCD81A6AE6BC00364C5E /* UndoStack.m */,
 				2EDBAF5E1A6811EE006566BD /* PMConstants.h */,
 				2EDBAF5F1A6811EE006566BD /* PMConstants.m */,
 				2E0DD6C01A64BE8C0076C5B6 /* WorldDAO.h */,
@@ -397,7 +407,9 @@
 				2EDBAF551A65CCD5006566BD /* World.m in Sources */,
 				2EDBAF601A6811EE006566BD /* PMConstants.m in Sources */,
 				2E0DD6C21A64BE8C0076C5B6 /* WorldDAO.m in Sources */,
+				2E61FCD61A6AC92900364C5E /* CompletedView.m in Sources */,
 				2E0DD6B01A647D520076C5B6 /* LevelCollectionViewController.m in Sources */,
+				2E61FCD91A6AE6BC00364C5E /* UndoStack.m in Sources */,
 				2EDBAF5A1A681116006566BD /* PiecesView.m in Sources */,
 				2E61FCD31A69B74B00364C5E /* MazeManager.m in Sources */,
 				2E0DD6B31A6481620076C5B6 /* LevelView.m in Sources */,

@@ -9,7 +9,6 @@
 #import "MazeViewController.h"
 #import "PMConstants.h"
 
-
 @interface MazeViewController (){
     UILabel *timeLabel;
     NSDate *time;
@@ -21,6 +20,8 @@
     MazeView *mazeView;
     MazeManager *manager;
     PiecesView *pieceView;
+    CompletedView *completed;
+    UIView *backgroundCompletedView;
 }
 
 @end
@@ -146,22 +147,39 @@
 
 - (IBAction)checkMaze:(id)sender {
     NSLog(@"check maze");
-    updateTime = !updateTime;
+    updateTime = NO;
     NSString *results = [manager checkMaze];
     if(!results) {
-        //fix
-        [[[UIAlertView alloc] initWithTitle:@"You did it" message:nil delegate:nil cancelButtonTitle:@"dismiss" otherButtonTitles: nil] show];
         NSInteger stars = [manager saveTime:floor(elapsed/2)];
-        NSLog(@"%li", (long)stars);
+        CGFloat width = 280;
+        CGFloat height = 150;
+        if(!completed){
+            backgroundCompletedView = [[UIView alloc] initWithFrame:self.view.frame];
+            backgroundCompletedView.backgroundColor = [UIColor colorWithWhite:0.2 alpha:0.5];
+            completed = [[CompletedView alloc] initWithFrame:CGRectMake((self.view.bounds.size.width - width)/2, self.view.bounds.size.height/2 - height/2 - 30, width, height)];
+            completed.delegate = self;
+        }
+        completed.saying = @"you did it!";
+        completed.stars = stars;
+        [self.view addSubview:backgroundCompletedView];
+        [completed showView:self.view completionHandler:^{
+            
+        }];
     }
     else  {
-        [[[UIAlertView alloc] initWithTitle:results message:nil delegate:nil cancelButtonTitle:@"dismiss" otherButtonTitles: nil] show];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:results message:nil delegate:nil cancelButtonTitle:@"dismiss" otherButtonTitles: nil];
+        alert.delegate = self;
+        [alert show];
     }
 }
 
 - (IBAction)undoMove:(id)sender {
     NSLog(@"undo move");
-    }
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    updateTime = YES;
+}
 
 
 #pragma mark - moving pieces methods
@@ -185,6 +203,16 @@
     return [manager canPlacePiece:piece];
 }
 
+-(void)viewDismissed {
+    [UIView animateKeyframesWithDuration:0.25 delay:0 options:UIViewKeyframeAnimationOptionAllowUserInteraction animations:^{
+        completed.alpha = 0;
+    }completion:^(BOOL finished){
+        [completed removeFromSuperview];
+        [backgroundCompletedView removeFromSuperview];
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+    
+}
 
 -(void)updateStraightPieceCount:(NSInteger)straight corner:(NSInteger)corner {
     [pieceView updateRemainingStraightPieces:straight curved:corner];

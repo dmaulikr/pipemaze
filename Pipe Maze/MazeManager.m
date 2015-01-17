@@ -142,6 +142,16 @@
 }
 
 -(NSInteger)saveTime:(NSInteger)time {
+    if(time < [self.maze.starTimes[4] integerValue])
+        return 5;
+    else if(time < [self.maze.starTimes[3] integerValue])
+        return 4;
+    else if(time < [self.maze.starTimes[2] integerValue])
+        return 3;
+    else if(time < [self.maze.starTimes[1] integerValue])
+        return 2;
+    else
+        return 1;
     return 0;
 }
 
@@ -162,12 +172,13 @@
     if(success) {
         return nil;
     }
-    return @"u dumb";
+    return @"Maze not correct, please try again.";
 }
 
 -(BOOL)checkMaze:(MazeStruct)s {
     
     if(s.index == self.endIndex) {
+        checked[s.index] = YES;
         return YES;
     }
     checked[s.index] = YES;

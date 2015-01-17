@@ -68,6 +68,20 @@
             image.image = [UIImage imageNamed:@"star"];
         }
         [self addSubview:image];
+        [starArray addObject:image];
+    }
+}
+
+-(void)updateStars:(NSInteger)stars {
+    self.stars = stars;
+    for(int i = 0; i < 5; i++) {
+        UIImageView *image = [starArray objectAtIndex:i];
+        if(self.stars > i) {
+            image.image = [UIImage imageNamed:@"starhighlighted"];
+        }
+        else {
+            image.image = [UIImage imageNamed:@"star"];
+        }
     }
 }
 

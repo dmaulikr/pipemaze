@@ -14,8 +14,9 @@
 #import "MazeView.h"
 #import "Maze.h"
 #import "MazeManager.h"
+#import "CompletedView.h"
 
-@interface MazeViewController : UIViewController <PiecesViewDelegate, MazeViewDelegate, MazeManagerDelegate>
+@interface MazeViewController : UIViewController <PiecesViewDelegate, MazeViewDelegate, MazeManagerDelegate, CompletedViewDelegate, UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *actionBarButtonItem;
 @property (strong, nonatomic) UIToolbar *toolbar;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *restartBarButtonItem;

@@ -71,6 +71,8 @@
     maze.originalBoard = orig;
     maze.playingBoard = orig;
     
+    NSArray *arr = @[contents[10], contents[11], contents[12], contents[13], contents[14]];
+    maze.starTimes = arr;
     //Needs more work
     return maze;
 }
