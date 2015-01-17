@@ -30,4 +30,6 @@
 @property (nonatomic, strong) NSString *desc;
 @property (nonatomic, strong) NSString *finishedText;
 
+@property (nonatomic, strong) NSArray *starTimes;
+
 @end

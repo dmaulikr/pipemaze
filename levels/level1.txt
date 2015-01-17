@@ -5,7 +5,7 @@ S 0 0 X 0
 0 X 0 0 0
 X 0 0 0 E
 2 0
-2 1
+2 3
 5
 4
 Demo level, not really important

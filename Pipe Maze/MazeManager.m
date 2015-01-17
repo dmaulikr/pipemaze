@@ -10,9 +10,12 @@
 
 @interface MazeManager (){
     MazeStruct mazeArray[25];
+    BOOL checked[25];
 }
 @property (nonatomic, strong) Maze *maze;
 @property (nonatomic) CGSize pieceSize;
+@property (nonatomic) NSInteger startIndex;
+@property (nonatomic) NSInteger endIndex;
 
 @end
 
@@ -52,6 +55,7 @@
         s.piece = self.maze.startPiece;
         s.start = self.maze.startDirection;
         s.end = [self getEndDirectionForPiece:self.maze.startPiece startDirection:self.maze.startDirection];
+        self.startIndex = index;
         s.index = index;
     }
     
@@ -59,6 +63,7 @@
         s.piece = self.maze.endPiece;
         s.start = self.maze.endDirection;
         s.end = [self getEndDirectionForPiece:self.maze.endPiece startDirection:self.maze.endDirection];
+        self.endIndex = index;
         s.index = index;
     }
     
@@ -130,9 +135,120 @@
         s.index = 0;
     }
     [self setupManager];
+    self.straight = self.maze.straightPieces;
+    self.corner = self.maze.curvedPieces;
+    
+    [self.delegate updateStraightPieceCount:self.straight corner:self.corner];
+}
+
+-(NSInteger)saveTime:(NSInteger)time {
+    return 0;
+}
+
+-(NSString *)checkMaze {
+    if(self.straight > 0 || self.corner > 0) {
+        return @"You need to use all the pieces to complete the level.";
+    }
+    
+    for(int i = 0; i < 25; i++)
+        checked[i] = NO;
+    
+    BOOL success = [self checkMaze:mazeArray[self.startIndex]];
+    for(int i = 0; i<25; i++) {
+        MazeStruct s = mazeArray[i];
+        if(s.piece != MazePieceBlock && s.piece != MazePieceEmpty && !checked[i])
+            success = NO;
+    }
+    if(success) {
+        return nil;
+    }
+    return @"u dumb";
+}
+
+-(BOOL)checkMaze:(MazeStruct)s {
+    
+    if(s.index == self.endIndex) {
+        return YES;
+    }
+    checked[s.index] = YES;
+    PieceDirection validStartLocations[2];
+    validStartLocations[0] = s.start;
+    validStartLocations[1] = s.end;
+    NSInteger index = [self getAdjacentIndex:s.start index:s.index];
+    if(index > -1) {
+        MazeStruct temp = mazeArray[index];
+        if((temp.piece == MazePieceStraight || temp.piece == MazePieceCurved) && checked[index] == NO) {
+            if([self pieceIsContinued:s.start start:temp.start end:temp.end])
+                return [self checkMaze:temp];
+        }
+    }
+    //First option has no continuation check other end
+    index = [self getAdjacentIndex:s.end index:s.index];
+    MazeStruct temp = mazeArray[index];
+    if(temp.piece == MazePieceBlock || temp.piece == MazePieceEmpty) {
+        return NO; //both lead to a dead end
+    }
+    else { //second option isnt dead end. check for continuation
+        if(checked[index] == NO) {
+            if([self pieceIsContinued:s.end start:temp.start end:temp.end])
+                return [self checkMaze:temp];
+        }
+    }
+    
+    return NO;
 }
 
 #pragma mark - helper functions
+
+-(BOOL)pieceIsContinued:(PieceDirection)direction start:(PieceDirection)start end:(PieceDirection)end {
+    if(direction == PieceDirectionNorth) {
+        if(start == PieceDirectionSouth || end == PieceDirectionSouth)
+            return YES;
+    }
+    if(direction == PieceDirectionEast) {
+        if(start == PieceDirectionWest || end == PieceDirectionWest)
+            return YES;
+    }
+    if(direction == PieceDirectionSouth) {
+        if(start == PieceDirectionNorth || end == PieceDirectionNorth)
+            return YES;
+    }
+    if(direction == PieceDirectionWest) {
+        if(start == PieceDirectionEast || end == PieceDirectionEast)
+            return YES;
+    }
+    
+    
+    return NO;
+}
+
+-(NSInteger)getAdjacentIndex:(PieceDirection)direction index:(NSInteger)index{
+    switch(direction) {
+        case PieceDirectionNorth:
+            if(index < 5)
+                return -1;
+            return index - 5;
+            break;
+        case PieceDirectionEast:
+            if(index%5 == 4)
+                return -1;
+            return ++index;
+            break;
+        case PieceDirectionSouth:
+            if(index > 20)
+                return -1;
+            return index+5;
+            break;
+        case PieceDirectionWest:
+            if(index%5 == 0)
+                return -1;
+            return --index;
+            break;
+        default:
+            return -1;
+            break;
+    }
+}
 
 -(PieceDirection)getEndDirectionForPiece:(MazePieces)piece startDirection:(PieceDirection)startDirection {
     if(piece == MazePieceStraight) {

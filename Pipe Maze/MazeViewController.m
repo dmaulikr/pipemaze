@@ -71,7 +71,7 @@
     timeLabel.textAlignment = NSTextAlignmentCenter;
     timeLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:15.0];
     [titleView addSubview:timeLabel];
-    elapsed = 0;
+    elapsed = -2;
     updateTime = YES;
     NSTimer *timer = [NSTimer timerWithTimeInterval:0.5 target:self selector:@selector(updateTime) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
@@ -138,6 +138,8 @@
 
 - (IBAction)restartMaze:(id)sender {
     NSLog(@"restart maze");
+    [manager restartMaze];
+    [mazeView restartMaze];
     [self setupBoard];
     elapsed = 0;
 }
@@ -145,11 +147,21 @@
 - (IBAction)checkMaze:(id)sender {
     NSLog(@"check maze");
     updateTime = !updateTime;
+    NSString *results = [manager checkMaze];
+    if(!results) {
+        //fix
+        [[[UIAlertView alloc] initWithTitle:@"You did it" message:nil delegate:nil cancelButtonTitle:@"dismiss" otherButtonTitles: nil] show];
+        NSInteger stars = [manager saveTime:floor(elapsed/2)];
+        NSLog(@"%li", (long)stars);
+    }
+    else  {
+        [[[UIAlertView alloc] initWithTitle:results message:nil delegate:nil cancelButtonTitle:@"dismiss" otherButtonTitles: nil] show];
+    }
 }
 
 - (IBAction)undoMove:(id)sender {
     NSLog(@"undo move");
-}
+    }
 
 
 #pragma mark - moving pieces methods

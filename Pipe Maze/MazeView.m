@@ -119,7 +119,14 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 -(void)restartMaze {
-    
+    for(int i = 0; i < 25; i++) {
+        UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+        NSArray *arr = [cell subviews];
+        if(arr.count > 1) {
+            MazePiece *piece = arr[1];
+            [piece removeFromSuperview];
+        }
+    }
 }
 
 @end

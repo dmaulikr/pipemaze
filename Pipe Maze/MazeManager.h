@@ -24,6 +24,9 @@
 -(void)updatePiece:(MazePiece *)piece atIndex:(NSInteger)index;
 -(BOOL)canPlacePiece:(MazePiece *)piece;
 -(void)restartMaze;
+-(NSString *)checkMaze;
+
+-(NSInteger)saveTime:(NSInteger)time;
 
 
 @property id<MazeManagerDelegate> delegate;
