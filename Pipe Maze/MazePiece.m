@@ -320,7 +320,7 @@
 
 -(void)undoStraigthPiece:(CGRect)frame direction:(PieceDirection)direction {
     if(direction == PieceDirectionEast || direction == PieceDirectionWest) //enlarge horizontal
-        self.straight.frame = CGRectMake(floor(self.frame.size.width/4), 0, self.frame.size.width/2, self.frame.size.height);
+        self.straight.frame = CGRectMake(floor(self.frame.size.width/4), 0, self.frame.size.width/2, self.frame.size.height); 
     else //enlarge vertical
         self.straight.frame = CGRectMake(0, floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height/2);
 }

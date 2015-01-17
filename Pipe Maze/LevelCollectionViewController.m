@@ -140,4 +140,13 @@ static NSString * const reuseIdentifier = @"Cell";
     
     
 }
+
+#pragma mark - IBActions
+- (IBAction)showStore:(id)sender {
+    [self performSegueWithIdentifier:@"toStore" sender:self];
+}
+
+- (IBAction)showSettings:(id)sender {
+    [self performSegueWithIdentifier:@"toSettings" sender:self];
+}
 @end

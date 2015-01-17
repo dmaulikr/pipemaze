@@ -11,4 +11,6 @@
 
 @interface LevelCollectionViewController : UICollectionViewController <UICollectionViewDelegateFlowLayout>
 
+- (IBAction)showStore:(id)sender;
+- (IBAction)showSettings:(id)sender;
 @end
