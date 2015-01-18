@@ -45,6 +45,11 @@
 		2E7ACEC11A6B4459002499C5 /* leftoveronedge.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E7ACEBC1A6B4459002499C5 /* leftoveronedge.png */; };
 		2E7ACEC31A6B4D3C002499C5 /* buttons.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E7ACEC21A6B4D3C002499C5 /* buttons.png */; };
 		2E7ACEC51A6B4FA7002499C5 /* place.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E7ACEC41A6B4FA7002499C5 /* place.png */; };
+		2E7ACECB1A6B523B002499C5 /* LevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7ACECA1A6B523B002499C5 /* LevelViewController.m */; };
+		2E7ACECE1A6B52E3002499C5 /* LevelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7ACECD1A6B52E3002499C5 /* LevelTableViewCell.m */; };
+		2E7ACED21A6B58E0002499C5 /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E7ACECF1A6B58E0002499C5 /* lock.png */; };
+		2E7ACED31A6B58E0002499C5 /* lock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E7ACED01A6B58E0002499C5 /* lock@2x.png */; };
+		2E7ACED41A6B58E0002499C5 /* lock@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E7ACED11A6B58E0002499C5 /* lock@3x.png */; };
 		2EDBAF441A659C4A006566BD /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDBAF431A659C4A006566BD /* settings@2x.png */; };
 		2EDBAF4A1A65ADD2006566BD /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDBAF451A65ADD2006566BD /* settings.png */; };
 		2EDBAF4B1A65ADD2006566BD /* settings@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDBAF461A65ADD2006566BD /* settings@3x.png */; };
@@ -131,6 +136,13 @@
 		2E7ACEBC1A6B4459002499C5 /* leftoveronedge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leftoveronedge.png; path = ../../Desktop/leftoveronedge.png; sourceTree = "<group>"; };
 		2E7ACEC21A6B4D3C002499C5 /* buttons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttons.png; path = ../../Desktop/buttons.png; sourceTree = "<group>"; };
 		2E7ACEC41A6B4FA7002499C5 /* place.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = place.png; path = ../../Desktop/place.png; sourceTree = "<group>"; };
+		2E7ACEC91A6B523B002499C5 /* LevelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LevelViewController.h; path = ../LevelViewController.h; sourceTree = "<group>"; };
+		2E7ACECA1A6B523B002499C5 /* LevelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LevelViewController.m; path = ../LevelViewController.m; sourceTree = "<group>"; };
+		2E7ACECC1A6B52E3002499C5 /* LevelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelTableViewCell.h; sourceTree = "<group>"; };
+		2E7ACECD1A6B52E3002499C5 /* LevelTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelTableViewCell.m; sourceTree = "<group>"; };
+		2E7ACECF1A6B58E0002499C5 /* lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lock.png; path = images/lock.png; sourceTree = "<group>"; };
+		2E7ACED01A6B58E0002499C5 /* lock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lock@2x.png"; path = "images/lock@2x.png"; sourceTree = "<group>"; };
+		2E7ACED11A6B58E0002499C5 /* lock@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lock@3x.png"; path = "images/lock@3x.png"; sourceTree = "<group>"; };
 		2EDBAF431A659C4A006566BD /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings@2x.png"; path = "images/settings@2x.png"; sourceTree = "<group>"; };
 		2EDBAF451A65ADD2006566BD /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings.png; path = images/settings.png; sourceTree = "<group>"; };
 		2EDBAF461A65ADD2006566BD /* settings@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings@3x.png"; path = "images/settings@3x.png"; sourceTree = "<group>"; };
@@ -241,6 +253,8 @@
 		2E0DD6B41A6481680076C5B6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2E7ACECC1A6B52E3002499C5 /* LevelTableViewCell.h */,
+				2E7ACECD1A6B52E3002499C5 /* LevelTableViewCell.m */,
 				2E61FCD41A6AC92900364C5E /* CompletedView.h */,
 				2E61FCD51A6AC92900364C5E /* CompletedView.m */,
 				2E0DD6B81A6490960076C5B6 /* StarView.h */,
@@ -262,6 +276,8 @@
 		2E0DD6B51A6481740076C5B6 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2E7ACEC91A6B523B002499C5 /* LevelViewController.h */,
+				2E7ACECA1A6B523B002499C5 /* LevelViewController.m */,
 				2E7ACEB51A6B3D05002499C5 /* TutorialViewController.h */,
 				2E7ACEB61A6B3D05002499C5 /* TutorialViewController.m */,
 				2E0DD6AE1A647D520076C5B6 /* LevelCollectionViewController.h */,
@@ -296,6 +312,9 @@
 		2EDBAF4F1A65B61B006566BD /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2E7ACECF1A6B58E0002499C5 /* lock.png */,
+				2E7ACED01A6B58E0002499C5 /* lock@2x.png */,
+				2E7ACED11A6B58E0002499C5 /* lock@3x.png */,
 				2E7ACEC41A6B4FA7002499C5 /* place.png */,
 				2E7ACEC21A6B4D3C002499C5 /* buttons.png */,
 				2E7ACEB81A6B4459002499C5 /* start.png */,
@@ -438,12 +457,14 @@
 			files = (
 				2E61FCC31A68717700364C5E /* level1.txt in Resources */,
 				2E7ACEC51A6B4FA7002499C5 /* place.png in Resources */,
+				2E7ACED21A6B58E0002499C5 /* lock.png in Resources */,
 				2E7ACEBE1A6B4459002499C5 /* rotate.png in Resources */,
 				2E7ACEC31A6B4D3C002499C5 /* buttons.png in Resources */,
 				2EDBAF691A685E1F006566BD /* more@3x.png in Resources */,
 				2E61FCEB1A6B2A0200364C5E /* star@2x.png in Resources */,
 				2E0DD68E1A6459B90076C5B6 /* Main.storyboard in Resources */,
 				2EDBAF4A1A65ADD2006566BD /* settings.png in Resources */,
+				2E7ACED41A6B58E0002499C5 /* lock@3x.png in Resources */,
 				2E7ACEBD1A6B4459002499C5 /* start.png in Resources */,
 				2EDBAF671A685E1F006566BD /* more.png in Resources */,
 				2EDBAF4E1A65ADD2006566BD /* undo@3x.png in Resources */,
@@ -456,6 +477,7 @@
 				2E0DD6BC1A6492220076C5B6 /* starhighlighted.png in Resources */,
 				2E61FCED1A6B2A0200364C5E /* starhighlighted@2x.png in Resources */,
 				2E0DD6931A6459B90076C5B6 /* LaunchScreen.xib in Resources */,
+				2E7ACED31A6B58E0002499C5 /* lock@2x.png in Resources */,
 				2E61FCEC1A6B2A0200364C5E /* star@3x.png in Resources */,
 				2E61FCEE1A6B2A0200364C5E /* starhighlighted@3x.png in Resources */,
 				2EDBAF4B1A65ADD2006566BD /* settings@3x.png in Resources */,
@@ -481,6 +503,7 @@
 			files = (
 				2EDBAF521A65CCD4006566BD /* Level.m in Sources */,
 				2E0DD6BA1A6490960076C5B6 /* StarView.m in Sources */,
+				2E7ACECE1A6B52E3002499C5 /* LevelTableViewCell.m in Sources */,
 				2EDBAF5D1A68112B006566BD /* MazePieceView.m in Sources */,
 				2E0DD6881A6459B90076C5B6 /* Pipe_Maze.xcdatamodeld in Sources */,
 				2EDBAF631A681A6A006566BD /* MazePiece.m in Sources */,
@@ -500,6 +523,7 @@
 				2E61FCD01A68745800364C5E /* Maze.m in Sources */,
 				2E61FCE21A6AFF3E00364C5E /* StoreTableViewController.m in Sources */,
 				2E61FCCA1A6871EA00364C5E /* LevelParser.m in Sources */,
+				2E7ACECB1A6B523B002499C5 /* LevelViewController.m in Sources */,
 				2E0DD6851A6459B90076C5B6 /* AppDelegate.m in Sources */,
 				2E61FCDF1A6AFF1900364C5E /* SettingsTableViewController.m in Sources */,
 				2E0DD6821A6459B90076C5B6 /* main.m in Sources */,
