@@ -16,6 +16,8 @@
     NSInteger sections;
     BOOL transition;
     WorldDAO *worldDA0;
+    ADBannerView *_bannerView;
+    BOOL _bannerIsVisible;
 }
 
 @end
@@ -37,12 +39,32 @@ static NSString * const reuseIdentifier = @"Cell";
     // Register cell classes
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
-    // Do any additional setup after loading the view.
+    _bannerView = [[ADBannerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 50)];
+    _bannerView.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)bannerViewDidLoadAd:(ADBannerView *)banner {
+    if(!_bannerIsVisible) {
+        if(_bannerView.superview == nil) {
+            [self.view addSubview:_bannerView];
+        }
+        [UIView beginAnimations:@"animateAdBannerOn" context:NULL];
+        banner.frame = CGRectOffset(banner.frame, 0, -banner.frame.size.height + 20);
+        
+        [UIView commitAnimations];
+        
+        _bannerIsVisible = YES;
+    }
+}
+
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+{
+    NSLog(@"%@ - %@", error.description, error.debugDescription);
 }
 
 /*
@@ -98,7 +120,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
     if(section == sections - 1) {
-        return CGSizeMake(self.view.bounds.size.width, 10);
+        return CGSizeMake(self.view.bounds.size.width, 60);
     }
     
     return CGSizeZero;

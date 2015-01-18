@@ -36,6 +36,15 @@
 		2E61FCEC1A6B2A0200364C5E /* star@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E61FCE81A6B2A0200364C5E /* star@3x.png */; };
 		2E61FCED1A6B2A0200364C5E /* starhighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E61FCE91A6B2A0200364C5E /* starhighlighted@2x.png */; };
 		2E61FCEE1A6B2A0200364C5E /* starhighlighted@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E61FCEA1A6B2A0200364C5E /* starhighlighted@3x.png */; };
+		2E61FCF01A6B301900364C5E /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E61FCEF1A6B301900364C5E /* iAd.framework */; };
+		2E7ACEB71A6B3D05002499C5 /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7ACEB61A6B3D05002499C5 /* TutorialViewController.m */; };
+		2E7ACEBD1A6B4459002499C5 /* start.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E7ACEB81A6B4459002499C5 /* start.png */; };
+		2E7ACEBE1A6B4459002499C5 /* rotate.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E7ACEB91A6B4459002499C5 /* rotate.png */; };
+		2E7ACEBF1A6B4459002499C5 /* leftover.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E7ACEBA1A6B4459002499C5 /* leftover.png */; };
+		2E7ACEC01A6B4459002499C5 /* complete.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E7ACEBB1A6B4459002499C5 /* complete.png */; };
+		2E7ACEC11A6B4459002499C5 /* leftoveronedge.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E7ACEBC1A6B4459002499C5 /* leftoveronedge.png */; };
+		2E7ACEC31A6B4D3C002499C5 /* buttons.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E7ACEC21A6B4D3C002499C5 /* buttons.png */; };
+		2E7ACEC51A6B4FA7002499C5 /* place.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E7ACEC41A6B4FA7002499C5 /* place.png */; };
 		2EDBAF441A659C4A006566BD /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDBAF431A659C4A006566BD /* settings@2x.png */; };
 		2EDBAF4A1A65ADD2006566BD /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDBAF451A65ADD2006566BD /* settings.png */; };
 		2EDBAF4B1A65ADD2006566BD /* settings@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDBAF461A65ADD2006566BD /* settings@3x.png */; };
@@ -112,6 +121,16 @@
 		2E61FCE81A6B2A0200364C5E /* star@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "star@3x.png"; path = "images/star@3x.png"; sourceTree = "<group>"; };
 		2E61FCE91A6B2A0200364C5E /* starhighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "starhighlighted@2x.png"; path = "images/starhighlighted@2x.png"; sourceTree = "<group>"; };
 		2E61FCEA1A6B2A0200364C5E /* starhighlighted@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "starhighlighted@3x.png"; path = "images/starhighlighted@3x.png"; sourceTree = "<group>"; };
+		2E61FCEF1A6B301900364C5E /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		2E7ACEB51A6B3D05002499C5 /* TutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialViewController.h; sourceTree = "<group>"; };
+		2E7ACEB61A6B3D05002499C5 /* TutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialViewController.m; sourceTree = "<group>"; };
+		2E7ACEB81A6B4459002499C5 /* start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = start.png; path = ../../Desktop/start.png; sourceTree = "<group>"; };
+		2E7ACEB91A6B4459002499C5 /* rotate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rotate.png; path = ../../Desktop/rotate.png; sourceTree = "<group>"; };
+		2E7ACEBA1A6B4459002499C5 /* leftover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leftover.png; path = ../../Desktop/leftover.png; sourceTree = "<group>"; };
+		2E7ACEBB1A6B4459002499C5 /* complete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = complete.png; path = ../../Desktop/complete.png; sourceTree = "<group>"; };
+		2E7ACEBC1A6B4459002499C5 /* leftoveronedge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leftoveronedge.png; path = ../../Desktop/leftoveronedge.png; sourceTree = "<group>"; };
+		2E7ACEC21A6B4D3C002499C5 /* buttons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttons.png; path = ../../Desktop/buttons.png; sourceTree = "<group>"; };
+		2E7ACEC41A6B4FA7002499C5 /* place.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = place.png; path = ../../Desktop/place.png; sourceTree = "<group>"; };
 		2EDBAF431A659C4A006566BD /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings@2x.png"; path = "images/settings@2x.png"; sourceTree = "<group>"; };
 		2EDBAF451A65ADD2006566BD /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings.png; path = images/settings.png; sourceTree = "<group>"; };
 		2EDBAF461A65ADD2006566BD /* settings@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings@3x.png"; path = "images/settings@3x.png"; sourceTree = "<group>"; };
@@ -140,6 +159,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E61FCF01A6B301900364C5E /* iAd.framework in Frameworks */,
 				2E61FCE61A6B292F00364C5E /* MessageUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -242,6 +262,8 @@
 		2E0DD6B51A6481740076C5B6 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2E7ACEB51A6B3D05002499C5 /* TutorialViewController.h */,
+				2E7ACEB61A6B3D05002499C5 /* TutorialViewController.m */,
 				2E0DD6AE1A647D520076C5B6 /* LevelCollectionViewController.h */,
 				2E0DD6AF1A647D520076C5B6 /* LevelCollectionViewController.m */,
 				2E61FCCB1A6871F800364C5E /* MazeViewController.h */,
@@ -265,6 +287,7 @@
 		2E61FCE51A6B291F00364C5E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2E61FCEF1A6B301900364C5E /* iAd.framework */,
 				2E61FCE31A6B291B00364C5E /* MessageUI.framework */,
 			);
 			name = Frameworks;
@@ -273,6 +296,13 @@
 		2EDBAF4F1A65B61B006566BD /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2E7ACEC41A6B4FA7002499C5 /* place.png */,
+				2E7ACEC21A6B4D3C002499C5 /* buttons.png */,
+				2E7ACEB81A6B4459002499C5 /* start.png */,
+				2E7ACEB91A6B4459002499C5 /* rotate.png */,
+				2E7ACEBA1A6B4459002499C5 /* leftover.png */,
+				2E7ACEBB1A6B4459002499C5 /* complete.png */,
+				2E7ACEBC1A6B4459002499C5 /* leftoveronedge.png */,
 				2E61FCE71A6B2A0200364C5E /* star@2x.png */,
 				2E61FCE81A6B2A0200364C5E /* star@3x.png */,
 				2E61FCE91A6B2A0200364C5E /* starhighlighted@2x.png */,
@@ -407,22 +437,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E61FCC31A68717700364C5E /* level1.txt in Resources */,
+				2E7ACEC51A6B4FA7002499C5 /* place.png in Resources */,
+				2E7ACEBE1A6B4459002499C5 /* rotate.png in Resources */,
+				2E7ACEC31A6B4D3C002499C5 /* buttons.png in Resources */,
 				2EDBAF691A685E1F006566BD /* more@3x.png in Resources */,
 				2E61FCEB1A6B2A0200364C5E /* star@2x.png in Resources */,
 				2E0DD68E1A6459B90076C5B6 /* Main.storyboard in Resources */,
 				2EDBAF4A1A65ADD2006566BD /* settings.png in Resources */,
+				2E7ACEBD1A6B4459002499C5 /* start.png in Resources */,
 				2EDBAF671A685E1F006566BD /* more.png in Resources */,
 				2EDBAF4E1A65ADD2006566BD /* undo@3x.png in Resources */,
 				2EDBAF4D1A65ADD2006566BD /* undo@2x.png in Resources */,
 				2EDBAF4C1A65ADD2006566BD /* undo.png in Resources */,
+				2E7ACEC11A6B4459002499C5 /* leftoveronedge.png in Resources */,
 				2EDBAF441A659C4A006566BD /* settings@2x.png in Resources */,
 				2E0DD6B71A64907D0076C5B6 /* star.png in Resources */,
+				2E7ACEC01A6B4459002499C5 /* complete.png in Resources */,
 				2E0DD6BC1A6492220076C5B6 /* starhighlighted.png in Resources */,
 				2E61FCED1A6B2A0200364C5E /* starhighlighted@2x.png in Resources */,
 				2E0DD6931A6459B90076C5B6 /* LaunchScreen.xib in Resources */,
 				2E61FCEC1A6B2A0200364C5E /* star@3x.png in Resources */,
 				2E61FCEE1A6B2A0200364C5E /* starhighlighted@3x.png in Resources */,
 				2EDBAF4B1A65ADD2006566BD /* settings@3x.png in Resources */,
+				2E7ACEBF1A6B4459002499C5 /* leftover.png in Resources */,
 				2E0DD6901A6459B90076C5B6 /* Images.xcassets in Resources */,
 				2EDBAF681A685E1F006566BD /* more@2x.png in Resources */,
 			);
@@ -456,6 +493,7 @@
 				2E61FCD91A6AE6BC00364C5E /* UndoStack.m in Sources */,
 				2EDBAF5A1A681116006566BD /* PiecesView.m in Sources */,
 				2E61FCD31A69B74B00364C5E /* MazeManager.m in Sources */,
+				2E7ACEB71A6B3D05002499C5 /* TutorialViewController.m in Sources */,
 				2E0DD6B31A6481620076C5B6 /* LevelView.m in Sources */,
 				2E61FCCD1A6871F800364C5E /* MazeViewController.m in Sources */,
 				2E0DD6BF1A649C360076C5B6 /* MazeView.m in Sources */,

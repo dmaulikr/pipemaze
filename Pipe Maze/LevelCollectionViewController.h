@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "LevelView.h"
+#import <iAd/iAd.h>
 
-@interface LevelCollectionViewController : UICollectionViewController <UICollectionViewDelegateFlowLayout>
+@interface LevelCollectionViewController : UICollectionViewController <UICollectionViewDelegateFlowLayout, ADBannerViewDelegate>
 
 - (IBAction)showStore:(id)sender;
 - (IBAction)showSettings:(id)sender;

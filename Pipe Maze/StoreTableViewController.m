@@ -29,23 +29,48 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 0;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 0;
+    return 1;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    // Configure the cell...
+    if(indexPath.section == 0) {
+        cell.textLabel.text = @"Go Ad Free!";
+        cell.detailTextLabel.text = @"$0.99";
+        cell.detailTextLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:17.0];
+        cell.textLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:17.0];
+        cell.detailTextLabel.textColor = [UIColor colorWithRed:0.239 green:0.60 blue:0.439 alpha:1.0];
+    }
+    
+    if(indexPath.section == 1) {
+        NSArray *arr = @[@"World 5 Expansion"];
+        cell.textLabel.text = arr[indexPath.row];
+        cell.detailTextLabel.text = @"$0.99";
+        cell.detailTextLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:17.0];
+        cell.textLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:17.0];
+        cell.detailTextLabel.textColor = [UIColor colorWithRed:0.239 green:0.60 blue:0.439 alpha:1.0];
+    }
     
     return cell;
 }
-*/
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if(section == 1)
+        return @"Extra Levels";
+    return nil;
+}
+
 
 /*
 // Override to support conditional editing of the table view.

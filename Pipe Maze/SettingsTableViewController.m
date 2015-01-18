@@ -36,7 +36,7 @@
    if(section == 0)
        return 1;
     if(section == 1)
-        return 1;
+        return 2;
     
     return 2;
 }
@@ -51,11 +51,21 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     if(indexPath.section == 1) {
-        cell.textLabel.text = @"App Version";
-        cell.detailTextLabel.text = @"1.0";
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.textLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:17.0];
-        cell.detailTextLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:17.0];
+        if(indexPath.row == 0) {
+            cell.textLabel.text = @"App Version";
+            cell.detailTextLabel.text = @"1.0";
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.textLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:17.0];
+            cell.detailTextLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:17.0];
+        }
+        if(indexPath.row == 1) {
+            cell.textLabel.text = @"Tutorials";
+            cell.textLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:17.0];
+            cell.detailTextLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:17.0];
+            cell.detailTextLabel.text = @"";
+            
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }
     }
     
     if(indexPath.section == 0) {
@@ -118,6 +128,12 @@
         [self removeAllLevelData];
 }
 
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(indexPath.section == 1 && indexPath.row == 1) {
+        [self performSegueWithIdentifier:@"toTutorials" sender:self];
+    }
+}
 -(void)removeAllLevelData {
     //need to fix
 }

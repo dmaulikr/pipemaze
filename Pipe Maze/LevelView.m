@@ -79,8 +79,8 @@
     UIView *circle = [[UIView alloc] initWithFrame:CGRectMake(circleOffset, 0, circleWidth, circleWidth)];
     circle.backgroundColor = self.color;
     circle.layer.cornerRadius = circleWidth/2;
-    circle.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    circle.layer.borderWidth = 1.0f;
+//    circle.layer.borderColor = [UIColor lightGrayColor].CGColor;
+//    circle.layer.borderWidth = 1.0f;
     [self addSubview:circle];
     
     UILabel *level = [[UILabel alloc] initWithFrame:circle.frame];
