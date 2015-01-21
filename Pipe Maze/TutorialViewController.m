@@ -19,7 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.pageControl.numberOfPages = 6;
+    self.pageControl.numberOfPages = 7;
     self.pageControl.currentPage = 0;
     
     taskLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, self.view.bounds.size.height -60, self.view.bounds.size.width - 20, 30)];
@@ -27,6 +27,7 @@
     taskLabel.textAlignment = NSTextAlignmentCenter;
     taskLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:16.0];
     taskLabel.textColor = [UIColor whiteColor];
+    
     
     [self.view addSubview:taskLabel];
     // Do any additional setup after loading the view.
@@ -38,7 +39,7 @@
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 6;
+    return 7;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {

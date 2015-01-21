@@ -15,4 +15,5 @@
 @property (nonatomic, strong) UIView *colorView;
 @property (nonatomic, strong) UIImageView *lockedImageView;
 @property (nonatomic, strong) UILabel *levelLabel;
+@property (nonatomic, strong) UILabel *timeLabel;
 @end

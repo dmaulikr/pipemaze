@@ -61,6 +61,7 @@
     
     for(int i = 0; i < 5; i++) {
         UIImageView *image = [[UIImageView alloc] initWithFrame:CGRectMake(starSize * i, 0, starSize, starSize)];
+        image.tintColor = [UIColor redColor];
         if(self.stars > i) {
             image.image = [UIImage imageNamed:@"starhighlighted"];
         }
@@ -76,6 +77,7 @@
     self.stars = stars;
     for(int i = 0; i < 5; i++) {
         UIImageView *image = [starArray objectAtIndex:i];
+        
         if(self.stars > i) {
             image.image = [UIImage imageNamed:@"starhighlighted"];
         }

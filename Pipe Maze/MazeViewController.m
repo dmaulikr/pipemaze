@@ -41,8 +41,7 @@
     
     
     
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:[self.world.red floatValue] green:[self.world.green floatValue] blue:[self.world.blue floatValue] alpha:1];
-    self.toolbar.tintColor = [UIColor colorWithRed:[self.world.red floatValue] green:[self.world.green floatValue] blue:[self.world.blue floatValue] alpha:1];
+    self.toolbar.tintColor = self.navigationController.navigationBar.barTintColor;
     
     CGFloat height = self.navigationController.navigationBar.frame.size.height;
     CGFloat width = self.view.bounds.size.width;
@@ -61,16 +60,18 @@
     
     UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 50)];
     titleView.backgroundColor = [UIColor clearColor];
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, 200, 20)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, 200, 20)];
     titleLabel.text = @"level 1";
     titleLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:21.0];
     titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.textColor = [UIColor whiteColor];
     [titleView addSubview:titleLabel];
     
-    timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 30, 200, 20)];
+    timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, 200, 20)];
     timeLabel.text = @"00:00";
     timeLabel.textAlignment = NSTextAlignmentCenter;
     timeLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:15.0];
+    timeLabel.textColor = [UIColor whiteColor];
     [titleView addSubview:timeLabel];
     elapsed = -2;
     updateTime = YES;
@@ -98,6 +99,10 @@
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self showActionItems:self];
+    
+    if(self.view.bounds.size.height != 480) {
+        toolbarVisible = NO;
+    }
     manager = [[MazeManager alloc] initWithMaze:self.maze size:pieceFrame];
     manager.delegate = self;
     [self setupBoard];

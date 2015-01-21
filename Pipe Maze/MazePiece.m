@@ -76,7 +76,7 @@
 
 -(void)createView {
     CGSize size = self.frame.size;
-    self.pipeColor = [UIColor colorWithRed:0 green:0.455 blue:0.851 alpha:1.0];
+    self.pipeColor = [UIColor colorWithRed:0.18 green:0.356 blue:0.537 alpha:1.0];
     
     switch (self.piece) {
         case MazePieceStraight:
