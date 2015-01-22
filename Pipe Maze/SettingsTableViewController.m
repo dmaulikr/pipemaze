@@ -7,6 +7,7 @@
 //
 
 #import "SettingsTableViewController.h"
+#import "WorldDAO.h"
 
 @interface SettingsTableViewController ()
 
@@ -139,7 +140,8 @@
     }
 }
 -(void)removeAllLevelData {
-    //need to fix
+    WorldDAO *worldDA0 = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).worldDAO;
+    [worldDA0 resetAllLevels];
 }
 
 @end

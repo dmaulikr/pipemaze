@@ -16,6 +16,7 @@
 #import "MazeManager.h"
 #import "CompletedView.h"
 #import "MazeMove.h"
+#import "Level.h"
 
 @interface MazeViewController : UIViewController <PiecesViewDelegate, MazeViewDelegate, MazeManagerDelegate, CompletedViewDelegate, UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *actionBarButtonItem;
@@ -26,6 +27,7 @@
 
 @property (nonatomic, strong) World *world;
 @property (nonatomic, strong) Maze *maze;
+@property (nonatomic, strong) Level *level;
 
 - (IBAction)showActionItems:(id)sender;
 - (IBAction)restartMaze:(id)sender;

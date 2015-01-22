@@ -8,6 +8,7 @@
 
 #import "MazeViewController.h"
 #import "PMConstants.h"
+#import "AppDelegate.h"
 
 @interface MazeViewController (){
     UILabel *timeLabel;
@@ -61,7 +62,7 @@
     UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 50)];
     titleView.backgroundColor = [UIColor clearColor];
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, 200, 20)];
-    titleLabel.text = @"level 1";
+    titleLabel.text = self.level.levelName;
     titleLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:21.0];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.textColor = [UIColor whiteColor];
@@ -214,6 +215,14 @@
 }
 
 -(void)viewDismissed {
+    
+    self.level.completed = [NSNumber numberWithBool:YES];
+    self.level.seconds = [NSNumber numberWithInteger:elapsed/2];
+    self.level.stars = [NSNumber numberWithInteger:[manager saveTime:floor(elapsed/2)]];
+    WorldDAO * worldDA0 = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).worldDAO;
+    [worldDA0 updateLevel:self.level forWorld:nil];
+    
+    
     [UIView animateKeyframesWithDuration:0.25 delay:0 options:UIViewKeyframeAnimationOptionAllowUserInteraction animations:^{
         completed.alpha = 0;
     }completion:^(BOOL finished){

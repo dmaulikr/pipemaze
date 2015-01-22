@@ -18,5 +18,8 @@
 
 -(World *)getWorldAtIndex:(NSInteger)index;
 -(NSInteger)getNumberOfWorlds;
+-(Level *)getLevelForWorld:(World *)world atIndex:(NSInteger)index;
+-(void)updateLevel:(Level *)level forWorld:(World *)world;
+-(void)resetAllLevels;
 
 @end
