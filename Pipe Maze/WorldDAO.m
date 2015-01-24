@@ -60,7 +60,6 @@
     }
     firstWorld.restrictions = @"none";
     NSError *error;
-    [self.managedObjectContext save:&error];
     
     World *secondWorld = [NSEntityDescription insertNewObjectForEntityForName:@"World" inManagedObjectContext:self.managedObjectContext];
     secondWorld.number = [NSNumber numberWithInt:2];
@@ -72,41 +71,30 @@
         [self createLevelsForWorld:secondWorld index:12 + i];
     }
     secondWorld.restrictions = @"finish first world";
-//
-//    World *thirdWorld = [NSEntityDescription insertNewObjectForEntityForName:@"World" inManagedObjectContext: self.managedObjectContext];
-//    thirdWorld.number = [NSNumber numberWithInt:3];
-//    thirdWorld.unlocked = [NSNumber numberWithBool:YES];
-//    thirdWorld.red = [NSNumber numberWithFloat: 1.0];
-//    thirdWorld.green = [NSNumber numberWithFloat: 0.7098];
-//    thirdWorld.blue = [NSNumber numberWithFloat: 0.7568];
-//    for(int i = 0; i < 12; i++) {
-//        [self createLevelsForWorld:thirdWorld];
-//    }
-//    thirdWorld.restrictions = @"finish second world";
-//    
-//    World *fourthWorld = [NSEntityDescription insertNewObjectForEntityForName:@"World" inManagedObjectContext:self.managedObjectContext];
-//    fourthWorld.number = [NSNumber numberWithInt:4];
-//    fourthWorld.unlocked = [NSNumber numberWithBool:YES];
-//    fourthWorld.red = [NSNumber numberWithFloat: 0.224];
-//    fourthWorld.green = [NSNumber numberWithFloat: 0.80];
-//    fourthWorld.blue = [NSNumber numberWithFloat: 0.80];
-//    for(int i = 0; i < 12; i++) {
-//        [self createLevelsForWorld:fourthWorld];
-//    }
-//    fourthWorld.restrictions = @"finish third world";
-//    
-//    World *fifthWorld = [NSEntityDescription insertNewObjectForEntityForName:@"World" inManagedObjectContext:self.managedObjectContext];
-//    fifthWorld.number = [NSNumber numberWithInt:5];
-//    fifthWorld.unlocked = [NSNumber numberWithBool:NO];
-//    fifthWorld.red = [NSNumber numberWithFloat: 1.0];
-//    fifthWorld.green = [NSNumber numberWithFloat: 0.252];
-//    fifthWorld.blue = [NSNumber numberWithFloat: 0.212];
-//    for(int i = 1; i < 13; i++) {
-//        [self createLevelsForWorld:fifthWorld index:48 + i];
-//    }
-//    fifthWorld.restrictions = @"finish fourth world";
-//    NSError *error;
-//    [self.managedObjectContext save:&error];
+
+    World *thirdWorld = [NSEntityDescription insertNewObjectForEntityForName:@"World" inManagedObjectContext: self.managedObjectContext];
+    thirdWorld.number = [NSNumber numberWithInt:3];
+    thirdWorld.unlocked = [NSNumber numberWithBool:YES];
+    thirdWorld.red = [NSNumber numberWithFloat: 1.0];
+    thirdWorld.green = [NSNumber numberWithFloat: 0.7098];
+    thirdWorld.blue = [NSNumber numberWithFloat: 0.7568];
+    for(int i = 1; i < 13; i++) {
+        [self createLevelsForWorld:thirdWorld index:24 + i];
+    }
+    thirdWorld.restrictions = @"finish second world";
+    
+    World *fourthWorld = [NSEntityDescription insertNewObjectForEntityForName:@"World" inManagedObjectContext:self.managedObjectContext];
+    fourthWorld.number = [NSNumber numberWithInt:4];
+    fourthWorld.unlocked = [NSNumber numberWithBool:YES];
+    fourthWorld.red = [NSNumber numberWithFloat: 0.224];
+    fourthWorld.green = [NSNumber numberWithFloat: 0.80];
+    fourthWorld.blue = [NSNumber numberWithFloat: 0.80];
+    for(int i = 1; i < 13; i++) {
+        [self createLevelsForWorld:fourthWorld index:36 + i];
+    }
+    fourthWorld.restrictions = @"finish third world";
+    
+    [self.managedObjectContext save:&error];
     
     if(error) {
         NSLog(@"%@, %@", error.description, error.debugDescription);

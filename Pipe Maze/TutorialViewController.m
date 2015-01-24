@@ -26,7 +26,7 @@
     taskLabel.text = @"The goal is to complete the maze";
     taskLabel.textAlignment = NSTextAlignmentCenter;
     taskLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:16.0];
-    taskLabel.textColor = [UIColor whiteColor];
+    taskLabel.textColor = [UIColor blackColor];
     
     
     [self.view addSubview:taskLabel];

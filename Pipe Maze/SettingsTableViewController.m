@@ -34,7 +34,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -47,7 +47,7 @@
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
-    if(section == 2)
+    if(section == 3)
         return @"(c) 2015 John Arendt. All rights reserved.";
     return nil;
 }
@@ -86,6 +86,15 @@
     }
     
     if(indexPath.section == 2) {
+        NSArray *arr = @[@"Like us on Facebook", @"Follow us on Twitter"];
+        NSArray *images = @[[UIImage imageNamed:@"facebook"], [UIImage imageNamed:@"twitter"]];
+        cell.textLabel.text = arr[indexPath.row];
+        cell.textLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:17.0];
+        cell.imageView.image = images[indexPath.row];
+        cell.detailTextLabel.text = nil;
+    }
+    
+    if(indexPath.section == 3) {
         cell.textLabel.text = nil;
         cell.detailTextLabel.text = nil;
         NSArray *arr = @[@"Contact the Developer", @"Report a bug"];
@@ -108,7 +117,7 @@
         mail.mailComposeDelegate = self;
         [mail setSubject:button.titleLabel.text];
         //[mail setMessageBody:@"Here is some main text in the email!" isHTML:NO];
-        [mail setToRecipients:@[@"jack.arendt1993@gmail.com"]];
+        [mail setToRecipients:@[@"pipemazegame@gmail.com"]];
         
         [self presentViewController:mail animated:YES completion:NULL];
     }
@@ -135,6 +144,29 @@
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if(indexPath.section == 2){
+        NSArray *urls = @[@"http://www.facebook.com/pipemazegame", @"http://www.twitter.com/pipemazegame"];
+        NSURL *url = [NSURL URLWithString:urls[indexPath.row]];
+        if(indexPath.row == 0) {
+            if([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"fb://profile/359913157544722"]]){
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"fb://profile/359913157544722"]];
+            }
+            else {
+                [[UIApplication sharedApplication] openURL:url];
+            }
+        }
+        if(indexPath.row == 1) {
+            if([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"twitter://user?screen_name=pipemazegame"]]){
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"twitter://user?screen_name=pipemazegame"]];
+            }
+            else {
+                [[UIApplication sharedApplication] openURL:url];
+            }
+
+        }
+    }
+    
     if(indexPath.section == 1 && indexPath.row == 1) {
         [self performSegueWithIdentifier:@"toTutorials" sender:self];
     }
