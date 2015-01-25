@@ -243,6 +243,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="tbr-fn-u9D" secondAttribute="bottom" id="56F-xE-rjd"/>
                             <constraint firstAttribute="trailing" secondItem="tbr-fn-u9D" secondAttribute="trailing" id="FSL-hK-v8A"/>
                             <constraint firstAttribute="bottom" secondItem="tbr-fn-u9D" secondAttribute="bottom" id="H4M-Rk-ncR"/>
                             <constraint firstItem="tbr-fn-u9D" firstAttribute="leading" secondItem="tBc-p3-SSJ" secondAttribute="leading" id="JOz-4h-YBD"/>
@@ -254,6 +255,7 @@
                                 <exclude reference="tbr-fn-u9D"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="56F-xE-rjd"/>
                                 <exclude reference="FSL-hK-v8A"/>
                                 <exclude reference="H4M-Rk-ncR"/>
                                 <exclude reference="JOz-4h-YBD"/>
@@ -266,11 +268,12 @@
                                 <include reference="tbr-fn-u9D"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="56F-xE-rjd"/>
                                 <include reference="FSL-hK-v8A"/>
                                 <exclude reference="H4M-Rk-ncR"/>
                                 <include reference="JOz-4h-YBD"/>
                                 <include reference="Q2t-qv-kDE"/>
-                                <include reference="w10-MW-oNt"/>
+                                <exclude reference="w10-MW-oNt"/>
                             </mask>
                         </variation>
                     </view>
@@ -286,6 +289,7 @@
                         <outlet property="tableView" destination="tbr-fn-u9D" id="fWe-fj-YyI"/>
                         <segue destination="vXZ-lx-hvc" kind="show" identifier="toMaze" id="zUe-Hi-HAh"/>
                         <segue destination="cEq-O9-HiQ" kind="show" identifier="toSettings" id="TD3-Xn-Iy6"/>
+                        <segue destination="oM9-Nv-cKE" kind="show" identifier="toTutorial" id="ZCs-aE-vKD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YQr-j7-0g5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -297,4 +301,7 @@
         <image name="more.png" width="22" height="22"/>
         <image name="settings.png" width="22" height="22"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="ZCs-aE-vKD"/>
+    </inferredMetricsTieBreakers>
 </document>

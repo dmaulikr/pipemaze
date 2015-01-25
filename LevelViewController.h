@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <iAd/iAd.h>
 
-@interface LevelViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, ADBannerViewDelegate>
+@interface LevelViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, ADBannerViewDelegate, UIAlertViewDelegate>
 - (IBAction)showSettings:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 

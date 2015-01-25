@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "WorldDAO.h"
+#import <iAd/iAd.h>
 
 @interface AppDelegate ()
 
