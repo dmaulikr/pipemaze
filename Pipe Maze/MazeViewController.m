@@ -216,12 +216,13 @@
 
 -(void)viewDismissed {
     
-    self.level.completed = [NSNumber numberWithBool:YES];
-    self.level.seconds = [NSNumber numberWithInteger:elapsed/2];
-    self.level.stars = [NSNumber numberWithInteger:[manager saveTime:floor(elapsed/2)]];
-    WorldDAO * worldDA0 = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).worldDAO;
-    [worldDA0 updateLevel:self.level forWorld:nil];
-    
+    if(!([self.level.completed boolValue] && [self.level.seconds integerValue] < elapsed/2)){
+        self.level.completed = [NSNumber numberWithBool:YES];
+        self.level.seconds = [NSNumber numberWithInteger:elapsed/2];
+        self.level.stars = [NSNumber numberWithInteger:[manager saveTime:floor(elapsed/2)]];
+        WorldDAO * worldDA0 = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).worldDAO;
+        [worldDA0 updateLevel:self.level forWorld:nil];
+    }
     
     [UIView animateKeyframesWithDuration:0.25 delay:0 options:UIViewKeyframeAnimationOptionAllowUserInteraction animations:^{
         completed.alpha = 0;
