@@ -62,7 +62,7 @@
     
     MazePiece *piece;
     
-    if(self.frame.size.height < 100) {
+    if(self.frame.size.height < 100 || self.frame.size.width == 384) {
         height = 10;
         xOff = self.bounds.size.width/2 - 3*size.width/4;
         self.remainingLabel.frame = CGRectMake(xOff + size.width + 15, height + size.height/2 - 15, self.frame.size.width - xOff - size.width - 15, 30);

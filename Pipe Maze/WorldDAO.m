@@ -157,6 +157,8 @@
         newLevel = level;
         [self.managedObjectContext save:nil];
     }
+    
+    NSLog(@"%@", level);
 }
 
 -(void)resetAllLevels {

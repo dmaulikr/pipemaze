@@ -56,7 +56,12 @@
         toolbarVisible = YES;
     }
     
-    mazeView = [[MazeView alloc] initWithFrame:CGRectMake(0, height +20, width, width)];
+    
+    if(self.view.bounds.size.height == 1024) //ipad
+    {
+        width = 700;
+    }
+    mazeView = [[MazeView alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2 - width/2, height +20, width, width)];
     mazeView.delegate = self;
     
     UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 50)];
@@ -96,6 +101,13 @@
 }
 
 
+-(BOOL)shouldAutorotate {
+    return NO;
+}
+
+-(NSUInteger)supportedInterfaceOrientations {
+    return 0;
+}
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
