@@ -69,7 +69,7 @@
         self.remainingLabel.textAlignment = NSTextAlignmentLeft;
     }
 
-    if(self.pieceType == MazePieceCurved) {
+    if(self.pieceType == MazePieceCorner) {
         piece = [[MazePiece alloc] initWithFrame:CGRectMake(xOff, height, size.width, size.height) pieceType:self.pieceType start:PieceDirectionNorth end:PieceDirectionEast];
         self.backgroundView = [[UIView alloc] initWithFrame:CGRectMake(xOff - 3, height - 3, size.width + 6, size.width + 6)];
         [self addSubview:self.backgroundView];

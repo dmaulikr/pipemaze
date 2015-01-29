@@ -65,7 +65,7 @@
     maze.endPiece = [self getPiece:(NSString *)end[0]];
     maze.endDirection = [self getDirection:(NSString *)end[1]];
     
-    maze.curvedPieces = [(NSString *)contents[8] integerValue];
+    maze.cornerPieces = [(NSString *)contents[8] integerValue];
     maze.straightPieces = [(NSString *)contents[9] integerValue];
     
     maze.originalBoard = orig;
@@ -92,7 +92,7 @@
 
 -(MazePieces)getPiece:(NSString *)piece {
     if([piece isEqualToString:@"1"])
-        return MazePieceCurved;
+        return MazePieceCorner;
     if([piece isEqualToString:@"2"])
         return MazePieceStraight;
     if([piece isEqualToString:@"0"])

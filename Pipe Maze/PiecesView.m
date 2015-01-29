@@ -50,12 +50,12 @@
         self.straight = [[MazePieceView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width/2, self.frame.size.height) piece:MazePieceStraight size:size numOfPieces:straight];
         self.straight.delegate = self;
         [self addSubview:self.straight];
-        self.corner = [[MazePieceView alloc] initWithFrame:CGRectMake(self.frame.size.width/2, 0, self.frame.size.width/2, self.frame.size.height) piece:MazePieceCurved size:size numOfPieces:corner];
+        self.corner = [[MazePieceView alloc] initWithFrame:CGRectMake(self.frame.size.width/2, 0, self.frame.size.width/2, self.frame.size.height) piece:MazePieceCorner size:size numOfPieces:corner];
         self.corner.delegate = self;
         [self addSubview:self.corner];
 }
 
--(void)updateRemainingStraightPieces:(NSInteger)straight curved:(NSInteger)corner {
+-(void)updateRemainingStraightPieces:(NSInteger)straight corner:(NSInteger)corner {
     [self.straight updateRemainingPieces:straight];
     [self.corner updateRemainingPieces:corner];
 }
@@ -75,7 +75,7 @@
         }
     }
     
-    if(piece.piece == MazePieceCurved) {
+    if(piece.piece == MazePieceCorner) {
         [self.corner hightlightPiece:!cornerSelected];
         cornerSelected = !cornerSelected;
         [self.straight hightlightPiece:NO];

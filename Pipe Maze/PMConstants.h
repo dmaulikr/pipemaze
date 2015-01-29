@@ -12,7 +12,7 @@
 
 enum {
     MazePieceStraight = 2,
-    MazePieceCurved = 1,
+    MazePieceCorner = 1,
     MazePieceBlock = 0,
     MazePieceEmpty = 3
     

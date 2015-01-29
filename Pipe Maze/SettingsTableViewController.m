@@ -58,7 +58,7 @@
     if(indexPath.section == 1) {
         if(indexPath.row == 0) {
             cell.textLabel.text = @"App Version";
-            cell.detailTextLabel.text = @"1.0";
+            cell.detailTextLabel.text = @"1.1";
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.textLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:17.0];
             cell.detailTextLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:17.0];
@@ -137,7 +137,6 @@
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    NSLog(@"%li", (long)buttonIndex);
     if(buttonIndex == 0)
         [self removeAllLevelData];
 }

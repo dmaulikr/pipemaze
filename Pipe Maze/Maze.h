@@ -26,7 +26,7 @@
 @property (nonatomic) PieceDirection endDirection;
 
 @property (nonatomic) NSInteger straightPieces;
-@property (nonatomic) NSInteger curvedPieces;
+@property (nonatomic) NSInteger cornerPieces;
 @property (nonatomic, strong) NSString *desc;
 @property (nonatomic, strong) NSString *finishedText;
 

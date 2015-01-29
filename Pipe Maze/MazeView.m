@@ -137,8 +137,8 @@ static NSString * const reuseIdentifier = @"Cell";
         if(move.oldPiece == MazePieceEmpty) {
             [piece removeFromSuperview];
         }
-        if(move.oldPiece == MazePieceCurved) {
-            [piece undoRotateCurvedPiece:piece.frame direction:move.newStartDirection];
+        if(move.oldPiece == MazePieceCorner) {
+            [piece undoRotateCornerPiece:piece.frame direction:move.newStartDirection];
             piece.startDirection = move.oldStartDirection;
             piece.endDirection = move.oldEndDirection;
         }

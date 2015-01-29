@@ -33,6 +33,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    ADInterstitialAd *ad = [[ADInterstitialAd alloc] init];
+    ad.delegate = self;
+    self.interstitialPresentationPolicy = ADInterstitialPresentationPolicyAutomatic;
     
     sections = [worldDA0 getNumberOfWorlds]; //get the number of sections
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
@@ -105,7 +108,8 @@
     }
     
     if(!firstLoad) {
-        adShown = NO;
+        [self requestInterstitialAdPresentation];
+        adShown = YES;
     }
     else {
         adShown = YES;
@@ -121,6 +125,14 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(BOOL)shouldAutorotate {
+    return YES;
+}
+
+-(NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskAllButUpsideDown;
 }
 
 #pragma mark - Ad methods
@@ -144,13 +156,14 @@
             [fullBackground addSubview:view];
             [view addSubview:_rectView];
             [self.view addSubview:fullBackground];
+            [self.view bringSubviewToFront:fullBackground];
         }
     }
 }
 
 - (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
 {
-    NSLog(@"%@ - %@", error.description, error.debugDescription);
+    //NSLog(@"%@ - %@", error.description, error.debugDescription);
     if(banner == _bannerView) {
         [UIView beginAnimations:@"animateAdBannerOff" context:NULL];
         banner.frame = CGRectOffset(banner.frame, 0, banner.frame.size.height);
@@ -167,6 +180,20 @@
 -(void)hideRectAd {
     adShown = YES;
     [fullBackground removeFromSuperview];
+}
+
+
+
+-(void)interstitialAd:(ADInterstitialAd *)interstitialAd didFailWithError:(NSError *)error {
+    //[self dismissViewControllerAnimated:NO completion:nil];
+}
+
+-(void)interstitialAdDidUnload:(ADInterstitialAd *)interstitialAd {
+    //[self dismissViewControllerAnimated:NO completion:nil];
+}
+
+-(void)interstitialAdActionDidFinish:(ADInterstitialAd *)interstitialAd {
+    //[self dismissViewControllerAnimated:NO completion:nil];
 }
 
 #pragma mark - IBActions

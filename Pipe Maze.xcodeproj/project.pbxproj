@@ -20,6 +20,8 @@
 		2E0DD6BC1A6492220076C5B6 /* starhighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0DD6BB1A6492220076C5B6 /* starhighlighted.png */; };
 		2E0DD6BF1A649C360076C5B6 /* MazeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E0DD6BE1A649C360076C5B6 /* MazeView.m */; };
 		2E0DD6C21A64BE8C0076C5B6 /* WorldDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E0DD6C11A64BE8C0076C5B6 /* WorldDAO.m */; };
+		2E4112731A799AF000C09C67 /* FullScreenAdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4112721A799AF000C09C67 /* FullScreenAdViewController.m */; };
+		2E4112761A79DFB100C09C67 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4112751A79DFB100C09C67 /* NavigationViewController.m */; };
 		2E61FCC31A68717700364C5E /* level1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2E61FCC21A68717700364C5E /* level1.txt */; };
 		2E61FCCA1A6871EA00364C5E /* LevelParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E61FCC91A6871EA00364C5E /* LevelParser.m */; };
 		2E61FCCD1A6871F800364C5E /* MazeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E61FCCC1A6871F800364C5E /* MazeViewController.m */; };
@@ -151,6 +153,10 @@
 		2E0DD6BE1A649C360076C5B6 /* MazeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MazeView.m; sourceTree = "<group>"; };
 		2E0DD6C01A64BE8C0076C5B6 /* WorldDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldDAO.h; sourceTree = "<group>"; };
 		2E0DD6C11A64BE8C0076C5B6 /* WorldDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorldDAO.m; sourceTree = "<group>"; };
+		2E4112711A799AF000C09C67 /* FullScreenAdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullScreenAdViewController.h; sourceTree = "<group>"; };
+		2E4112721A799AF000C09C67 /* FullScreenAdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullScreenAdViewController.m; sourceTree = "<group>"; };
+		2E4112741A79DFB100C09C67 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
+		2E4112751A79DFB100C09C67 /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
 		2E61FCC21A68717700364C5E /* level1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level1.txt; path = levels/level1.txt; sourceTree = "<group>"; };
 		2E61FCC81A6871EA00364C5E /* LevelParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelParser.h; sourceTree = "<group>"; };
 		2E61FCC91A6871EA00364C5E /* LevelParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelParser.m; sourceTree = "<group>"; };
@@ -379,10 +385,14 @@
 			children = (
 				2E7ACEC91A6B523B002499C5 /* LevelViewController.h */,
 				2E7ACECA1A6B523B002499C5 /* LevelViewController.m */,
+				2E4112711A799AF000C09C67 /* FullScreenAdViewController.h */,
+				2E4112721A799AF000C09C67 /* FullScreenAdViewController.m */,
 				2E7ACEB51A6B3D05002499C5 /* TutorialViewController.h */,
 				2E7ACEB61A6B3D05002499C5 /* TutorialViewController.m */,
 				2E61FCCB1A6871F800364C5E /* MazeViewController.h */,
 				2E61FCCC1A6871F800364C5E /* MazeViewController.m */,
+				2E4112741A79DFB100C09C67 /* NavigationViewController.h */,
+				2E4112751A79DFB100C09C67 /* NavigationViewController.m */,
 				2E61FCDD1A6AFF1900364C5E /* SettingsTableViewController.h */,
 				2E61FCDE1A6AFF1900364C5E /* SettingsTableViewController.m */,
 				2E61FCE01A6AFF3E00364C5E /* StoreTableViewController.h */,
@@ -712,12 +722,14 @@
 				2EC10B181A708BAE0096716D /* Level.m in Sources */,
 				2EDBAF551A65CCD5006566BD /* World.m in Sources */,
 				2E61FCDC1A6AE86400364C5E /* MazeMove.m in Sources */,
+				2E4112761A79DFB100C09C67 /* NavigationViewController.m in Sources */,
 				2EDBAF601A6811EE006566BD /* PMConstants.m in Sources */,
 				2E0DD6C21A64BE8C0076C5B6 /* WorldDAO.m in Sources */,
 				2E61FCD61A6AC92900364C5E /* CompletedView.m in Sources */,
 				2E61FCD91A6AE6BC00364C5E /* UndoStack.m in Sources */,
 				2EDBAF5A1A681116006566BD /* PiecesView.m in Sources */,
 				2E61FCD31A69B74B00364C5E /* MazeManager.m in Sources */,
+				2E4112731A799AF000C09C67 /* FullScreenAdViewController.m in Sources */,
 				2E7ACEB71A6B3D05002499C5 /* TutorialViewController.m in Sources */,
 				2E0DD6B31A6481620076C5B6 /* LevelView.m in Sources */,
 				2E61FCCD1A6871F800364C5E /* MazeViewController.m in Sources */,

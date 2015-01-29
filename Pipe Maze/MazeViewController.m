@@ -31,6 +31,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    NSLog(@"%li", (long)[[UIDevice currentDevice] orientation]);
+    if([[UIDevice currentDevice] orientation] == 1 || [[UIDevice currentDevice]  orientation] == 4) {
+        NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationPortrait];
+        [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
+    }
     
     self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - self.toolbar.bounds.size.height,self.view.bounds.size.width, 44)];
     UIBarButtonItem *leftFixed = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
@@ -38,10 +43,7 @@
     UIBarButtonItem *rightFixed = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     rightFixed.width = 50.0f;
     
-    self.toolbar.items = @[leftFixed, [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(restartMaze:)], [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil], [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(checkMaze:)], [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil], [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"undo"] style:UIBarButtonItemStylePlain target:self action:@selector(undoMove:)], rightFixed];
-    
-    
-    
+    self.toolbar.items = @[leftFixed, [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(restartMaze:)], [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil], [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(checkMaze:)], [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil], [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"undo"] style:UIBarButtonItemStylePlain target:self action:@selector(undoMove:)], rightFixed]; //add buttons to toolbar (super ugly, pls change)
     self.toolbar.tintColor = self.navigationController.navigationBar.barTintColor;
     
     CGFloat height = self.navigationController.navigationBar.frame.size.height;
@@ -56,14 +58,14 @@
         toolbarVisible = YES;
     }
     
-    
     if(self.view.bounds.size.height == 1024) //ipad
     {
-        width = 700;
+        width = 700; //change width for ipad
     }
     mazeView = [[MazeView alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2 - width/2, height +20, width, width)];
     mazeView.delegate = self;
     
+    //title view for navigation bar
     UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 50)];
     titleView.backgroundColor = [UIColor clearColor];
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, 200, 20)];
@@ -73,6 +75,7 @@
     titleLabel.textColor = [UIColor whiteColor];
     [titleView addSubview:titleLabel];
     
+    //label to update the time on the navigation bar
     timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, 200, 20)];
     timeLabel.text = @"00:00";
     timeLabel.textAlignment = NSTextAlignmentCenter;
@@ -82,7 +85,7 @@
     elapsed = -2;
     updateTime = YES;
     NSTimer *timer = [NSTimer timerWithTimeInterval:0.5 target:self selector:@selector(updateTime) userInfo:nil repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes]; //start running elapsed time
     self.navigationItem.titleView = titleView;
     
     
@@ -100,15 +103,6 @@
     [self.view addSubview:mazeView];
 }
 
-
--(BOOL)shouldAutorotate {
-    return NO;
-}
-
--(NSUInteger)supportedInterfaceOrientations {
-    return 0;
-}
-
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self showActionItems:self];
@@ -116,10 +110,10 @@
     if(self.view.bounds.size.height != 480) {
         toolbarVisible = NO;
     }
-    manager = [[MazeManager alloc] initWithMaze:self.maze size:pieceFrame];
+    manager = [[MazeManager alloc] initWithMaze:self.maze size:pieceFrame]; //create maze manager and load maze
     manager.delegate = self;
     [self setupBoard];
-    [pieceView updateRemainingStraightPieces:manager.straight curved:manager.corner];
+    [pieceView updateRemainingStraightPieces:manager.straight corner:manager.corner];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -137,8 +131,24 @@
     timeLabel.text = [NSString stringWithFormat:@"%02li:%02li", (long)minutes, (long)seconds];
 }
 
+#pragma mark - Rotation Methods (incomplete)
+-(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    
+}
+
+-(NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationPortrait;
+}
+
+-(BOOL)shouldAutorotate {
+    if([[UIDevice currentDevice] orientation] == UIInterfaceOrientationPortrait)
+        return NO;
+    
+    return YES;
+}
+
 #pragma mark - IBActions
-- (IBAction)showActionItems:(id)sender {
+- (IBAction)showActionItems:(id)sender { //toggle if toolbar is visible
     if(toolbarVisible) {
         [UIView animateKeyframesWithDuration:0.25 delay:0 options:UIViewKeyframeAnimationOptionAllowUserInteraction animations:^{
             self.toolbar.frame = CGRectMake(0, self.view.bounds.size.height, self.toolbar.bounds.size.width, self.toolbar.bounds.size.height);
@@ -155,23 +165,22 @@
     toolbarVisible = !toolbarVisible;
 }
 
+//Restarts the maze, resets time and board, and game logic
 - (IBAction)restartMaze:(id)sender {
-    NSLog(@"restart maze");
-    [manager restartMaze];
-    [mazeView restartMaze];
-    [self setupBoard];
-    elapsed = -1;
+    [manager restartMaze];  //resets game logic
+    [mazeView restartMaze]; //resets board
+    [self setupBoard];      //reloads board
+    elapsed = -1;           //resets time
 }
 
 - (IBAction)checkMaze:(id)sender {
-    NSLog(@"check maze");
-    updateTime = NO;
-    NSString *results = [manager checkMaze];
-    if(!results) {
-        NSInteger stars = [manager saveTime:floor(elapsed/2)];
+    updateTime = NO;        //stop updating the time
+    NSString *results = [manager checkMaze];  //checks logic for the maze
+    if(!results) { //maze was successfully solved
+        NSInteger stars = [manager computeStars:floor(elapsed/2)]; //compute the times
         CGFloat width = 280;
         CGFloat height = 150;
-        if(!completed){
+        if(!completed){ //add completed view and drop shadow
             backgroundCompletedView = [[UIView alloc] initWithFrame:self.view.frame];
             backgroundCompletedView.backgroundColor = [UIColor colorWithWhite:0.2 alpha:0.5];
             completed = [[CompletedView alloc] initWithFrame:CGRectMake((self.view.bounds.size.width - width)/2, self.view.bounds.size.height/2 - height/2 - 30, width, height)];
@@ -192,12 +201,15 @@
 }
 
 - (IBAction)undoMove:(id)sender {
-    NSLog(@"undo move");
-    MazeMove *move = [manager undo];
+    MazeMove *move = [manager undo]; //logic to undo move
     if(move.didRemove){
-        [pieceView updateRemainingStraightPieces:manager.straight curved:manager.corner];
+        [pieceView updateRemainingStraightPieces:manager.straight corner:manager.corner];
     }
     [mazeView undoMove:move];
+}
+
+-(void)deletePiece:(MazePiece *)piece {
+    
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -231,7 +243,7 @@
     if(!([self.level.completed boolValue] && [self.level.seconds integerValue] < elapsed/2)){
         self.level.completed = [NSNumber numberWithBool:YES];
         self.level.seconds = [NSNumber numberWithInteger:elapsed/2];
-        self.level.stars = [NSNumber numberWithInteger:[manager saveTime:floor(elapsed/2)]];
+        self.level.stars = [NSNumber numberWithInteger:[manager computeStars:floor(elapsed/2)]];
         WorldDAO * worldDA0 = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).worldDAO;
         [worldDA0 updateLevel:self.level forWorld:nil];
     }
@@ -247,7 +259,7 @@
 }
 
 -(void)updateStraightPieceCount:(NSInteger)straight corner:(NSInteger)corner {
-    [pieceView updateRemainingStraightPieces:straight curved:corner];
+    [pieceView updateRemainingStraightPieces:straight corner:corner];
 }
 
 -(void)setupBoard {

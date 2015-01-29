@@ -39,7 +39,7 @@
         self.maze = maze;
         self.pieceSize = size;
         self.straight = maze.straightPieces;
-        self.corner = maze.curvedPieces;
+        self.corner = maze.cornerPieces;
         self.stack = [[UndoStack alloc] init];
         [self setupManager];
     }
@@ -120,7 +120,7 @@
         if(move.piece == MazePieceStraight) {
             self.straight++;
         }
-        if(move.piece == MazePieceCurved) {
+        if(move.piece == MazePieceCorner) {
             self.corner++;
         }
     }
@@ -140,7 +140,7 @@
         }
     }
     
-    if(piece.piece == MazePieceCurved) {
+    if(piece.piece == MazePieceCorner) {
         if(self.corner> 0) {
             self.corner--;
             [self.delegate updateStraightPieceCount:self.straight corner:self.corner];
@@ -162,6 +162,7 @@
     return [[MazePiece alloc] initWithFrame:CGRectMake(0, 0, self.pieceSize.width, self.pieceSize.width) pieceType:s.piece start:s.start end:s.end];
 }
 
+//Empty the maze, and restore straight and corner pieces back to what they were before
 -(void)restartMaze {
     for(int i = 0; i < 25; i++){
         MazeStruct s = mazeArray[i];
@@ -172,12 +173,14 @@
     }
     [self setupManager];
     self.straight = self.maze.straightPieces;
-    self.corner = self.maze.curvedPieces;
+    self.corner = self.maze.cornerPieces;
     
     [self.delegate updateStraightPieceCount:self.straight corner:self.corner];
 }
 
--(NSInteger)saveTime:(NSInteger)time {
+
+//Compute the number of stars that a user earned, based on time
+-(NSInteger)computeStars:(NSInteger)time {
     if(time < [self.maze.starTimes[4] integerValue])
         return 5;
     else if(time < [self.maze.starTimes[3] integerValue])
@@ -191,6 +194,8 @@
     return 0;
 }
 
+
+//Check Maze that's called
 -(NSString *)checkMaze {
     if(self.straight > 0 || self.corner > 0) {
         return @"You need to use all the pieces to complete the level.";
@@ -211,6 +216,7 @@
     return @"Maze not correct, please try again.";
 }
 
+//Recursive Maze Checker
 -(BOOL)checkMaze:(MazeStruct)s {
     
     if(s.index == self.endIndex) {
@@ -224,7 +230,7 @@
     NSInteger index = [self getAdjacentIndex:s.start index:s.index];
     if(index > -1) {
         MazeStruct temp = mazeArray[index];
-        if((temp.piece == MazePieceStraight || temp.piece == MazePieceCurved) && checked[index] == NO) {
+        if((temp.piece == MazePieceStraight || temp.piece == MazePieceCorner) && checked[index] == NO) {
             if([self pieceIsContinued:s.start start:temp.start end:temp.end])
                 return [self checkMaze:temp];
         }
@@ -309,7 +315,7 @@
             return PieceDirectionEast;
     }
     
-    else if(piece == MazePieceCurved) {
+    else if(piece == MazePieceCorner) {
         if(startDirection == PieceDirectionNorth)
             return PieceDirectionEast;
         if(startDirection == PieceDirectionEast)
@@ -338,7 +344,7 @@
 
 -(MazePieces)getPiece:(NSString *)piece {
     if([piece isEqualToString:@"1"])
-        return MazePieceCurved;
+        return MazePieceCorner;
     if([piece isEqualToString:@"2"])
         return MazePieceStraight;
     if([piece isEqualToString:@"X"])

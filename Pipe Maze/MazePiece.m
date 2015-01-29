@@ -13,8 +13,8 @@
 @property (nonatomic) CGRect originalFrame;
 
 
-@property (nonatomic, strong) UIView *curvedOuterView;
-@property (nonatomic, strong) UIView *curvedInnerView;
+@property (nonatomic, strong) UIView *cornerOuterView;
+@property (nonatomic, strong) UIView *cornerInnerView;
 
 @property (nonatomic, strong) UIView *straight;
 @property (nonatomic, strong) UIColor *pipeColor;
@@ -82,7 +82,7 @@
         case MazePieceStraight:
             [self createStraightView:size];
             break;
-        case MazePieceCurved:
+        case MazePieceCorner:
             [self createCornerView:size];
             break;
         case MazePieceBlock:
@@ -113,43 +113,43 @@
 -(void)createCornerView:(CGSize)size {
     if(self.startDirection == PieceDirectionNorth) {
         
-        self.curvedOuterView = [[UIView alloc] initWithFrame:CGRectMake(floor(self.frame.size.width/4), -self.bounds.size.height/2 + floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height)];
-        [self addSubview:self.curvedOuterView];
+        self.cornerOuterView = [[UIView alloc] initWithFrame:CGRectMake(floor(self.frame.size.width/4), -self.bounds.size.height/2 + floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height)];
+        [self addSubview:self.cornerOuterView];
         
-        self.curvedInnerView = [[UIView alloc] initWithFrame:CGRectMake(floor(self.frame.size.width/4) + self.frame.size.width/2, 0, self.frame.size.width/2, floor(self.frame.size.height/4))];
-        [self addSubview:self.curvedInnerView];
+        self.cornerInnerView = [[UIView alloc] initWithFrame:CGRectMake(floor(self.frame.size.width/4) + self.frame.size.width/2, 0, self.frame.size.width/2, floor(self.frame.size.height/4))];
+        [self addSubview:self.cornerInnerView];
     }
     
     if(self.startDirection == PieceDirectionEast) {
         
-        self.curvedOuterView = [[UIView alloc] initWithFrame:CGRectMake(floor(self.frame.size.width/4), floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height)];
-        [self addSubview:self.curvedOuterView];
+        self.cornerOuterView = [[UIView alloc] initWithFrame:CGRectMake(floor(self.frame.size.width/4), floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height)];
+        [self addSubview:self.cornerOuterView];
         
-        self.curvedInnerView = [[UIView alloc] initWithFrame:CGRectMake(floor(self.frame.size.width/4) + self.frame.size.width/2, floor(self.frame.size.height/4) + self.frame.size.height/2, self.frame.size.width/2, self.frame.size.height/2)];
-        [self addSubview:self.curvedInnerView];
+        self.cornerInnerView = [[UIView alloc] initWithFrame:CGRectMake(floor(self.frame.size.width/4) + self.frame.size.width/2, floor(self.frame.size.height/4) + self.frame.size.height/2, self.frame.size.width/2, self.frame.size.height/2)];
+        [self addSubview:self.cornerInnerView];
     }
     
     if(self.startDirection == PieceDirectionSouth) {
-        self.curvedOuterView = [[UIView alloc] initWithFrame:CGRectMake(-self.frame.size.width/2 + floor(self.frame.size.width/4), floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height)];
-        [self addSubview:self.curvedOuterView];
+        self.cornerOuterView = [[UIView alloc] initWithFrame:CGRectMake(-self.frame.size.width/2 + floor(self.frame.size.width/4), floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height)];
+        [self addSubview:self.cornerOuterView];
         
-        self.curvedInnerView = [[UIView alloc] initWithFrame:CGRectMake(0, floor(self.frame.size.width/4) + self.frame.size.width/2, floor(self.frame.size.width/4), self.frame.size.width/2)];
-        [self addSubview:self.curvedInnerView];
+        self.cornerInnerView = [[UIView alloc] initWithFrame:CGRectMake(0, floor(self.frame.size.width/4) + self.frame.size.width/2, floor(self.frame.size.width/4), self.frame.size.width/2)];
+        [self addSubview:self.cornerInnerView];
     }
     
     if(self.startDirection == PieceDirectionWest) {
-        self.curvedOuterView = [[UIView alloc] initWithFrame:CGRectMake(-self.frame.size.width/2 + floor(self.frame.size.width/4), -self.frame.size.height/2 + floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height)];
-        [self addSubview:self.curvedOuterView];
+        self.cornerOuterView = [[UIView alloc] initWithFrame:CGRectMake(-self.frame.size.width/2 + floor(self.frame.size.width/4), -self.frame.size.height/2 + floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height)];
+        [self addSubview:self.cornerOuterView];
         
-        self.curvedInnerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, floor(self.frame.size.width/4), floor(self.frame.size.height/4))];
-        [self addSubview:self.curvedInnerView];
+        self.cornerInnerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, floor(self.frame.size.width/4), floor(self.frame.size.height/4))];
+        [self addSubview:self.cornerInnerView];
     }
     
-    self.curvedInnerView.clipsToBounds = YES;
-    self.curvedInnerView.backgroundColor = [UIColor whiteColor];
+    self.cornerInnerView.clipsToBounds = YES;
+    self.cornerInnerView.backgroundColor = [UIColor whiteColor];
     self.backgroundColor = [UIColor whiteColor];
-    self.curvedOuterView.backgroundColor = self.pipeColor;
-    self.curvedOuterView.clipsToBounds = YES;
+    self.cornerOuterView.backgroundColor = self.pipeColor;
+    self.cornerOuterView.clipsToBounds = YES;
     self.clipsToBounds = YES;
 
 }
@@ -167,8 +167,8 @@
         if(self.piece == MazePieceStraight){
             [self enlargeStraightPiece:self.originalFrame direction:self.startDirection];
         }
-        if(self.piece == MazePieceCurved) {
-            [self enlargeCurvedPiece:self.originalFrame direction:self.startDirection];
+        if(self.piece == MazePieceCorner) {
+            [self enlargeCornerPiece:self.originalFrame direction:self.startDirection];
         }
         [self enlarge];
     }
@@ -188,12 +188,12 @@
                 [self shrinkStraightPiece:self.frame direction:self.startDirection];
             }
         }
-        if(self.piece == MazePieceCurved) {
+        if(self.piece == MazePieceCorner) {
             if([self.delegate mazePieceCanRotate:self]){
-                [self shrinkCurvedPieceAndRotate:self.frame direction:self.startDirection];
+                [self shrinkCornerPieceAndRotate:self.frame direction:self.startDirection];
             }
             else {
-                [self shrinkCurvedPiece:self.frame direction:self.startDirection];
+                [self shrinkCornerPiece:self.frame direction:self.startDirection];
             }
         }
         [self shrink];
@@ -235,19 +235,19 @@
         self.straight.frame = CGRectMake(floor(self.frame.size.width/4), 0, self.frame.size.width/2, self.frame.size.height);
 }
 
-#pragma mark - Methods for changing the frame/rotation of curved piece
+#pragma mark - Methods for changing the frame/rotation of corner piece
 
--(void)enlargeCurvedPiece:(CGRect)frame direction:(PieceDirection)direction {
-    [self changeCurvedFrame:frame direction:self.startDirection];
+-(void)enlargeCornerPiece:(CGRect)frame direction:(PieceDirection)direction {
+    [self changeCornerFrame:frame direction:self.startDirection];
 }
 
--(void)shrinkCurvedPiece:(CGRect)frame direction:(PieceDirection)direction {
-    [self changeCurvedFrame:frame direction:self.startDirection];
+-(void)shrinkCornerPiece:(CGRect)frame direction:(PieceDirection)direction {
+    [self changeCornerFrame:frame direction:self.startDirection];
 }
 
--(void)shrinkCurvedPieceAndRotate:(CGRect)frame direction:(PieceDirection)direction {
+-(void)shrinkCornerPieceAndRotate:(CGRect)frame direction:(PieceDirection)direction {
     [UIView animateKeyframesWithDuration:0.2 delay:0 options:UIViewKeyframeAnimationOptionAllowUserInteraction animations:^{
-        [self changeCurvedFrame:frame direction:self.endDirection];
+        [self changeCornerFrame:frame direction:self.endDirection];
     }completion:^(BOOL finished){
         self.startDirection = self.endDirection;
         [self rotatePiece];
@@ -256,55 +256,55 @@
     }];
 }
 
--(void)undoRotateCurvedPiece:(CGRect)frame direction:(PieceDirection)direction {
+-(void)undoRotateCornerPiece:(CGRect)frame direction:(PieceDirection)direction {
     [UIView animateKeyframesWithDuration:0.2 delay:0 options:UIViewKeyframeAnimationOptionAllowUserInteraction animations:^{
-        [self undoCurvedFrame:frame direction:direction];
+        [self undoCornerFrame:frame direction:direction];
     }completion:^(BOOL finished){
     }];
 
 }
 
 
--(void)changeCurvedFrame:(CGRect)frame direction:(PieceDirection)direction{
+-(void)changeCornerFrame:(CGRect)frame direction:(PieceDirection)direction{
     if(direction == PieceDirectionNorth){
-        self.curvedOuterView.frame = CGRectMake(floor(self.frame.size.width/4), -self.bounds.size.height/2 + floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height);
-        self.curvedInnerView.frame = CGRectMake(floor(self.frame.size.width/4) + self.frame.size.width/2, 0, self.frame.size.width/2, floor(self.frame.size.height/4));
+        self.cornerOuterView.frame = CGRectMake(floor(self.frame.size.width/4), -self.bounds.size.height/2 + floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height);
+        self.cornerInnerView.frame = CGRectMake(floor(self.frame.size.width/4) + self.frame.size.width/2, 0, self.frame.size.width/2, floor(self.frame.size.height/4));
     }
     if(direction == PieceDirectionEast) {
-        self.curvedOuterView.frame = CGRectMake(floor(self.frame.size.width/4), floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height);
-        self.curvedInnerView.frame = CGRectMake(floor(self.frame.size.width/4) + self.frame.size.width/2, floor(self.frame.size.height/4) + self.frame.size.height/2, self.frame.size.width/2, self.frame.size.height/2);
+        self.cornerOuterView.frame = CGRectMake(floor(self.frame.size.width/4), floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height);
+        self.cornerInnerView.frame = CGRectMake(floor(self.frame.size.width/4) + self.frame.size.width/2, floor(self.frame.size.height/4) + self.frame.size.height/2, self.frame.size.width/2, self.frame.size.height/2);
     }
     
     if(direction == PieceDirectionSouth) {
-        self.curvedOuterView.frame = CGRectMake(-self.frame.size.width/2 + floor(self.frame.size.width/4), floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height);
-        self.curvedInnerView.frame = CGRectMake(0, floor(self.frame.size.width/4) + self.frame.size.width/2, floor(self.frame.size.width/4), self.frame.size.width/2);
+        self.cornerOuterView.frame = CGRectMake(-self.frame.size.width/2 + floor(self.frame.size.width/4), floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height);
+        self.cornerInnerView.frame = CGRectMake(0, floor(self.frame.size.width/4) + self.frame.size.width/2, floor(self.frame.size.width/4), self.frame.size.width/2);
     }
     
     if(direction == PieceDirectionWest) {
-        self.curvedOuterView.frame = CGRectMake(-self.frame.size.width/2 + floor(self.frame.size.width/4), -self.frame.size.height/2 + floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height);
-        self.curvedInnerView.frame =CGRectMake(0, 0, floor(self.frame.size.width/4), floor(self.frame.size.height/4));
+        self.cornerOuterView.frame = CGRectMake(-self.frame.size.width/2 + floor(self.frame.size.width/4), -self.frame.size.height/2 + floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height);
+        self.cornerInnerView.frame =CGRectMake(0, 0, floor(self.frame.size.width/4), floor(self.frame.size.height/4));
     }
 
 }
 
--(void)undoCurvedFrame:(CGRect)frame direction:(PieceDirection)direction {
+-(void)undoCornerFrame:(CGRect)frame direction:(PieceDirection)direction {
     if(direction == PieceDirectionNorth){
-        self.curvedOuterView.frame = CGRectMake(-self.frame.size.width/2 + floor(self.frame.size.width/4), -self.frame.size.height/2 + floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height);
-        self.curvedInnerView.frame =CGRectMake(0, 0, floor(self.frame.size.width/4), floor(self.frame.size.height/4));
+        self.cornerOuterView.frame = CGRectMake(-self.frame.size.width/2 + floor(self.frame.size.width/4), -self.frame.size.height/2 + floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height);
+        self.cornerInnerView.frame =CGRectMake(0, 0, floor(self.frame.size.width/4), floor(self.frame.size.height/4));
     }
     if(direction == PieceDirectionEast) {
-        self.curvedOuterView.frame = CGRectMake(floor(self.frame.size.width/4), -self.bounds.size.height/2 + floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height);
-        self.curvedInnerView.frame = CGRectMake(floor(self.frame.size.width/4) + self.frame.size.width/2, 0, self.frame.size.width/2, floor(self.frame.size.height/4)); //east
+        self.cornerOuterView.frame = CGRectMake(floor(self.frame.size.width/4), -self.bounds.size.height/2 + floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height);
+        self.cornerInnerView.frame = CGRectMake(floor(self.frame.size.width/4) + self.frame.size.width/2, 0, self.frame.size.width/2, floor(self.frame.size.height/4)); //east
     }
     
     if(direction == PieceDirectionSouth) {
-        self.curvedOuterView.frame = CGRectMake(floor(self.frame.size.width/4), floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height);
-        self.curvedInnerView.frame = CGRectMake(floor(self.frame.size.width/4) + self.frame.size.width/2, floor(self.frame.size.height/4) + self.frame.size.height/2, self.frame.size.width/2, self.frame.size.height/2); //south
+        self.cornerOuterView.frame = CGRectMake(floor(self.frame.size.width/4), floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height);
+        self.cornerInnerView.frame = CGRectMake(floor(self.frame.size.width/4) + self.frame.size.width/2, floor(self.frame.size.height/4) + self.frame.size.height/2, self.frame.size.width/2, self.frame.size.height/2); //south
     }
     
     if(direction == PieceDirectionWest) {
-        self.curvedOuterView.frame = CGRectMake(-self.frame.size.width/2 + floor(self.frame.size.width/4), floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height);
-        self.curvedInnerView.frame = CGRectMake(0, floor(self.frame.size.width/4) + self.frame.size.width/2, floor(self.frame.size.width/4), self.frame.size.width/2); //west
+        self.cornerOuterView.frame = CGRectMake(-self.frame.size.width/2 + floor(self.frame.size.width/4), floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height);
+        self.cornerInnerView.frame = CGRectMake(0, floor(self.frame.size.width/4) + self.frame.size.width/2, floor(self.frame.size.width/4), self.frame.size.width/2); //west
 
     }
 
@@ -339,7 +339,7 @@
 #pragma mark - logic to determine start and end locations
 
 -(void)rotatePiece {
-    if(self.piece == MazePieceCurved) {
+    if(self.piece == MazePieceCorner) {
         if(self.startDirection == PieceDirectionNorth)
             self.endDirection = PieceDirectionEast;
         else if(self.startDirection == PieceDirectionEast)

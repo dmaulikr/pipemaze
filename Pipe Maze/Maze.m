@@ -54,7 +54,7 @@
 
 -(MazePieces)getPiece:(NSString *)piece {
     if([piece isEqualToString:@"1"])
-        return MazePieceCurved;
+        return MazePieceCorner;
     if([piece isEqualToString:@"2"])
         return MazePieceStraight;
     if([piece isEqualToString:@"X"])

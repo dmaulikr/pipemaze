@@ -39,8 +39,6 @@
         return;
     }
     
-    NSLog(@"%@", ((World *)[self.worlds firstObject]).restrictions);
-    
     if(self.worlds.count == 0) {
         [self createWorlds];
         [self loadObjects];
@@ -157,8 +155,6 @@
         newLevel = level;
         [self.managedObjectContext save:nil];
     }
-    
-    NSLog(@"%@", level);
 }
 
 -(void)resetAllLevels {

@@ -21,9 +21,6 @@
 @interface MazeViewController : UIViewController <PiecesViewDelegate, MazeViewDelegate, MazeManagerDelegate, CompletedViewDelegate, UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *actionBarButtonItem;
 @property (strong, nonatomic) UIToolbar *toolbar;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *restartBarButtonItem;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *playBarButtonItem;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *undoBarButtonItem;
 
 @property (nonatomic, strong) World *world;
 @property (nonatomic, strong) Maze *maze;

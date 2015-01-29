@@ -28,7 +28,7 @@
 -(instancetype)initWithFrame:(CGRect)frame pieceType:(MazePieces)piece start:(PieceDirection)start end:(PieceDirection)end;
 -(instancetype)initWithFrame:(CGRect)frame pieceType:(MazePieces)piece start:(PieceDirection)start end:(PieceDirection)end index:(NSInteger)index;
 
--(void)undoRotateCurvedPiece:(CGRect)frame direction:(PieceDirection)direction;
+-(void)undoRotateCornerPiece:(CGRect)frame direction:(PieceDirection)direction;
 -(void)undoRotateStraightPiece:(CGRect)frame direction:(PieceDirection)direction;
 
 @property (nonatomic) MazePieces piece;
