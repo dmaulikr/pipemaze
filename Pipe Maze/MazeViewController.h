@@ -17,9 +17,11 @@
 #import "CompletedView.h"
 #import "MazeMove.h"
 #import "Level.h"
+#import "PauseView.h"
 
-@interface MazeViewController : UIViewController <PiecesViewDelegate, MazeViewDelegate, MazeManagerDelegate, CompletedViewDelegate, UIAlertViewDelegate>
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *actionBarButtonItem;
+@interface MazeViewController : UIViewController <PiecesViewDelegate, MazeViewDelegate, MazeManagerDelegate, CompletedViewDelegate, UIAlertViewDelegate, PauseViewDelegate>
+@property (strong, nonatomic) UIBarButtonItem *actionBarButtonItem;
+@property (strong, nonatomic) UIBarButtonItem *pauseBarButtonItem;
 @property (strong, nonatomic) UIToolbar *toolbar;
 
 @property (nonatomic, strong) World *world;

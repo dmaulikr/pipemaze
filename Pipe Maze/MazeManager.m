@@ -203,6 +203,10 @@
     return 0;
 }
 
+-(NSInteger)timeForStar:(NSInteger)star {
+    return [self.maze.starTimes[star -1] integerValue];
+}
+
 
 //Check Maze that's called
 -(NSString *)checkMaze {

@@ -23,6 +23,8 @@
     PiecesView *pieceView;
     CompletedView *completed;
     UIView *backgroundCompletedView;
+    PauseView *pauseView;
+    UIView *backgroundPauseView;
 }
 
 @end
@@ -31,17 +33,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    NSLog(@"%li", (long)[[UIDevice currentDevice] orientation]);
-    if([[UIDevice currentDevice] orientation] == 1 || [[UIDevice currentDevice]  orientation] == 4) {
-        NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationPortrait];
-        [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
+    
+    self.actionBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"more"] style:UIBarButtonItemStylePlain target:self action:@selector(showActionItems:)];
+    self.pauseBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"pause"] style:UIBarButtonItemStylePlain target:self action:@selector(pauseGame)];
+    
+    
+    self.navigationItem.leftBarButtonItem = self.pauseBarButtonItem;
+    
+    if(self.view.bounds.size.height == 480) {
+        self.navigationItem.rightBarButtonItem = self.actionBarButtonItem;
     }
+    
     
     self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - self.toolbar.bounds.size.height,self.view.bounds.size.width, 44)];
     UIBarButtonItem *leftFixed = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    leftFixed.width = 50.0f;
+    leftFixed.width = self.view.bounds.size.width * 0.1333333;
     UIBarButtonItem *rightFixed = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    rightFixed.width = 50.0f;
+    rightFixed.width = self.view.bounds.size.width * 0.1333333;
     
     self.toolbar.items = @[leftFixed, [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(restartMaze:)], [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil], [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(checkMaze:)], [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil], [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"undo"] style:UIBarButtonItemStylePlain target:self action:@selector(undoMove:)], rightFixed]; //add buttons to toolbar (super ugly, pls change)
     self.toolbar.tintColor = self.navigationController.navigationBar.barTintColor;
@@ -49,7 +57,6 @@
     CGFloat height = self.navigationController.navigationBar.frame.size.height;
     CGFloat width = self.view.bounds.size.width;
     if(self.view.bounds.size.height != 480) {
-        self.navigationItem.rightBarButtonItem = nil;
         self.toolbar.frame = CGRectMake(0, self.view.bounds.size.height, width, self.toolbar.bounds.size.height);
         toolbarVisible = NO;
     }
@@ -131,10 +138,7 @@
     timeLabel.text = [NSString stringWithFormat:@"%02li:%02li", (long)minutes, (long)seconds];
 }
 
-#pragma mark - Rotation Methods (incomplete)
--(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
-    
-}
+
 
 -(NSUInteger)supportedInterfaceOrientations {
     return UIInterfaceOrientationPortrait;
@@ -200,6 +204,23 @@
     }
 }
 
+-(void)pauseGame {
+    updateTime = NO;
+    self.navigationItem.leftBarButtonItem.enabled = NO;
+    if(!pauseView) {
+        CGFloat width = 280;
+        CGFloat height = 200;
+        backgroundPauseView = [[UIView alloc] initWithFrame:self.view.frame];
+        backgroundPauseView.backgroundColor = [UIColor colorWithWhite:0.2 alpha:0.5];
+        pauseView = [[PauseView alloc] initWithFrame:CGRectMake((self.view.bounds.size.width - width)/2, self.view.bounds.size.height/2 - height/2 - 30, width, height)];
+        pauseView.delegate = self;
+        [backgroundPauseView addSubview:pauseView];
+    }
+    pauseView.currentTime = elapsed/2;
+    pauseView.manager = manager;
+    [self.view addSubview:backgroundPauseView];
+}
+
 - (IBAction)undoMove:(id)sender {
     MazeMove *move = [manager undo]; //logic to undo move
     if(move.didRemove){
@@ -246,6 +267,27 @@
     temp = nil;
 }
 
+#pragma mark - Pause/Completed View Delegate methods
+
+-(void)pauseviewDidDismiss {
+    [UIView animateKeyframesWithDuration:0.25 delay:0 options:UIViewKeyframeAnimationOptionCalculationModeCubic animations:^{
+        backgroundPauseView.alpha = 0;
+    }completion:^(BOOL finished){
+        backgroundPauseView.alpha = 1;
+        [backgroundPauseView removeFromSuperview];
+        updateTime = YES;
+        self.navigationItem.leftBarButtonItem.enabled = YES;
+    }];
+}
+
+-(void)pauseViewDidQuit {
+    [UIView animateKeyframesWithDuration:0.25 delay:0 options:UIViewKeyframeAnimationOptionCalculationModeCubic animations:^{
+        backgroundPauseView.alpha = 0;
+    }completion:^(BOOL finished){
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+}
+
 -(void)viewDismissed {
     
     if(!([self.level.completed boolValue] && [self.level.seconds integerValue] < elapsed/2)){
@@ -265,6 +307,8 @@
     }];
     
 }
+
+
 
 -(void)updateStraightPieceCount:(NSInteger)straight corner:(NSInteger)corner {
     [pieceView updateRemainingStraightPieces:straight corner:corner];

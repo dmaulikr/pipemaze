@@ -187,6 +187,16 @@ static NSString * const reuseIdentifier = @"Cell";
             piece.startDirection = move.oldStartDirection;
             piece.endDirection = move.oldEndDirection;
         }
+        
+    }
+    if(move.piece == MazePieceEmpty) {
+        MazePiece *newPiece = [[MazePiece alloc] initWithFrame:cell.bounds pieceType:move.oldPiece start:move.oldStartDirection end:move.oldEndDirection index:move.newIndex];
+        newPiece.delegate = self;
+        if(![self.delegate canPlaceMazePiece:newPiece]){
+            return;
+        }
+        cell.piece = newPiece;
+        [cell addSubview:newPiece];
     }
 }
 

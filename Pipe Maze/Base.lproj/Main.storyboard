@@ -156,16 +156,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="uQM-JZ-nIs">
-                        <barButtonItem key="rightBarButtonItem" image="more.png" id="Q0W-iR-3Sf">
-                            <connections>
-                                <action selector="showActionItems:" destination="vXZ-lx-hvc" id="evy-to-sSS"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="actionBarButtonItem" destination="Q0W-iR-3Sf" id="BoF-gs-vtS"/>
-                    </connections>
+                    <navigationItem key="navigationItem" id="uQM-JZ-nIs"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
@@ -252,7 +243,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="more.png" width="22" height="22"/>
         <image name="settings.png" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>

@@ -31,6 +31,7 @@
 -(MazeMove *)undo;
 
 -(NSInteger)computeStars:(NSInteger)time;
+-(NSInteger)timeForStar:(NSInteger)star;
 
 
 @property id<MazeManagerDelegate> delegate;

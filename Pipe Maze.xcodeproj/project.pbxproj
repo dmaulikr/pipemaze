@@ -21,6 +21,10 @@
 		2E0DD6BF1A649C360076C5B6 /* MazeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E0DD6BE1A649C360076C5B6 /* MazeView.m */; };
 		2E0DD6C21A64BE8C0076C5B6 /* WorldDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E0DD6C11A64BE8C0076C5B6 /* WorldDAO.m */; };
 		2E14DDCD1A7B2DEB00939D37 /* MazePieceCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E14DDCC1A7B2DEB00939D37 /* MazePieceCollectionViewCell.m */; };
+		2E14DDD11A7B7BF800939D37 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E14DDCE1A7B7BF800939D37 /* pause.png */; };
+		2E14DDD21A7B7BF800939D37 /* pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E14DDCF1A7B7BF800939D37 /* pause@2x.png */; };
+		2E14DDD31A7B7BF800939D37 /* pause@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E14DDD01A7B7BF800939D37 /* pause@3x.png */; };
+		2E14DDD61A7B834500939D37 /* PauseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E14DDD51A7B834500939D37 /* PauseView.m */; };
 		2E4112731A799AF000C09C67 /* FullScreenAdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4112721A799AF000C09C67 /* FullScreenAdViewController.m */; };
 		2E4112761A79DFB100C09C67 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4112751A79DFB100C09C67 /* NavigationViewController.m */; };
 		2E61FCC31A68717700364C5E /* level1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2E61FCC21A68717700364C5E /* level1.txt */; };
@@ -156,6 +160,11 @@
 		2E0DD6C11A64BE8C0076C5B6 /* WorldDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorldDAO.m; sourceTree = "<group>"; };
 		2E14DDCB1A7B2DEB00939D37 /* MazePieceCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazePieceCollectionViewCell.h; sourceTree = "<group>"; };
 		2E14DDCC1A7B2DEB00939D37 /* MazePieceCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MazePieceCollectionViewCell.m; sourceTree = "<group>"; };
+		2E14DDCE1A7B7BF800939D37 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pause.png; path = images/pause.png; sourceTree = "<group>"; };
+		2E14DDCF1A7B7BF800939D37 /* pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pause@2x.png"; path = "images/pause@2x.png"; sourceTree = "<group>"; };
+		2E14DDD01A7B7BF800939D37 /* pause@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pause@3x.png"; path = "images/pause@3x.png"; sourceTree = "<group>"; };
+		2E14DDD41A7B834500939D37 /* PauseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseView.h; sourceTree = "<group>"; };
+		2E14DDD51A7B834500939D37 /* PauseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PauseView.m; sourceTree = "<group>"; };
 		2E4112711A799AF000C09C67 /* FullScreenAdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullScreenAdViewController.h; sourceTree = "<group>"; };
 		2E4112721A799AF000C09C67 /* FullScreenAdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullScreenAdViewController.m; sourceTree = "<group>"; };
 		2E4112741A79DFB100C09C67 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
@@ -381,6 +390,8 @@
 				2EDBAF5C1A68112B006566BD /* MazePieceView.m */,
 				2EDBAF611A681A6A006566BD /* MazePiece.h */,
 				2EDBAF621A681A6A006566BD /* MazePiece.m */,
+				2E14DDD41A7B834500939D37 /* PauseView.h */,
+				2E14DDD51A7B834500939D37 /* PauseView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -491,6 +502,9 @@
 				2EDBAF641A685E1F006566BD /* more.png */,
 				2EDBAF651A685E1F006566BD /* more@2x.png */,
 				2EDBAF661A685E1F006566BD /* more@3x.png */,
+				2E14DDCE1A7B7BF800939D37 /* pause.png */,
+				2E14DDCF1A7B7BF800939D37 /* pause@2x.png */,
+				2E14DDD01A7B7BF800939D37 /* pause@3x.png */,
 				2EDBAF451A65ADD2006566BD /* settings.png */,
 				2EDBAF431A659C4A006566BD /* settings@2x.png */,
 				2EDBAF461A65ADD2006566BD /* settings@3x.png */,
@@ -649,6 +663,7 @@
 				2EDBAF4E1A65ADD2006566BD /* undo@3x.png in Resources */,
 				2EC8CB4F1A72FEDA00A3A45C /* level27.txt in Resources */,
 				2EC10B251A70ADBB0096716D /* level19.txt in Resources */,
+				2E14DDD31A7B7BF800939D37 /* pause@3x.png in Resources */,
 				2E7ACEE21A6B5E32002499C5 /* level2.txt in Resources */,
 				2EC8CB531A72FEDA00A3A45C /* level31.txt in Resources */,
 				2EC8CB7F1A741D9500A3A45C /* twitter@3x.png in Resources */,
@@ -677,6 +692,7 @@
 				2E7ACED31A6B58E0002499C5 /* lock@2x.png in Resources */,
 				2EC8CB641A73210900A3A45C /* level40.txt in Resources */,
 				2E61FCEC1A6B2A0200364C5E /* star@3x.png in Resources */,
+				2E14DDD11A7B7BF800939D37 /* pause.png in Resources */,
 				2EC10B0B1A70817B0096716D /* level9.txt in Resources */,
 				2EC8CB6D1A7342EA00A3A45C /* level42.txt in Resources */,
 				2EC8CB7D1A741D9500A3A45C /* twitter.png in Resources */,
@@ -694,6 +710,7 @@
 				2EC10B2C1A70B0F00096716D /* level24.txt in Resources */,
 				2E7ACEE61A6B5FE7002499C5 /* level4.txt in Resources */,
 				2EC10B1F1A70A5920096716D /* level17.txt in Resources */,
+				2E14DDD21A7B7BF800939D37 /* pause@2x.png in Resources */,
 				2EC8CB511A72FEDA00A3A45C /* level29.txt in Resources */,
 				2E7ACEDC1A6B5D57002499C5 /* leftover.png in Resources */,
 				2EC8CB6E1A7342EA00A3A45C /* level43.txt in Resources */,
@@ -725,6 +742,7 @@
 				2EDBAF5D1A68112B006566BD /* MazePieceView.m in Sources */,
 				2E0DD6881A6459B90076C5B6 /* Pipe_Maze.xcdatamodeld in Sources */,
 				2EDBAF631A681A6A006566BD /* MazePiece.m in Sources */,
+				2E14DDD61A7B834500939D37 /* PauseView.m in Sources */,
 				2EC10B181A708BAE0096716D /* Level.m in Sources */,
 				2EDBAF551A65CCD5006566BD /* World.m in Sources */,
 				2E61FCDC1A6AE86400364C5E /* MazeMove.m in Sources */,

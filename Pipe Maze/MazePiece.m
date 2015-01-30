@@ -12,8 +12,11 @@
 
 @interface MazePiece () {
     UIView *xView;
+    CGPoint originalTouch;
+    CGPoint endTouch;
 }
 
+#pragma mark - private variables
 @property (nonatomic) CGRect originalFrame;
 @property (nonatomic, strong) UIView *cornerOuterView;
 @property (nonatomic, strong) UIView *cornerInnerView;
@@ -121,7 +124,6 @@
 
 -(void)createCornerView:(CGSize)size {
     if(self.startDirection == PieceDirectionNorth) {
-        
         self.cornerOuterView = [[UIView alloc] initWithFrame:CGRectMake(floor(self.frame.size.width/4), -self.bounds.size.height/2 + floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height)];
         [self addSubview:self.cornerOuterView];
         
@@ -130,7 +132,6 @@
     }
     
     if(self.startDirection == PieceDirectionEast) {
-        
         self.cornerOuterView = [[UIView alloc] initWithFrame:CGRectMake(floor(self.frame.size.width/4), floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height)];
         [self addSubview:self.cornerOuterView];
         
@@ -160,7 +161,6 @@
     self.cornerOuterView.backgroundColor = self.pipeColor;
     self.cornerOuterView.clipsToBounds = YES;
     self.clipsToBounds = YES;
-
 }
 
 -(void)createBlockView:(CGSize)size {
@@ -204,8 +204,6 @@
     }
 }
 
-
-
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     self.touchMoved = YES;
     [self deselect];
@@ -217,7 +215,7 @@
         return;
     }
 
-    if(gesture.state == UIGestureRecognizerStateEnded) {
+    if(gesture.state == UIGestureRecognizerStateEnded && self.longTouch) {
         self.longTouch = NO;
         if(self.delegate) {
             if([self.delegate mazePieceCanBeLongSelected:self]){
@@ -228,23 +226,25 @@
         
         if(1) { //needs to check if piece was moved
             if(!xView) {
-            xView = [[UIView alloc] initWithFrame:self.bounds];
-            xView.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.7];
-            UIButton *button = [[UIButton alloc] initWithFrame:xView.frame];
-            [button setTitle:@"X" forState:UIControlStateNormal];
-            [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            button.titleLabel.font = [UIFont fontWithName:@"STHeitiTC-Medium" size:50];
-            [button addTarget:self action:@selector(deletePiece) forControlEvents:UIControlEventTouchUpInside];
-            [xView addSubview:button];
+                xView = [[UIView alloc] initWithFrame:self.bounds];
+                xView.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.7];
+                UIButton *button = [[UIButton alloc] initWithFrame:xView.frame];
+                [button setTitle:@"X" forState:UIControlStateNormal];
+                [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                button.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:self.bounds.size.height *2/3];
+                [button addTarget:self action:@selector(deletePiece) forControlEvents:UIControlEventTouchUpInside];
+                [xView addSubview:button];
             }
             [self addSubview:xView];
-            
-            
         }
         return;
     }
+//    else if (gesture.state == UIGestureRecognizerStateEnded && !self.longTouch) {
+//        [self deselect];
+//    }
     else if(gesture.state == UIGestureRecognizerStateBegan){
         self.longTouch = YES;
+        originalTouch = [gesture locationInView:self.superview.superview];
         if(self.delegate) {
             if([self.delegate mazePieceCanBeLongSelected:self]){
                 [self select];
@@ -253,7 +253,18 @@
     }
     
     else if(gesture.state == UIGestureRecognizerStateChanged){
-        self.touchMoved = YES;
+        endTouch = [gesture locationInView:self.superview.superview];
+        float x = (originalTouch.x - endTouch.x)*(originalTouch.x - endTouch.x);
+        float y = (originalTouch.y - endTouch.y)*(originalTouch.y - endTouch.y);
+        float dist = sqrtf(x*x + y*y);
+        if(dist > 10000) {
+            self.longTouch = NO;
+            [self deselect];
+        }
+        else {
+            [self select];
+            self.longTouch = YES;
+        }
     }
 }
 
@@ -265,7 +276,6 @@
 }
 
 #pragma mark - Methods for changing the frame/rotation of straight piece
-
 -(void)rotateStraightPiece:(CGRect)frame direction:(PieceDirection)direction {
     //rotate from horizontal to vertical
     [UIView animateKeyframesWithDuration:PIECE_ROTATION_TIME delay:0 options:UIViewKeyframeAnimationOptionCalculationModeCubic animations:^{
@@ -304,7 +314,7 @@
 
 #pragma mark - Methods for changing the frame/rotation of corner piece
 
-
+//rotates corner piece with animation
 -(void)rotateCornerPiece:(CGRect)frame direction:(PieceDirection)direction {
     [UIView animateKeyframesWithDuration:PIECE_ROTATION_TIME delay:0 options:UIViewKeyframeAnimationOptionCalculationModeCubic animations:^{
         [self changeCornerFrame:frame direction:self.endDirection];
@@ -315,7 +325,7 @@
            [self.delegate mazePieceDidRotate:self];
     }];
 }
-
+//undo rotation of corner piece with animation
 -(void)undoRotateCornerPiece:(CGRect)frame direction:(PieceDirection)direction {
     [UIView animateKeyframesWithDuration:PIECE_ROTATION_TIME delay:0 options:UIViewKeyframeAnimationOptionCalculationModeCubic animations:^{
         [self undoCornerFrame:frame direction:direction];
@@ -324,7 +334,7 @@
 
 }
 
-
+//rotates cw
 -(void)changeCornerFrame:(CGRect)frame direction:(PieceDirection)direction{
     if(direction == PieceDirectionNorth){
         self.cornerOuterView.frame = CGRectMake(floor(self.frame.size.width/4), -self.bounds.size.height/2 + floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height);
@@ -347,6 +357,8 @@
 
 }
 
+
+//Does the above function in reverse (ccw)
 -(void)undoCornerFrame:(CGRect)frame direction:(PieceDirection)direction {
     if(direction == PieceDirectionNorth){
         self.cornerOuterView.frame = CGRectMake(-self.frame.size.width/2 + floor(self.frame.size.width/4), -self.frame.size.height/2 + floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height);
@@ -365,14 +377,12 @@
     if(direction == PieceDirectionWest) {
         self.cornerOuterView.frame = CGRectMake(-self.frame.size.width/2 + floor(self.frame.size.width/4), floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height);
         self.cornerInnerView.frame = CGRectMake(0, floor(self.frame.size.width/4) + self.frame.size.width/2, floor(self.frame.size.width/4), self.frame.size.width/2); //west
-
     }
 
 }
 
 
-#pragma mark - Methods to add borders when selected
-
+#pragma mark - Methods to add/remove borders for selection/deselection
 -(void)select {
     self.layer.borderColor = [UIColor darkGrayColor].CGColor;
     self.layer.borderWidth = 3.0f;
@@ -387,8 +397,8 @@
     [xView removeFromSuperview];
 }
 
-#pragma mark - logic to determine start and end locations
 
+#pragma mark - logic to determine start and end locations
 -(void)rotatePiece {
     if(self.piece == MazePieceCorner) {
         if(self.startDirection == PieceDirectionNorth)

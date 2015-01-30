@@ -92,7 +92,9 @@
 
 -(void)deselectPieces {
     [self.straight hightlightPiece:NO];
+    straightSelected = NO;
     [self.corner hightlightPiece:NO];
+    cornerSelected = NO;
 }
 
 @end
