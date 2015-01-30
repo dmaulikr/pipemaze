@@ -208,9 +208,6 @@
     [mazeView undoMove:move];
 }
 
--(void)deletePiece:(MazePiece *)piece {
-    
-}
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     updateTime = YES;
@@ -236,6 +233,17 @@
 
 -(BOOL)canPlaceMazePiece:(MazePiece *)piece {
     return [manager canPlacePiece:piece];
+}
+
+-(void)mazePieceWasDeleted:(MazePiece *)piece atIndex:(NSInteger)index {
+    MazePiece *newPiece = [[MazePiece alloc] initWithFrame:piece.frame pieceType:MazePieceEmpty start:PieceDirectionNone end:PieceDirectionNone index:-1];
+    [manager updatePiece:newPiece atIndex:index];
+    [pieceView updateRemainingStraightPieces:manager.straight corner:manager.corner];
+}
+
+-(void)deselectMazePieces {
+    [pieceView deselectPieces];
+    temp = nil;
 }
 
 -(void)viewDismissed {

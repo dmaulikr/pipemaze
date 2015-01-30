@@ -8,16 +8,21 @@
 
 #import "MazePiece.h"
 
-@interface MazePiece ()
+#define PIECE_ROTATION_TIME 0.15
+
+@interface MazePiece () {
+    UIView *xView;
+}
 
 @property (nonatomic) CGRect originalFrame;
-
-
 @property (nonatomic, strong) UIView *cornerOuterView;
 @property (nonatomic, strong) UIView *cornerInnerView;
 
 @property (nonatomic, strong) UIView *straight;
 @property (nonatomic, strong) UIColor *pipeColor;
+@property (nonatomic) BOOL touchMoved;
+@property (nonatomic) BOOL longTouch;
+@property (nonatomic, strong) UILongPressGestureRecognizer *longGesture;
 @end
 
 @implementation MazePiece
@@ -75,6 +80,10 @@
 #pragma mark - View Creators
 
 -(void)createView {
+    self.longGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longSelected:)];
+    self.longGesture.minimumPressDuration = 0.3;
+    [self addGestureRecognizer:self.longGesture];
+    
     CGSize size = self.frame.size;
     self.pipeColor = [UIColor colorWithRed:0.18 green:0.356 blue:0.537 alpha:1.0];
     
@@ -162,52 +171,104 @@
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     if([self.delegate mazePieceCanMove:self]) {
-        //CGRect frame = CGRectMake(self.frame.origin.x - 0.1*self.frame.size.width, self.frame.origin.y - 0.1*self.frame.size.height, 1.2 * self.frame.size.width, 1.2 * self.frame.size.height);
-        self.frame = self.originalFrame;
-        if(self.piece == MazePieceStraight){
-            [self enlargeStraightPiece:self.originalFrame direction:self.startDirection];
-        }
-        if(self.piece == MazePieceCorner) {
-            [self enlargeCornerPiece:self.originalFrame direction:self.startDirection];
-        }
-        [self enlarge];
+        //self.frame = self.originalFrame;
+        [self select];
     }
     [self.delegate mazePieceDidBeginTouching:self];
 }
 
 //Shrink back to normal size
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    if(self.touchMoved){
+        self.touchMoved = NO;
+        return;
+    }
+    
     if([self.delegate mazePieceCanMove:self]) {
-        self.frame = self.originalFrame;
+        //self.frame = self.originalFrame;
         if(self.piece == MazePieceStraight){
             //needs some fixing
             if([self.delegate mazePieceCanRotate:self]){
-                [self shrinkStraightPieceAndRotate:self.frame direction:self.startDirection];
-            }
-            else {
-                [self shrinkStraightPiece:self.frame direction:self.startDirection];
+                [self rotateStraightPiece:self.frame direction:self.startDirection];
             }
         }
         if(self.piece == MazePieceCorner) {
             if([self.delegate mazePieceCanRotate:self]){
-                [self shrinkCornerPieceAndRotate:self.frame direction:self.startDirection];
-            }
-            else {
-                [self shrinkCornerPiece:self.frame direction:self.startDirection];
+                [self rotateCornerPiece:self.frame direction:self.startDirection];
             }
         }
-        [self shrink];
+        [self deselect];
     }
     if(self.delegate) {
         [self.delegate mazePieceDidEndTouching:self];
     }
 }
 
+
+
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    self.touchMoved = YES;
+    [self deselect];
+}
+
+-(void)longSelected:(UIGestureRecognizer *)gesture {
+    
+    if(![self.delegate mazePieceCanBeLongSelected:self]) {
+        return;
+    }
+
+    if(gesture.state == UIGestureRecognizerStateEnded) {
+        self.longTouch = NO;
+        if(self.delegate) {
+            if([self.delegate mazePieceCanBeLongSelected:self]){
+                [self deselect];
+                [self.delegate mazePieceWasSelected:self];
+            }
+        }
+        
+        if(1) { //needs to check if piece was moved
+            if(!xView) {
+            xView = [[UIView alloc] initWithFrame:self.bounds];
+            xView.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.7];
+            UIButton *button = [[UIButton alloc] initWithFrame:xView.frame];
+            [button setTitle:@"X" forState:UIControlStateNormal];
+            [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            button.titleLabel.font = [UIFont fontWithName:@"STHeitiTC-Medium" size:50];
+            [button addTarget:self action:@selector(deletePiece) forControlEvents:UIControlEventTouchUpInside];
+            [xView addSubview:button];
+            }
+            [self addSubview:xView];
+            
+            
+        }
+        return;
+    }
+    else if(gesture.state == UIGestureRecognizerStateBegan){
+        self.longTouch = YES;
+        if(self.delegate) {
+            if([self.delegate mazePieceCanBeLongSelected:self]){
+                [self select];
+            }
+        }
+    }
+    
+    else if(gesture.state == UIGestureRecognizerStateChanged){
+        self.touchMoved = YES;
+    }
+}
+
+-(void)deletePiece {
+    if(self.delegate) {
+        [self.delegate mazePieceWasDeleted:self];
+        [xView removeFromSuperview];
+    }
+}
+
 #pragma mark - Methods for changing the frame/rotation of straight piece
 
--(void)shrinkStraightPieceAndRotate:(CGRect)frame direction:(PieceDirection)direction {
+-(void)rotateStraightPiece:(CGRect)frame direction:(PieceDirection)direction {
     //rotate from horizontal to vertical
-    [UIView animateKeyframesWithDuration:0.2 delay:0 options:UIViewKeyframeAnimationOptionAllowUserInteraction animations:^{
+    [UIView animateKeyframesWithDuration:PIECE_ROTATION_TIME delay:0 options:UIViewKeyframeAnimationOptionCalculationModeCubic animations:^{
         [self getStraightNewRotation];
         [self changeStraightFrame:frame direction:self.startDirection];
     }completion:^(BOOL finished){
@@ -218,16 +279,6 @@
 
 }
 
--(void)shrinkStraightPiece:(CGRect)frame direction:(PieceDirection)direction {
-    [self changeStraightFrame:frame direction:self.startDirection];
-    [self rotatePiece];
-}
-
--(void)enlargeStraightPiece:(CGRect)frame direction:(PieceDirection)direction {
-    [self changeStraightFrame:frame direction:direction];
-}
-
-
 -(void)changeStraightFrame:(CGRect)frame direction:(PieceDirection)direction {
     if(direction == PieceDirectionEast || direction == PieceDirectionWest) //enlarge horizontal
         self.straight.frame = CGRectMake(0, floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height/2);
@@ -235,18 +286,27 @@
         self.straight.frame = CGRectMake(floor(self.frame.size.width/4), 0, self.frame.size.width/2, self.frame.size.height);
 }
 
+-(void)undoRotateStraightPiece:(CGRect)frame direction:(PieceDirection)direction {
+    [UIView animateKeyframesWithDuration:PIECE_ROTATION_TIME delay:0 options:UIViewKeyframeAnimationOptionCalculationModeCubic animations:^{
+        [self undoStraigthPiece:frame direction:direction];
+    }completion:^(BOOL finished){
+    }];
+    
+}
+
+-(void)undoStraigthPiece:(CGRect)frame direction:(PieceDirection)direction {
+    if(direction == PieceDirectionEast || direction == PieceDirectionWest) //enlarge horizontal
+        self.straight.frame = CGRectMake(floor(self.frame.size.width/4), 0, self.frame.size.width/2, self.frame.size.height);
+    else //enlarge vertical
+        self.straight.frame = CGRectMake(0, floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height/2);
+}
+
+
 #pragma mark - Methods for changing the frame/rotation of corner piece
 
--(void)enlargeCornerPiece:(CGRect)frame direction:(PieceDirection)direction {
-    [self changeCornerFrame:frame direction:self.startDirection];
-}
 
--(void)shrinkCornerPiece:(CGRect)frame direction:(PieceDirection)direction {
-    [self changeCornerFrame:frame direction:self.startDirection];
-}
-
--(void)shrinkCornerPieceAndRotate:(CGRect)frame direction:(PieceDirection)direction {
-    [UIView animateKeyframesWithDuration:0.2 delay:0 options:UIViewKeyframeAnimationOptionAllowUserInteraction animations:^{
+-(void)rotateCornerPiece:(CGRect)frame direction:(PieceDirection)direction {
+    [UIView animateKeyframesWithDuration:PIECE_ROTATION_TIME delay:0 options:UIViewKeyframeAnimationOptionCalculationModeCubic animations:^{
         [self changeCornerFrame:frame direction:self.endDirection];
     }completion:^(BOOL finished){
         self.startDirection = self.endDirection;
@@ -257,7 +317,7 @@
 }
 
 -(void)undoRotateCornerPiece:(CGRect)frame direction:(PieceDirection)direction {
-    [UIView animateKeyframesWithDuration:0.2 delay:0 options:UIViewKeyframeAnimationOptionAllowUserInteraction animations:^{
+    [UIView animateKeyframesWithDuration:PIECE_ROTATION_TIME delay:0 options:UIViewKeyframeAnimationOptionCalculationModeCubic animations:^{
         [self undoCornerFrame:frame direction:direction];
     }completion:^(BOOL finished){
     }];
@@ -310,30 +370,21 @@
 
 }
 
--(void)undoRotateStraightPiece:(CGRect)frame direction:(PieceDirection)direction {
-    [UIView animateKeyframesWithDuration:0.2 delay:0 options:UIViewKeyframeAnimationOptionAllowUserInteraction animations:^{
-        [self undoStraigthPiece:frame direction:direction];
-    }completion:^(BOOL finished){
-    }];
-
-}
-
--(void)undoStraigthPiece:(CGRect)frame direction:(PieceDirection)direction {
-    if(direction == PieceDirectionEast || direction == PieceDirectionWest) //enlarge horizontal
-        self.straight.frame = CGRectMake(floor(self.frame.size.width/4), 0, self.frame.size.width/2, self.frame.size.height); 
-    else //enlarge vertical
-        self.straight.frame = CGRectMake(0, floor(self.frame.size.height/4), self.frame.size.width, self.frame.size.height/2);
-}
 
 #pragma mark - Methods to add borders when selected
 
--(void)enlarge {
-    self.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    self.layer.borderWidth = 1.0f;
+-(void)select {
+    self.layer.borderColor = [UIColor darkGrayColor].CGColor;
+    self.layer.borderWidth = 3.0f;
+    
 }
 
--(void)shrink {
-    self.layer.borderWidth = 0.0f;
+-(void)deselect {
+    if([self.delegate mazePieceCanBeDeselected:self]){
+        self.layer.borderWidth = 0.0f;
+        self.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    }
+    [xView removeFromSuperview];
 }
 
 #pragma mark - logic to determine start and end locations

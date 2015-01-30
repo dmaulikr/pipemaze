@@ -89,6 +89,15 @@
 -(void)updatePiece:(MazePiece *)piece atIndex:(NSInteger)index {
     MazeStruct s = mazeArray[index];
     
+    if(piece.piece == MazePieceEmpty) {
+        if(s.piece == MazePieceStraight) {
+            self.straight++;
+        }
+        if(s.piece == MazePieceCorner) {
+            self.corner++;
+        }
+    }
+    
     MazeMove *move = [[MazeMove alloc] init];
     move.piece = piece.piece;
     move.oldPiece = s.piece;

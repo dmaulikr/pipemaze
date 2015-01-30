@@ -90,4 +90,9 @@
     
 }
 
+-(void)deselectPieces {
+    [self.straight hightlightPiece:NO];
+    [self.corner hightlightPiece:NO];
+}
+
 @end

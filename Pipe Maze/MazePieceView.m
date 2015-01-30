@@ -90,7 +90,7 @@
 -(void)hightlightPiece:(BOOL)enabled {
     if(enabled) {
         self.backgroundView.layer.borderColor = [UIColor darkGrayColor].CGColor;
-        self.backgroundView.layer.borderWidth = 4.0;
+        self.backgroundView.layer.borderWidth = 5.0;
         
     }
     else {
@@ -106,10 +106,18 @@
 }
 
 -(BOOL)mazePieceCanMove:(id)sender {
-    return YES;
+    return NO;
 }
 
 -(BOOL)mazePieceCanRotate:(id)sender {
+    return NO;
+}
+
+-(BOOL)mazePieceCanBeLongSelected:(id)sender {
+    return NO;
+}
+
+-(BOOL)mazePieceCanBeDeselected:(id)sender {
     return NO;
 }
 

@@ -24,6 +24,7 @@
 -(instancetype)initWithFrame:(CGRect)frame straight:(NSInteger)straightPieces corner:(NSInteger)cornerPieces pieceSize:(CGSize)size;
 
 -(void)updateRemainingStraightPieces:(NSInteger)straight corner:(NSInteger)corner;
+-(void)deselectPieces;
 
 @property id<PiecesViewDelegate>delegate;
 

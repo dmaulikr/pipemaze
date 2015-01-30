@@ -20,6 +20,7 @@
 		2E0DD6BC1A6492220076C5B6 /* starhighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0DD6BB1A6492220076C5B6 /* starhighlighted.png */; };
 		2E0DD6BF1A649C360076C5B6 /* MazeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E0DD6BE1A649C360076C5B6 /* MazeView.m */; };
 		2E0DD6C21A64BE8C0076C5B6 /* WorldDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E0DD6C11A64BE8C0076C5B6 /* WorldDAO.m */; };
+		2E14DDCD1A7B2DEB00939D37 /* MazePieceCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E14DDCC1A7B2DEB00939D37 /* MazePieceCollectionViewCell.m */; };
 		2E4112731A799AF000C09C67 /* FullScreenAdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4112721A799AF000C09C67 /* FullScreenAdViewController.m */; };
 		2E4112761A79DFB100C09C67 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4112751A79DFB100C09C67 /* NavigationViewController.m */; };
 		2E61FCC31A68717700364C5E /* level1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2E61FCC21A68717700364C5E /* level1.txt */; };
@@ -153,6 +154,8 @@
 		2E0DD6BE1A649C360076C5B6 /* MazeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MazeView.m; sourceTree = "<group>"; };
 		2E0DD6C01A64BE8C0076C5B6 /* WorldDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldDAO.h; sourceTree = "<group>"; };
 		2E0DD6C11A64BE8C0076C5B6 /* WorldDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorldDAO.m; sourceTree = "<group>"; };
+		2E14DDCB1A7B2DEB00939D37 /* MazePieceCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MazePieceCollectionViewCell.h; sourceTree = "<group>"; };
+		2E14DDCC1A7B2DEB00939D37 /* MazePieceCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MazePieceCollectionViewCell.m; sourceTree = "<group>"; };
 		2E4112711A799AF000C09C67 /* FullScreenAdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullScreenAdViewController.h; sourceTree = "<group>"; };
 		2E4112721A799AF000C09C67 /* FullScreenAdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullScreenAdViewController.m; sourceTree = "<group>"; };
 		2E4112741A79DFB100C09C67 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
@@ -370,6 +373,8 @@
 				2E0DD6B21A6481620076C5B6 /* LevelView.m */,
 				2E0DD6BD1A649C360076C5B6 /* MazeView.h */,
 				2E0DD6BE1A649C360076C5B6 /* MazeView.m */,
+				2E14DDCB1A7B2DEB00939D37 /* MazePieceCollectionViewCell.h */,
+				2E14DDCC1A7B2DEB00939D37 /* MazePieceCollectionViewCell.m */,
 				2EDBAF581A681116006566BD /* PiecesView.h */,
 				2EDBAF591A681116006566BD /* PiecesView.m */,
 				2EDBAF5B1A68112B006566BD /* MazePieceView.h */,
@@ -716,6 +721,7 @@
 			files = (
 				2E0DD6BA1A6490960076C5B6 /* StarView.m in Sources */,
 				2E7ACECE1A6B52E3002499C5 /* LevelTableViewCell.m in Sources */,
+				2E14DDCD1A7B2DEB00939D37 /* MazePieceCollectionViewCell.m in Sources */,
 				2EDBAF5D1A68112B006566BD /* MazePieceView.m in Sources */,
 				2E0DD6881A6459B90076C5B6 /* Pipe_Maze.xcdatamodeld in Sources */,
 				2EDBAF631A681A6A006566BD /* MazePiece.m in Sources */,

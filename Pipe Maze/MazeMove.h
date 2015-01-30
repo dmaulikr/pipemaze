@@ -14,6 +14,7 @@
 -(instancetype)init;
 @property (nonatomic) BOOL didRemove;
 @property (nonatomic) NSInteger newIndex;
+@property (nonatomic) NSInteger oldIndex;
 @property (nonatomic) MazePieces piece;
 @property (nonatomic) MazePieces oldPiece;
 @property (nonatomic) PieceDirection oldStartDirection;

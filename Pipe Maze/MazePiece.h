@@ -13,11 +13,15 @@
 
 -(BOOL)mazePieceCanMove:(id)sender;
 -(BOOL)mazePieceCanRotate:(id)sender;
+-(BOOL)mazePieceCanBeLongSelected:(id)sender;
+-(BOOL)mazePieceCanBeDeselected:(id)sender;
 
 @optional
 -(void)mazePieceDidEndTouching:(id)sender;
 -(void)mazePieceDidBeginTouching:(id)sender;
 -(void)mazePieceDidRotate:(id)sender;
+-(void)mazePieceWasSelected:(id)sender;
+-(void)mazePieceWasDeleted:(id)sender;
 
 @end
 
@@ -30,6 +34,8 @@
 
 -(void)undoRotateCornerPiece:(CGRect)frame direction:(PieceDirection)direction;
 -(void)undoRotateStraightPiece:(CGRect)frame direction:(PieceDirection)direction;
+
+-(void)deselect;
 
 @property (nonatomic) MazePieces piece;
 @property (nonatomic) PieceDirection startDirection;

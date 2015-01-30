@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MazePiece.h"
 #import "MazeMove.h"
+#import "MazePieceCollectionViewCell.h"
 
 @protocol MazeViewDelegate <NSObject>
 
@@ -16,6 +17,8 @@
 -(void)mazePiecePlaced:(MazePiece *)piece atIndex:(NSInteger)index;
 -(void)mazePieceRotated:(MazePiece *)piece atIndex:(NSInteger)index;
 -(BOOL)canPlaceMazePiece:(MazePiece *)piece;
+-(void)mazePieceWasDeleted:(MazePiece *)piece atIndex:(NSInteger)index;
+-(void)deselectMazePieces;
 
 @end
 
