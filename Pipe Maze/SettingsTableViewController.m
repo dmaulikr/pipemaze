@@ -41,13 +41,13 @@
    if(section == 0)
        return 1;
     if(section == 1)
-        return 2;
+        return 3;
     
     return 2;
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
-    if(section == 3)
+    if(section == 4)
         return @"(c) 2015 John Arendt. All rights reserved.";
     return nil;
 }
@@ -69,6 +69,12 @@
             cell.detailTextLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:17.0];
             cell.detailTextLabel.text = @"";
             
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }
+        if(indexPath.row == 2) {
+            cell.textLabel.text = @"Themes";
+            cell.textLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:17.0];
+            cell.detailTextLabel.text = nil;
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
     }
