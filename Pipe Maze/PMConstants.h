@@ -7,8 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface PMConstants : NSObject
+
++ (UIImage *)imageWithColor:(UIColor *)color;
 
 enum {
     MazePieceStraight = 2,

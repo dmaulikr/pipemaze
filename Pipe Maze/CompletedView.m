@@ -8,6 +8,7 @@
 
 #import "CompletedView.h"
 #import "StarView.h"
+#import "PMConstants.h"
 
 @interface CompletedView () {
     BOOL buttonPressed;
@@ -64,7 +65,8 @@
     height = 100;
     self.dismissButton = [[UIButton alloc] initWithFrame:CGRectMake(0, height, self.bounds.size.width, self.bounds.size.height - height)];
     [self.dismissButton setTitle:@"dismiss" forState:UIControlStateNormal];
-    [self.dismissButton setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.9]];
+    [self.dismissButton setBackgroundImage:[PMConstants imageWithColor:[UIColor colorWithWhite:1.0 alpha:0.9]] forState:UIControlStateNormal];
+    [self.dismissButton setBackgroundImage:[PMConstants imageWithColor:[UIColor colorWithWhite:0.75 alpha:0.9]] forState:UIControlStateHighlighted];
     [self.dismissButton setTitleColor:[UIColor colorWithRed:0 green:0.478 blue:1.0 alpha:1] forState:UIControlStateNormal];
     self.dismissButton.titleLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:17.0];
     [self.dismissButton addTarget:self action:@selector(buttonPressed) forControlEvents:UIControlEventTouchUpInside];

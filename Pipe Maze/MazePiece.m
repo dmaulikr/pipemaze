@@ -25,6 +25,7 @@
 @property (nonatomic, strong) UIColor *pipeColor;
 @property (nonatomic) BOOL touchMoved;
 @property (nonatomic) BOOL longTouch;
+@property (nonatomic) BOOL deleteVisible;
 @property (nonatomic, strong) UILongPressGestureRecognizer *longGesture;
 @end
 
@@ -235,14 +236,12 @@
                 [button addTarget:self action:@selector(deletePiece) forControlEvents:UIControlEventTouchUpInside];
                 [xView addSubview:button];
             }
+            self.deleteVisible = YES;
             [self addSubview:xView];
         }
         return;
     }
-//    else if (gesture.state == UIGestureRecognizerStateEnded && !self.longTouch) {
-//        [self deselect];
-//    }
-    else if(gesture.state == UIGestureRecognizerStateBegan){
+    else if(gesture.state == UIGestureRecognizerStateBegan && !self.deleteVisible){
         self.longTouch = YES;
         originalTouch = [gesture locationInView:self.superview.superview];
         if(self.delegate) {
@@ -252,7 +251,11 @@
         }
     }
     
-    else if(gesture.state == UIGestureRecognizerStateChanged){
+    else if(gesture.state == UIGestureRecognizerStateEnded && self.deleteVisible) {
+        [self deletePiece];
+    }
+    
+    else if(gesture.state == UIGestureRecognizerStateChanged && !self.deleteVisible){
         endTouch = [gesture locationInView:self.superview.superview];
         float x = (originalTouch.x - endTouch.x)*(originalTouch.x - endTouch.x);
         float y = (originalTouch.y - endTouch.y)*(originalTouch.y - endTouch.y);
@@ -272,6 +275,7 @@
     if(self.delegate) {
         [self.delegate mazePieceWasDeleted:self];
         [xView removeFromSuperview];
+        self.deleteVisible = NO;
     }
 }
 
@@ -395,6 +399,7 @@
         self.layer.borderColor = [UIColor lightGrayColor].CGColor;
     }
     [xView removeFromSuperview];
+    self.deleteVisible = NO;
 }
 
 

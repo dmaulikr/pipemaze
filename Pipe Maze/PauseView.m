@@ -67,7 +67,8 @@
     [self.resumeButton setTitleColor:[UIColor colorWithRed:0.18 green:0.356 blue:0.537 alpha:1.0] forState:UIControlStateNormal];
     [self.resumeButton.titleLabel setFont:[UIFont fontWithName:@"STHeitiTC-Light" size:18.0]];
     [self.resumeButton addTarget:self action:@selector(resume) forControlEvents:UIControlEventTouchUpInside];
-    [self.resumeButton setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.9]];
+    [self.resumeButton setBackgroundImage:[PMConstants imageWithColor:[UIColor colorWithWhite:1.0 alpha:0.9]] forState:UIControlStateNormal];
+    [self.resumeButton setBackgroundImage:[PMConstants imageWithColor:[UIColor colorWithWhite:0.75 alpha:0.9]] forState:UIControlStateHighlighted];
     [self addSubview:self.resumeButton];
     
     
@@ -76,7 +77,8 @@
     [self.quitButton setTitleColor:[UIColor colorWithRed:1 green:0.252 blue:0.212 alpha:1] forState:UIControlStateNormal];
     [self.quitButton.titleLabel setFont:[UIFont fontWithName:@"STHeitiTC-Light" size:18.0]];
     [self.quitButton addTarget:self action:@selector(quit) forControlEvents:UIControlEventTouchUpInside];
-    [self.quitButton setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.9]];
+    [self.quitButton setBackgroundImage:[PMConstants imageWithColor:[UIColor colorWithWhite:1.0 alpha:0.9]] forState:UIControlStateNormal];
+    [self.quitButton setBackgroundImage:[PMConstants imageWithColor:[UIColor colorWithWhite:0.75 alpha:0.9]] forState:UIControlStateHighlighted];
     [self addSubview:self.quitButton];
     
     CGFloat xOff = 60;
