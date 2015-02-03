@@ -19,7 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.pageControl.numberOfPages = 7;
+    self.pageControl.numberOfPages = 13;
     self.pageControl.currentPage = 0;
     
     taskLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, self.view.bounds.size.height -60, self.view.bounds.size.width - 20, 30)];
@@ -43,11 +43,11 @@
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 7;
+    return 13;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSArray *images = @[@"start", @"place", @"rotate", @"start", @"complete", @"leftover", @"leftoveronedge"];
+    NSArray *images = @[@"01start", @"02tap_piece", @"03place_piece", @"04rotate", @"05undo", @"06delete", @"07checkmaze", @"08completed", @"09allpieces", @"10alltouch", @"11error", @"12restart", @"13pause"];
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     UIImageView *image = [[UIImageView alloc] initWithFrame:cell.bounds];
     image.image = [UIImage imageNamed:images[indexPath.section]];
@@ -59,9 +59,11 @@
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     NSArray *arr = [self.collectionView indexPathsForVisibleItems];
-    NSArray *desc = @[@"The goal is to complete the maze", @"tap a piece then tap to place", @"tap the piece again to rotate", @"You can restart, check and undo", @"You need to use all the pieces to win", @"If you don't you'll get an error", @"Make sure all the pieces touch"];
+    NSArray *desc = @[@"The goal is to complete the maze", @"Tap a piece to select it", @"Then tap where you want to place it", @"Tap the piece again to rotate it", @"You can undo a move if you please", @"Or you can delete it by holding it down", @"Touch the play button to check the maze", @"Hopefully you get this screen", @"Make sure all the pieces are used", @"And they all touch", @"Or you'll get this screen", @"You can restart whenever you want", @"Or pause if needed. Have fun!"];
     self.pageControl.currentPage = ((NSIndexPath *)arr[0]).section;
     taskLabel.text = desc[self.pageControl.currentPage];
+    taskLabel.minimumScaleFactor = 0.7;
+    taskLabel.adjustsFontSizeToFitWidth = YES;
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {

@@ -68,7 +68,7 @@
     [self.resumeButton.titleLabel setFont:[UIFont fontWithName:@"STHeitiTC-Light" size:18.0]];
     [self.resumeButton addTarget:self action:@selector(resume) forControlEvents:UIControlEventTouchUpInside];
     [self.resumeButton setBackgroundImage:[PMConstants imageWithColor:[UIColor colorWithWhite:1.0 alpha:0.9]] forState:UIControlStateNormal];
-    [self.resumeButton setBackgroundImage:[PMConstants imageWithColor:[UIColor colorWithWhite:0.75 alpha:0.9]] forState:UIControlStateHighlighted];
+    [self.resumeButton setBackgroundImage:[PMConstants imageWithColor:[UIColor colorWithWhite:0.85 alpha:0.9]] forState:UIControlStateHighlighted];
     [self addSubview:self.resumeButton];
     
     
@@ -78,7 +78,7 @@
     [self.quitButton.titleLabel setFont:[UIFont fontWithName:@"STHeitiTC-Light" size:18.0]];
     [self.quitButton addTarget:self action:@selector(quit) forControlEvents:UIControlEventTouchUpInside];
     [self.quitButton setBackgroundImage:[PMConstants imageWithColor:[UIColor colorWithWhite:1.0 alpha:0.9]] forState:UIControlStateNormal];
-    [self.quitButton setBackgroundImage:[PMConstants imageWithColor:[UIColor colorWithWhite:0.75 alpha:0.9]] forState:UIControlStateHighlighted];
+    [self.quitButton setBackgroundImage:[PMConstants imageWithColor:[UIColor colorWithWhite:0.85 alpha:0.9]] forState:UIControlStateHighlighted];
     [self addSubview:self.quitButton];
     
     CGFloat xOff = 60;

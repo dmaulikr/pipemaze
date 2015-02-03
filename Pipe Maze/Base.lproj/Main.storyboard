@@ -4,24 +4,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
-        <!--Full Screen Ad View Controller-->
-        <scene sceneID="i4x-Cr-851">
-            <objects>
-                <viewController id="OSQ-bz-kau" customClass="FullScreenAdViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="fmU-9H-wlC"/>
-                        <viewControllerLayoutGuide type="bottom" id="GtT-Cz-Egp"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="fpH-Y5-saX">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="l3N-n0-Ypp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="453" y="-414"/>
-        </scene>
         <!--Title-->
         <scene sceneID="JQB-zS-FRF">
             <objects>
@@ -234,7 +216,6 @@
                         <segue destination="vXZ-lx-hvc" kind="show" identifier="toMaze" id="zUe-Hi-HAh"/>
                         <segue destination="cEq-O9-HiQ" kind="show" identifier="toSettings" id="TD3-Xn-Iy6"/>
                         <segue destination="oM9-Nv-cKE" kind="show" identifier="toTutorial" id="ZCs-aE-vKD"/>
-                        <segue destination="OSQ-bz-kau" kind="presentation" identifier="toAd" animates="NO" id="B87-Bk-Dhi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YQr-j7-0g5" userLabel="First Responder" sceneMemberID="firstResponder"/>

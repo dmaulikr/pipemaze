@@ -41,7 +41,7 @@
    if(section == 0)
        return 1;
     if(section == 1)
-        return 3;
+        return 2;
     
     return 2;
 }
@@ -64,7 +64,7 @@
             cell.detailTextLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:17.0];
         }
         if(indexPath.row == 1) {
-            cell.textLabel.text = @"Tutorials";
+            cell.textLabel.text = @"Tutorial";
             cell.textLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:17.0];
             cell.detailTextLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:17.0];
             cell.detailTextLabel.text = @"";
@@ -85,6 +85,7 @@
         UIButton *button = [[UIButton alloc] initWithFrame:cell.bounds];
         [button setTitle:@"Restore Levels" forState:UIControlStateNormal];
         [button setTitleColor:[UIColor colorWithRed:1 green:0.252 blue:0.212 alpha:1] forState:UIControlStateNormal];
+        [button setBackgroundImage:[PMConstants imageWithColor:[UIColor colorWithWhite:0.85 alpha:0.9]] forState:UIControlStateHighlighted];
         button.titleLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:17.0];
         [button addTarget:self action:@selector(restoreLevels) forControlEvents:UIControlEventTouchUpInside];
         
@@ -107,6 +108,7 @@
         UIButton *button = [[UIButton alloc] initWithFrame:cell.bounds];
         [button setTitle:arr[indexPath.row] forState:UIControlStateNormal];
         [button setTitleColor:[UIColor colorWithRed:0 green:0.455 blue:0.851 alpha:1] forState:UIControlStateNormal];
+        [button setBackgroundImage:[PMConstants imageWithColor:[UIColor colorWithWhite:0.85 alpha:0.9]] forState:UIControlStateHighlighted];
         button.titleLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:17.0];
         [button addTarget:self action:@selector(contact:) forControlEvents:UIControlEventTouchUpInside];
         [cell addSubview:button];

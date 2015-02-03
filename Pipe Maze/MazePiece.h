@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PMConstants.h"
+#import "AppDelegate.h"
 
 @protocol MazePieceDelegate <NSObject>
 

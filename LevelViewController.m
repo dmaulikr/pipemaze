@@ -39,7 +39,7 @@
     
     sections = [worldDA0 getNumberOfWorlds]; //get the number of sections
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    self.navigationItem.title = @"Pipe Maze"; //set tint color and title
+    self.navigationItem.title = @"Pipeline"; //set tint color and title
 
     _bannerView = [[ADBannerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 50)];
     _bannerView.delegate = self;

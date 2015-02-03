@@ -19,6 +19,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.worldDAO = [[WorldDAO alloc] init];
+    self.pipeColor = [UIColor colorWithRed:0.18 green:0.356 blue:0.537 alpha:1.0];
+    self.blockColor = [UIColor colorWithRed:0.239 green:0.60 blue:0.439 alpha:1.0];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     [UIViewController prepareInterstitialAds];
     return YES;

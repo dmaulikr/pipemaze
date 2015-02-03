@@ -23,9 +23,11 @@
 
 @property (nonatomic, strong) UIView *straight;
 @property (nonatomic, strong) UIColor *pipeColor;
+@property (nonatomic, strong) UIColor *blockColor;
 @property (nonatomic) BOOL touchMoved;
 @property (nonatomic) BOOL longTouch;
 @property (nonatomic) BOOL deleteVisible;
+@property (nonatomic) BOOL deleteLongMoved;
 @property (nonatomic, strong) UILongPressGestureRecognizer *longGesture;
 @end
 
@@ -84,12 +86,15 @@
 #pragma mark - View Creators
 
 -(void)createView {
+    AppDelegate *app = [[UIApplication sharedApplication] delegate];
+    
     self.longGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longSelected:)];
     self.longGesture.minimumPressDuration = 0.3;
     [self addGestureRecognizer:self.longGesture];
     
     CGSize size = self.frame.size;
-    self.pipeColor = [UIColor colorWithRed:0.18 green:0.356 blue:0.537 alpha:1.0];
+    self.pipeColor = app.pipeColor;
+    self.blockColor = app.blockColor;
     
     switch (self.piece) {
         case MazePieceStraight:
@@ -165,7 +170,7 @@
 }
 
 -(void)createBlockView:(CGSize)size {
-    self.backgroundColor = [UIColor colorWithRed:0.239 green:0.60 blue:0.439 alpha:1.0];
+    self.backgroundColor = self.blockColor;
 }
 
 #pragma mark - Touch Recognizers
@@ -210,6 +215,14 @@
     [self deselect];
 }
 
+- (float)measureDistance:(UIGestureRecognizer *)gesture {
+    endTouch = [gesture locationInView:self.superview.superview];
+    float x = (originalTouch.x - endTouch.x)*(originalTouch.x - endTouch.x);
+    float y = (originalTouch.y - endTouch.y)*(originalTouch.y - endTouch.y);
+    float dist = sqrtf(x*x + y*y);
+    return dist;
+}
+
 -(void)longSelected:(UIGestureRecognizer *)gesture {
     
     if(![self.delegate mazePieceCanBeLongSelected:self]) {
@@ -251,15 +264,24 @@
         }
     }
     
-    else if(gesture.state == UIGestureRecognizerStateEnded && self.deleteVisible) {
+    else if(gesture.state == UIGestureRecognizerStateEnded && self.deleteVisible && !self.deleteLongMoved) {
         [self deletePiece];
     }
     
+    else if(gesture.state == UIGestureRecognizerStateChanged && self.deleteVisible) {
+        float dist;
+        dist = [self measureDistance:gesture];
+        if(dist > 10000) {
+            self.deleteLongMoved = YES;
+        }
+        else {
+            self.deleteLongMoved = NO;
+        }
+    }
+    
     else if(gesture.state == UIGestureRecognizerStateChanged && !self.deleteVisible){
-        endTouch = [gesture locationInView:self.superview.superview];
-        float x = (originalTouch.x - endTouch.x)*(originalTouch.x - endTouch.x);
-        float y = (originalTouch.y - endTouch.y)*(originalTouch.y - endTouch.y);
-        float dist = sqrtf(x*x + y*y);
+        float dist;
+        dist = [self measureDistance:gesture];
         if(dist > 10000) {
             self.longTouch = NO;
             [self deselect];

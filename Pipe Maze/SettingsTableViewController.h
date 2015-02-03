@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
+#import "PMConstants.h"
 
 @interface SettingsTableViewController : UITableViewController <UIAlertViewDelegate, MFMailComposeViewControllerDelegate>
 
