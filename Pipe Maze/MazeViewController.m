@@ -33,6 +33,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if(self.view.bounds.size.height == 480) {
+        [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    }
+    
+    else {
+        [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    }
     
     self.actionBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"more"] style:UIBarButtonItemStylePlain target:self action:@selector(showActionItems:)];
     self.pauseBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"pause"] style:UIBarButtonItemStylePlain target:self action:@selector(pauseGame)];
@@ -40,9 +47,9 @@
     
     self.navigationItem.leftBarButtonItem = self.pauseBarButtonItem;
     
-    if(self.view.bounds.size.height == 480) {
-        self.navigationItem.rightBarButtonItem = self.actionBarButtonItem;
-    }
+//    if(self.view.bounds.size.height == 480) {
+//        self.navigationItem.rightBarButtonItem = self.actionBarButtonItem;
+//    }
     
     
     self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - self.toolbar.bounds.size.height,self.view.bounds.size.width, 44)];
@@ -56,20 +63,15 @@
     
     CGFloat height = self.navigationController.navigationBar.frame.size.height;
     CGFloat width = self.view.bounds.size.width;
-    if(self.view.bounds.size.height != 480) {
+    
         self.toolbar.frame = CGRectMake(0, self.view.bounds.size.height, width, self.toolbar.bounds.size.height);
         toolbarVisible = NO;
-    }
-    else {
-        self.toolbar.frame = CGRectMake(0, self.view.bounds.size.height - self.toolbar.bounds.size.height, width, self.toolbar.bounds.size.height);
-        toolbarVisible = YES;
-    }
     
     if(self.view.bounds.size.height == 1024) //ipad
     {
         width = 700; //change width for ipad
     }
-    mazeView = [[MazeView alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2 - width/2, height +20, width, width)];
+    mazeView = [[MazeView alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2 - width/2, height + [UIApplication sharedApplication].statusBarFrame.size.height, width, width)];
     mazeView.delegate = self;
     
     //title view for navigation bar
@@ -98,7 +100,7 @@
     
     CGFloat pieceViewHeight = self.view.frame.size.height - mazeView.frame.origin.y - mazeView.frame.size.height - self.toolbar.frame.size.height;
     if(self.view.frame.size.height == 480) {
-        pieceViewHeight = self.view.frame.size.height - mazeView.frame.origin.y - mazeView.frame.size.height;
+        pieceViewHeight = self.view.frame.size.height - mazeView.frame.origin.y - mazeView.frame.size.height -44;
     }
     
     pieceFrame = [mazeView getPieceSize];
@@ -114,9 +116,9 @@
     [super viewDidAppear:animated];
     [self showActionItems:self];
     
-    if(self.view.bounds.size.height != 480) {
+//    if(self.view.bounds.size.height != 480) {
         toolbarVisible = NO;
-    }
+//    }
     manager = [[MazeManager alloc] initWithMaze:self.maze size:pieceFrame]; //create maze manager and load maze
     manager.delegate = self;
     [self setupBoard];
@@ -267,7 +269,7 @@
     temp = nil;
 }
 
-#pragma mark - Pause/Completed View Delegate methods
+#pragma mark - Custom View Delegate methods
 
 -(void)pauseviewDidDismiss {
     [UIView animateKeyframesWithDuration:0.25 delay:0 options:UIViewKeyframeAnimationOptionCalculationModeCubic animations:^{

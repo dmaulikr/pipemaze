@@ -11,6 +11,7 @@
 @interface TutorialViewController () {
     CGFloat spacing;
     UILabel *taskLabel;
+    NSArray *images;
 }
 
 @end
@@ -28,6 +29,21 @@
     taskLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:16.0];
     taskLabel.textColor = [UIColor blackColor];
     
+    NSArray *images4S = @[@"01start4S", @"02tap_piece4S", @"03place_piece4S", @"04rotate4S", @"05undo4S", @"06delete4S", @"07checkmaze4S", @"08completed4S", @"09allpieces4S", @"10alltouch4S", @"11error4S", @"12restart4S", @"13pause4S"];
+    
+    NSArray *images5 = @[@"01start", @"02tap_piece", @"03place_piece", @"04rotate", @"05undo", @"06delete", @"07checkmaze", @"08completed", @"09allpieces", @"10alltouch", @"11error", @"12restart", @"13pause"];
+    NSArray *imagesiPad = @[@"01startiPad", @"02tap_pieceiPad", @"03place_pieceiPad", @"04rotateiPad", @"05undoiPad", @"06deleteiPad", @"07checkmazeiPad", @"08completediPad", @"09allpiecesiPad", @"10alltouchiPad", @"11erroriPad", @"12restartiPad", @"13pauseiPad"];
+    if(self.view.bounds.size.height == 480) {
+        images = images4S;
+    }
+    
+    else if(self.view.bounds.size.height == 1024) {
+        images = imagesiPad;
+    }
+    
+    else {
+        images = images5;
+    }
     
     [self.view addSubview:taskLabel];
     // Do any additional setup after loading the view.
@@ -38,16 +54,14 @@
     // Dispose of any resources that can be recreated.
 }
 
--(BOOL)shouldAutorotate {
-    return NO;
-}
+#pragma mark - collection view delegate methods
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 13;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSArray *images = @[@"01start", @"02tap_piece", @"03place_piece", @"04rotate", @"05undo", @"06delete", @"07checkmaze", @"08completed", @"09allpieces", @"10alltouch", @"11error", @"12restart", @"13pause"];
+    
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     UIImageView *image = [[UIImageView alloc] initWithFrame:cell.bounds];
     image.image = [UIImage imageNamed:images[indexPath.section]];
@@ -71,13 +85,20 @@
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat width = self.view.bounds.size.width * 0.7;
-    spacing = 0.15;
-    if(self.view.bounds.size.height == 480){
-        width = self.view.bounds.size.width * 0.6;
-        spacing = 0.2;
-    }
+    CGFloat width = self.view.bounds.size.width * 0.75;
     CGFloat height = 1.7333 * width;
+    spacing = 0.125;
+    if(self.view.bounds.size.height == 480){
+        width = self.view.bounds.size.width * 0.65;
+        spacing = 0.175;
+        height = 1.5 * width;
+    }
+    
+    if(self.view.bounds.size.height == 1024) {
+        width = self.view.bounds.size.width * 0.8;
+        spacing = 0.1;
+        height = 1.333333 * width;
+    }
     return CGSizeMake(width, height);
 }
 
@@ -88,6 +109,8 @@
 -(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     return spacing * self.view.bounds.size.width;
 }
+
+#pragma mark - IBActions
 
 - (IBAction)goBack:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];

@@ -33,6 +33,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     ADInterstitialAd *ad = [[ADInterstitialAd alloc] init];
     ad.delegate = self;
     self.interstitialPresentationPolicy = ADInterstitialPresentationPolicyAutomatic;
@@ -77,6 +78,7 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
     transition = NO;
     adShown = NO;
     [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:0 green:0.117 blue:0.251 alpha:1]];

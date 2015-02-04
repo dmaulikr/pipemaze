@@ -58,7 +58,7 @@
     if(indexPath.section == 1) {
         if(indexPath.row == 0) {
             cell.textLabel.text = @"App Version";
-            cell.detailTextLabel.text = @"1.1";
+            cell.detailTextLabel.text = @"1.1 (3)";
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.textLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:17.0];
             cell.detailTextLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:17.0];
@@ -116,6 +116,37 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if(indexPath.section == 2){
+        NSArray *urls = @[@"http://www.facebook.com/pipemazegame", @"http://www.twitter.com/pipemazegame"];
+        NSURL *url = [NSURL URLWithString:urls[indexPath.row]];
+        if(indexPath.row == 0) {
+            if([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"fb://profile/359913157544722"]]){
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"fb://profile/359913157544722"]];
+            }
+            else {
+                [[UIApplication sharedApplication] openURL:url];
+            }
+        }
+        if(indexPath.row == 1) {
+            if([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"twitter://user?screen_name=pipemazegame"]]){
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"twitter://user?screen_name=pipemazegame"]];
+            }
+            else {
+                [[UIApplication sharedApplication] openURL:url];
+            }
+            
+        }
+    }
+    
+    if(indexPath.section == 1 && indexPath.row == 1) {
+        [self performSegueWithIdentifier:@"toTutorials" sender:self];
+    }
+}
+
+
+#pragma mark - Row Actions
 -(void)contact:(id)sender {
     if ([MFMailComposeViewController canSendMail])
     {
@@ -124,7 +155,6 @@
         MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
         mail.mailComposeDelegate = self;
         [mail setSubject:button.titleLabel.text];
-        //[mail setMessageBody:@"Here is some main text in the email!" isHTML:NO];
         [mail setToRecipients:@[@"pipemazegame@gmail.com"]];
         
         [self presentViewController:mail animated:YES completion:NULL];
@@ -150,34 +180,7 @@
 }
 
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if(indexPath.section == 2){
-        NSArray *urls = @[@"http://www.facebook.com/pipemazegame", @"http://www.twitter.com/pipemazegame"];
-        NSURL *url = [NSURL URLWithString:urls[indexPath.row]];
-        if(indexPath.row == 0) {
-            if([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"fb://profile/359913157544722"]]){
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"fb://profile/359913157544722"]];
-            }
-            else {
-                [[UIApplication sharedApplication] openURL:url];
-            }
-        }
-        if(indexPath.row == 1) {
-            if([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"twitter://user?screen_name=pipemazegame"]]){
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"twitter://user?screen_name=pipemazegame"]];
-            }
-            else {
-                [[UIApplication sharedApplication] openURL:url];
-            }
 
-        }
-    }
-    
-    if(indexPath.section == 1 && indexPath.row == 1) {
-        [self performSegueWithIdentifier:@"toTutorials" sender:self];
-    }
-}
 -(void)removeAllLevelData {
     WorldDAO *worldDA0 = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).worldDAO;
     [worldDA0 resetAllLevels];
