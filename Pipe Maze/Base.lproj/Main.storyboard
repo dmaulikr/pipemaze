@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="adM-Jg-rhx">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
@@ -110,6 +111,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Tutorial" id="S5J-1J-5RZ">
+                        <barButtonItem key="leftBarButtonItem" systemItem="play" id="gWi-IP-sce">
+                            <connections>
+                                <action selector="toggleSlideshow:" destination="oM9-Nv-cKE" id="3K5-wB-okA"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="got it!" id="pgr-Mc-v6L">
                             <connections>
                                 <action selector="goBack:" destination="oM9-Nv-cKE" id="DHK-Tx-JWu"/>
@@ -118,7 +124,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="jox-tj-3Tt" id="DEc-x0-Q3j"/>
+                        <outlet property="goBackButton" destination="pgr-Mc-v6L" id="fo4-bb-vAC"/>
                         <outlet property="pageControl" destination="OGc-gR-Yng" id="gYF-bK-yNe"/>
+                        <outlet property="slideShowButton" destination="gWi-IP-sce" id="hcS-dG-JuF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G7v-8Y-T0G" userLabel="First Responder" sceneMemberID="firstResponder"/>

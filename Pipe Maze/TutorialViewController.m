@@ -8,10 +8,17 @@
 
 #import "TutorialViewController.h"
 
+#define visited @"visited"
+
 @interface TutorialViewController () {
     CGFloat spacing;
     UILabel *taskLabel;
     NSArray *images;
+    NSArray *desc;
+    UIBarButtonItem *goBackBarButton;
+    BOOL isPlaying;
+    BOOL didEnd;
+    NSInteger index;
 }
 
 @end
@@ -20,32 +27,71 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.pageControl.numberOfPages = 13;
-    self.pageControl.currentPage = 0;
     
     taskLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, self.view.bounds.size.height -60, self.view.bounds.size.width - 20, 30)];
-    taskLabel.text = @"The goal is to complete the maze";
     taskLabel.textAlignment = NSTextAlignmentCenter;
     taskLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:16.0];
     taskLabel.textColor = [UIColor blackColor];
     
-    NSArray *images4S = @[@"01start4S", @"02tap_piece4S", @"03place_piece4S", @"04rotate4S", @"05undo4S", @"06delete4S", @"07checkmaze4S", @"08completed4S", @"09allpieces4S", @"10alltouch4S", @"11error4S", @"12restart4S", @"13pause4S"];
+    desc = @[@"the goal is to complete the maze", @"tap a piece to select it", @"then tap where you want to place it", @"tap the piece again to rotate it", @"you can undo a move if you please", @"or you can delete it by holding it down", @"touch the play button to check the maze", @"hopefully you get this screen", @"make sure all the pieces are used", @"and they all touch", @"or you'll get this screen", @"you can restart whenever you want", @"or pause if needed. have fun!", @"stars are based on time. faster the better"];
     
-    NSArray *images5 = @[@"01start", @"02tap_piece", @"03place_piece", @"04rotate", @"05undo", @"06delete", @"07checkmaze", @"08completed", @"09allpieces", @"10alltouch", @"11error", @"12restart", @"13pause"];
-    NSArray *imagesiPad = @[@"01startiPad", @"02tap_pieceiPad", @"03place_pieceiPad", @"04rotateiPad", @"05undoiPad", @"06deleteiPad", @"07checkmazeiPad", @"08completediPad", @"09allpiecesiPad", @"10alltouchiPad", @"11erroriPad", @"12restartiPad", @"13pauseiPad"];
-    if(self.view.bounds.size.height == 480) {
-        images = images4S;
+    NSArray *images4S = @[@"01start4S", @"02tap_piece4S", @"03place_piece4S", @"04rotate4S", @"05undo4S", @"06delete4S", @"07checkmaze4S", @"08completed4S", @"09allpieces4S", @"10alltouch4S", @"11error4S", @"12restart4S", @"13pause4S", @"13pause4S"];
+    NSArray *images5 = @[@"01start", @"02tap_piece", @"03place_piece", @"04rotate", @"05undo", @"06delete", @"07checkmaze", @"08completed", @"09allpieces", @"10alltouch", @"11error", @"12restart", @"13pause", @"13pause"];
+    NSArray *imagesiPad = @[@"01startiPad", @"02tap_pieceiPad", @"03place_pieceiPad", @"04rotateiPad", @"05undoiPad", @"06deleteiPad", @"07checkmazeiPad", @"08completediPad", @"09allpiecesiPad", @"10alltouchiPad", @"11erroriPad", @"12restartiPad", @"13pauseiPad", @"13pauseiPad"];
+    
+    
+    if(self.newSlideShow == true) {
+        self.navigationItem.title = @"What's New";
+        if(self.view.bounds.size.height == 480) {
+            images = @[@"06delete4S", @"13pause4S", @"13pause4S"];
+        }
+        else if(self.view.bounds.size.height == 1024) {
+            images = @[@"06deleteiPad", @"13pauseiPad", @"13pauseiPad"];
+        }
+        else {
+            images = @[@"06delete", @"13pause", @"13pause"];
+        }
+        desc = @[@"hold a piece down to delete it.", @"you can pause whenever you like", @"stars are based on time. faster the better"];
     }
-    
-    else if(self.view.bounds.size.height == 1024) {
-        images = imagesiPad;
-    }
-    
     else {
-        images = images5;
+        if(self.view.bounds.size.height == 480) {
+            images = images4S;
+        }
+        else if(self.view.bounds.size.height == 1024) {
+            images = imagesiPad;
+        }
+        else {
+            images = images5;
+        }
     }
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    BOOL seen = [userDefaults boolForKey:visited];
+    goBackBarButton = self.goBackButton;
+    if(!seen) {
+        self.navigationItem.rightBarButtonItem = nil;
+        [userDefaults setBool:YES forKey:visited];
+        [userDefaults synchronize];
+    }
+    
+    if(self.newSlideShow) {
+        self.navigationItem.rightBarButtonItem = nil;
+    }
+    
+    
+    self.pageControl.numberOfPages = images.count;
+    self.pageControl.currentPage = 0;
+    taskLabel.text = desc[0];
+    [self.navigationItem setHidesBackButton:YES];
+    
     
     [self.view addSubview:taskLabel];
+    isPlaying = NO;
+    didEnd = NO;
+    
+    index = 0;
+    NSTimer *timer = [NSTimer timerWithTimeInterval:3.0 target:self selector:@selector(nextSlide) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
     // Do any additional setup after loading the view.
 }
 
@@ -57,7 +103,7 @@
 #pragma mark - collection view delegate methods
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 13;
+    return images.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -73,11 +119,13 @@
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     NSArray *arr = [self.collectionView indexPathsForVisibleItems];
-    NSArray *desc = @[@"The goal is to complete the maze", @"Tap a piece to select it", @"Then tap where you want to place it", @"Tap the piece again to rotate it", @"You can undo a move if you please", @"Or you can delete it by holding it down", @"Touch the play button to check the maze", @"Hopefully you get this screen", @"Make sure all the pieces are used", @"And they all touch", @"Or you'll get this screen", @"You can restart whenever you want", @"Or pause if needed. Have fun!"];
-    self.pageControl.currentPage = ((NSIndexPath *)arr[0]).section;
-    taskLabel.text = desc[self.pageControl.currentPage];
-    taskLabel.minimumScaleFactor = 0.7;
-    taskLabel.adjustsFontSizeToFitWidth = YES;
+    index = ((NSIndexPath *)arr[0]).section;
+    [self updateTaskLabelAndPageControl];
+    
+    if(index == images.count -1) {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(toggleSlideshow:)];
+        didEnd = YES;
+    }
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -114,5 +162,55 @@
 
 - (IBAction)goBack:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+- (IBAction)toggleSlideshow:(id)sender {
+    if(isPlaying) {
+        isPlaying = NO;
+        self.collectionView.userInteractionEnabled = YES;
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(toggleSlideshow:)];
+    }
+    else if(!isPlaying && !didEnd) {
+        isPlaying = YES;
+        self.collectionView.userInteractionEnabled = NO;
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPause target:self action:@selector(toggleSlideshow:)];
+    }
+    
+    else if(didEnd) {
+        didEnd = NO;
+        self.collectionView.userInteractionEnabled = YES;
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(toggleSlideshow:)];
+        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+        index = 0;
+        [self updateTaskLabelAndPageControl];
+        
+    }
+}
+
+- (void)updateTaskLabelAndPageControl {
+    self.pageControl.currentPage = index;
+    taskLabel.text = desc[self.pageControl.currentPage];
+    taskLabel.minimumScaleFactor = 0.7;
+    taskLabel.adjustsFontSizeToFitWidth = YES;
+    
+    if(self.pageControl.currentPage == images.count -1) {
+        self.navigationItem.rightBarButtonItem = goBackBarButton;
+    }
+}
+
+-(void)nextSlide {
+    
+    if(isPlaying) {
+        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+        
+        [self updateTaskLabelAndPageControl];
+        index++;
+    }
+    
+    if(index == images.count) {
+        self.collectionView.userInteractionEnabled = YES;
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(toggleSlideshow:)];
+        didEnd = YES;
+        isPlaying = NO;
+    }
 }
 @end

@@ -34,7 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     if(self.view.bounds.size.height == 480) {
-        [[UIApplication sharedApplication] setStatusBarHidden:YES];
+        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     }
     
     else {
@@ -46,10 +46,6 @@
     
     
     self.navigationItem.leftBarButtonItem = self.pauseBarButtonItem;
-    
-//    if(self.view.bounds.size.height == 480) {
-//        self.navigationItem.rightBarButtonItem = self.actionBarButtonItem;
-//    }
     
     
     self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - self.toolbar.bounds.size.height,self.view.bounds.size.width, 44)];

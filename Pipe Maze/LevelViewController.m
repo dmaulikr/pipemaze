@@ -12,8 +12,10 @@
 #import "World.h"
 #import "MazeViewController.h"
 #import "LevelParser.h"
+#import "TutorialViewController.h"
 
 #define firstVisit @"firstVisit"
+#define firstVisit11 @"firstVisit11"
 
 @interface LevelViewController (){
     NSInteger sections; //number of sections in table view
@@ -25,6 +27,7 @@
     BOOL adShown; //boolean to tell if a full screen ad has been shown before
     ADBannerView *_rectView; //full screen ad
     UIView *fullBackground; //superview for full screen ad
+    BOOL newTutorial;
 }
 
 @end
@@ -69,8 +72,18 @@
     
     if(seen == 0) { //if not, show an alert prompting them to look at a tutorial
         [userDefaults setInteger:1 forKey:firstVisit];
+        [userDefaults setInteger:1 forKey:firstVisit11]; //first visit, don't need to show whats new.
         [userDefaults synchronize];
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"I see this is your first time playing the game" message:@"Do you want to take a tour before playing?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+        newTutorial = NO;
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"I see this is your first time playing the game" message:@"Check out a tour of the game before starting" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Okay", nil];
+        [alertView show];
+    }
+    NSInteger seen11 = [userDefaults integerForKey:firstVisit11];
+    if(seen11 == 0) {
+        [userDefaults setInteger:1 forKey:firstVisit11];
+        [userDefaults synchronize];
+        newTutorial = YES; //only show what's new
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"We've updated a lot of stuff!" message:@"Check it out here" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Okay", nil];
         [alertView show];
     }
 }
@@ -78,7 +91,7 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
     transition = NO;
     adShown = NO;
     [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:0 green:0.117 blue:0.251 alpha:1]];
@@ -165,7 +178,6 @@
 
 - (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
 {
-    //NSLog(@"%@ - %@", error.description, error.debugDescription);
     if(banner == _bannerView) {
         [UIView beginAnimations:@"animateAdBannerOff" context:NULL];
         banner.frame = CGRectOffset(banner.frame, 0, banner.frame.size.height);
@@ -187,15 +199,15 @@
 
 
 -(void)interstitialAd:(ADInterstitialAd *)interstitialAd didFailWithError:(NSError *)error {
-    //[self dismissViewControllerAnimated:NO completion:nil];
+    
 }
 
 -(void)interstitialAdDidUnload:(ADInterstitialAd *)interstitialAd {
-    //[self dismissViewControllerAnimated:NO completion:nil];
+   
 }
 
 -(void)interstitialAdActionDidFinish:(ADInterstitialAd *)interstitialAd {
-    //[self dismissViewControllerAnimated:NO completion:nil];
+   
 }
 
 #pragma mark - IBActions
@@ -284,6 +296,10 @@
 
 #pragma mark - navigation
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([segue.identifier isEqualToString:@"toTutorial"]){
+        TutorialViewController *vc = [segue destinationViewController];
+        vc.newSlideShow = newTutorial;
+    }
     if([segue.identifier isEqualToString:@"toMaze"]) {
         transition = YES;
         NSIndexPath *indexPath = (NSIndexPath *)sender;
@@ -299,9 +315,7 @@
 
 #pragma mark - alertview delegate
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if(buttonIndex == 1) {
-        [self performSegueWithIdentifier:@"toTutorial" sender:self];
-    }
+    [self performSegueWithIdentifier:@"toTutorial" sender:self];
 }
 
 
