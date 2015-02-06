@@ -74,9 +74,9 @@
         [userDefaults synchronize];
     }
     
-    if(self.newSlideShow) {
-        self.navigationItem.rightBarButtonItem = nil;
-    }
+//    if(self.newSlideShow) {
+//        self.navigationItem.rightBarButtonItem = nil;
+//    }
     
     
     self.pageControl.numberOfPages = images.count;
