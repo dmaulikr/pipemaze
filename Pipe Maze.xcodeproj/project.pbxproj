@@ -140,6 +140,54 @@
 		2EDBAF671A685E1F006566BD /* more.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDBAF641A685E1F006566BD /* more.png */; };
 		2EDBAF681A685E1F006566BD /* more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDBAF651A685E1F006566BD /* more@2x.png */; };
 		2EDBAF691A685E1F006566BD /* more@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDBAF661A685E1F006566BD /* more@3x.png */; };
+		2EEA17CC1A849F330039D622 /* level49.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA17C01A849F330039D622 /* level49.txt */; };
+		2EEA17CD1A849F330039D622 /* level50.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA17C11A849F330039D622 /* level50.txt */; };
+		2EEA17CE1A849F330039D622 /* level51.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA17C21A849F330039D622 /* level51.txt */; };
+		2EEA17CF1A849F330039D622 /* level52.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA17C31A849F330039D622 /* level52.txt */; };
+		2EEA17D01A849F330039D622 /* level53.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA17C41A849F330039D622 /* level53.txt */; };
+		2EEA17D11A849F330039D622 /* level54.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA17C51A849F330039D622 /* level54.txt */; };
+		2EEA17D21A849F330039D622 /* level55.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA17C61A849F330039D622 /* level55.txt */; };
+		2EEA17D31A849F330039D622 /* level56.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA17C71A849F330039D622 /* level56.txt */; };
+		2EEA17D41A849F330039D622 /* level57.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA17C81A849F330039D622 /* level57.txt */; };
+		2EEA17D51A849F330039D622 /* level58.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA17C91A849F330039D622 /* level58.txt */; };
+		2EEA17D61A849F330039D622 /* level59.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA17CA1A849F330039D622 /* level59.txt */; };
+		2EEA17D71A849F330039D622 /* level60.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA17CB1A849F330039D622 /* level60.txt */; };
+		2EEA17E41A84A2020039D622 /* level61.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA17D81A84A2020039D622 /* level61.txt */; };
+		2EEA17E51A84A2020039D622 /* level62.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA17D91A84A2020039D622 /* level62.txt */; };
+		2EEA17E61A84A2020039D622 /* level63.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA17DA1A84A2020039D622 /* level63.txt */; };
+		2EEA17E71A84A2020039D622 /* level64.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA17DB1A84A2020039D622 /* level64.txt */; };
+		2EEA17E81A84A2020039D622 /* level65.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA17DC1A84A2020039D622 /* level65.txt */; };
+		2EEA17E91A84A2020039D622 /* level66.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA17DD1A84A2020039D622 /* level66.txt */; };
+		2EEA17EA1A84A2020039D622 /* level67.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA17DE1A84A2020039D622 /* level67.txt */; };
+		2EEA17EB1A84A2020039D622 /* level68.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA17DF1A84A2020039D622 /* level68.txt */; };
+		2EEA17EC1A84A2020039D622 /* level69.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA17E01A84A2020039D622 /* level69.txt */; };
+		2EEA17ED1A84A2020039D622 /* level70.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA17E11A84A2020039D622 /* level70.txt */; };
+		2EEA17EE1A84A2020039D622 /* level71.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA17E21A84A2020039D622 /* level71.txt */; };
+		2EEA17EF1A84A2020039D622 /* level73.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA17E31A84A2020039D622 /* level73.txt */; };
+		2EEA17F11A84A2ED0039D622 /* level72.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA17F01A84A2ED0039D622 /* level72.txt */; };
+		2EEA17FD1A84A57E0039D622 /* level74.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA17F21A84A57E0039D622 /* level74.txt */; };
+		2EEA17FE1A84A57E0039D622 /* level75.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA17F31A84A57E0039D622 /* level75.txt */; };
+		2EEA17FF1A84A57E0039D622 /* level76.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA17F41A84A57E0039D622 /* level76.txt */; };
+		2EEA18001A84A57E0039D622 /* level77.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA17F51A84A57E0039D622 /* level77.txt */; };
+		2EEA18011A84A57E0039D622 /* level78.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA17F61A84A57E0039D622 /* level78.txt */; };
+		2EEA18021A84A57E0039D622 /* level79.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA17F71A84A57E0039D622 /* level79.txt */; };
+		2EEA18031A84A57E0039D622 /* level80.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA17F81A84A57E0039D622 /* level80.txt */; };
+		2EEA18041A84A57E0039D622 /* level81.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA17F91A84A57E0039D622 /* level81.txt */; };
+		2EEA18051A84A57E0039D622 /* level82.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA17FA1A84A57E0039D622 /* level82.txt */; };
+		2EEA18061A84A57E0039D622 /* level83.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA17FB1A84A57E0039D622 /* level83.txt */; };
+		2EEA18071A84A57E0039D622 /* level84.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA17FC1A84A57E0039D622 /* level84.txt */; };
+		2EEA18141A84A8AF0039D622 /* level85.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA18081A84A8AF0039D622 /* level85.txt */; };
+		2EEA18151A84A8AF0039D622 /* level86.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA18091A84A8AF0039D622 /* level86.txt */; };
+		2EEA18161A84A8AF0039D622 /* level87.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA180A1A84A8AF0039D622 /* level87.txt */; };
+		2EEA18171A84A8AF0039D622 /* level88.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA180B1A84A8AF0039D622 /* level88.txt */; };
+		2EEA18181A84A8AF0039D622 /* level89.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA180C1A84A8AF0039D622 /* level89.txt */; };
+		2EEA18191A84A8AF0039D622 /* level90.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA180D1A84A8AF0039D622 /* level90.txt */; };
+		2EEA181A1A84A8AF0039D622 /* level91.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA180E1A84A8AF0039D622 /* level91.txt */; };
+		2EEA181B1A84A8AF0039D622 /* level92.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA180F1A84A8AF0039D622 /* level92.txt */; };
+		2EEA181C1A84A8AF0039D622 /* level93.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA18101A84A8AF0039D622 /* level93.txt */; };
+		2EEA181D1A84A8AF0039D622 /* level94.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA18111A84A8AF0039D622 /* level94.txt */; };
+		2EEA181E1A84A8AF0039D622 /* level95.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA18121A84A8AF0039D622 /* level95.txt */; };
+		2EEA181F1A84A8AF0039D622 /* level96.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2EEA18131A84A8AF0039D622 /* level96.txt */; };
 		2EF629E71A7F0BB100ACBC70 /* 01start.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EF629DB1A7F0BB100ACBC70 /* 01start.png */; };
 		2EF629E81A7F0BB100ACBC70 /* 02tap_piece.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EF629DC1A7F0BB100ACBC70 /* 02tap_piece.png */; };
 		2EF629E91A7F0BB100ACBC70 /* 03place_piece.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EF629DD1A7F0BB100ACBC70 /* 03place_piece.png */; };
@@ -328,6 +376,54 @@
 		2EDBAF641A685E1F006566BD /* more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = more.png; path = images/more.png; sourceTree = "<group>"; };
 		2EDBAF651A685E1F006566BD /* more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "more@2x.png"; path = "images/more@2x.png"; sourceTree = "<group>"; };
 		2EDBAF661A685E1F006566BD /* more@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "more@3x.png"; path = "images/more@3x.png"; sourceTree = "<group>"; };
+		2EEA17C01A849F330039D622 /* level49.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level49.txt; path = levels/level49.txt; sourceTree = "<group>"; };
+		2EEA17C11A849F330039D622 /* level50.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level50.txt; path = levels/level50.txt; sourceTree = "<group>"; };
+		2EEA17C21A849F330039D622 /* level51.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level51.txt; path = levels/level51.txt; sourceTree = "<group>"; };
+		2EEA17C31A849F330039D622 /* level52.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level52.txt; path = levels/level52.txt; sourceTree = "<group>"; };
+		2EEA17C41A849F330039D622 /* level53.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level53.txt; path = levels/level53.txt; sourceTree = "<group>"; };
+		2EEA17C51A849F330039D622 /* level54.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level54.txt; path = levels/level54.txt; sourceTree = "<group>"; };
+		2EEA17C61A849F330039D622 /* level55.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level55.txt; path = levels/level55.txt; sourceTree = "<group>"; };
+		2EEA17C71A849F330039D622 /* level56.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level56.txt; path = levels/level56.txt; sourceTree = "<group>"; };
+		2EEA17C81A849F330039D622 /* level57.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level57.txt; path = levels/level57.txt; sourceTree = "<group>"; };
+		2EEA17C91A849F330039D622 /* level58.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level58.txt; path = levels/level58.txt; sourceTree = "<group>"; };
+		2EEA17CA1A849F330039D622 /* level59.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level59.txt; path = levels/level59.txt; sourceTree = "<group>"; };
+		2EEA17CB1A849F330039D622 /* level60.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level60.txt; path = levels/level60.txt; sourceTree = "<group>"; };
+		2EEA17D81A84A2020039D622 /* level61.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level61.txt; path = levels/level61.txt; sourceTree = "<group>"; };
+		2EEA17D91A84A2020039D622 /* level62.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level62.txt; path = levels/level62.txt; sourceTree = "<group>"; };
+		2EEA17DA1A84A2020039D622 /* level63.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level63.txt; path = levels/level63.txt; sourceTree = "<group>"; };
+		2EEA17DB1A84A2020039D622 /* level64.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level64.txt; path = levels/level64.txt; sourceTree = "<group>"; };
+		2EEA17DC1A84A2020039D622 /* level65.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level65.txt; path = levels/level65.txt; sourceTree = "<group>"; };
+		2EEA17DD1A84A2020039D622 /* level66.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level66.txt; path = levels/level66.txt; sourceTree = "<group>"; };
+		2EEA17DE1A84A2020039D622 /* level67.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level67.txt; path = levels/level67.txt; sourceTree = "<group>"; };
+		2EEA17DF1A84A2020039D622 /* level68.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level68.txt; path = levels/level68.txt; sourceTree = "<group>"; };
+		2EEA17E01A84A2020039D622 /* level69.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level69.txt; path = levels/level69.txt; sourceTree = "<group>"; };
+		2EEA17E11A84A2020039D622 /* level70.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level70.txt; path = levels/level70.txt; sourceTree = "<group>"; };
+		2EEA17E21A84A2020039D622 /* level71.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level71.txt; path = levels/level71.txt; sourceTree = "<group>"; };
+		2EEA17E31A84A2020039D622 /* level73.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level73.txt; path = levels/level73.txt; sourceTree = "<group>"; };
+		2EEA17F01A84A2ED0039D622 /* level72.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level72.txt; path = levels/level72.txt; sourceTree = "<group>"; };
+		2EEA17F21A84A57E0039D622 /* level74.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level74.txt; path = levels/level74.txt; sourceTree = "<group>"; };
+		2EEA17F31A84A57E0039D622 /* level75.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level75.txt; path = levels/level75.txt; sourceTree = "<group>"; };
+		2EEA17F41A84A57E0039D622 /* level76.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level76.txt; path = levels/level76.txt; sourceTree = "<group>"; };
+		2EEA17F51A84A57E0039D622 /* level77.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level77.txt; path = levels/level77.txt; sourceTree = "<group>"; };
+		2EEA17F61A84A57E0039D622 /* level78.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level78.txt; path = levels/level78.txt; sourceTree = "<group>"; };
+		2EEA17F71A84A57E0039D622 /* level79.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level79.txt; path = levels/level79.txt; sourceTree = "<group>"; };
+		2EEA17F81A84A57E0039D622 /* level80.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level80.txt; path = levels/level80.txt; sourceTree = "<group>"; };
+		2EEA17F91A84A57E0039D622 /* level81.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level81.txt; path = levels/level81.txt; sourceTree = "<group>"; };
+		2EEA17FA1A84A57E0039D622 /* level82.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level82.txt; path = levels/level82.txt; sourceTree = "<group>"; };
+		2EEA17FB1A84A57E0039D622 /* level83.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level83.txt; path = levels/level83.txt; sourceTree = "<group>"; };
+		2EEA17FC1A84A57E0039D622 /* level84.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level84.txt; path = levels/level84.txt; sourceTree = "<group>"; };
+		2EEA18081A84A8AF0039D622 /* level85.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level85.txt; path = levels/level85.txt; sourceTree = "<group>"; };
+		2EEA18091A84A8AF0039D622 /* level86.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level86.txt; path = levels/level86.txt; sourceTree = "<group>"; };
+		2EEA180A1A84A8AF0039D622 /* level87.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level87.txt; path = levels/level87.txt; sourceTree = "<group>"; };
+		2EEA180B1A84A8AF0039D622 /* level88.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level88.txt; path = levels/level88.txt; sourceTree = "<group>"; };
+		2EEA180C1A84A8AF0039D622 /* level89.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level89.txt; path = levels/level89.txt; sourceTree = "<group>"; };
+		2EEA180D1A84A8AF0039D622 /* level90.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level90.txt; path = levels/level90.txt; sourceTree = "<group>"; };
+		2EEA180E1A84A8AF0039D622 /* level91.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level91.txt; path = levels/level91.txt; sourceTree = "<group>"; };
+		2EEA180F1A84A8AF0039D622 /* level92.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level92.txt; path = levels/level92.txt; sourceTree = "<group>"; };
+		2EEA18101A84A8AF0039D622 /* level93.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level93.txt; path = levels/level93.txt; sourceTree = "<group>"; };
+		2EEA18111A84A8AF0039D622 /* level94.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level94.txt; path = levels/level94.txt; sourceTree = "<group>"; };
+		2EEA18121A84A8AF0039D622 /* level95.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level95.txt; path = levels/level95.txt; sourceTree = "<group>"; };
+		2EEA18131A84A8AF0039D622 /* level96.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level96.txt; path = levels/level96.txt; sourceTree = "<group>"; };
 		2EF629DB1A7F0BB100ACBC70 /* 01start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 01start.png; path = images/tutorials/01start.png; sourceTree = "<group>"; };
 		2EF629DC1A7F0BB100ACBC70 /* 02tap_piece.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 02tap_piece.png; path = images/tutorials/02tap_piece.png; sourceTree = "<group>"; };
 		2EF629DD1A7F0BB100ACBC70 /* 03place_piece.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 03place_piece.png; path = images/tutorials/03place_piece.png; sourceTree = "<group>"; };
@@ -544,6 +640,54 @@
 				2EC8CB6A1A7342EA00A3A45C /* level46.txt */,
 				2EC8CB6B1A7342EA00A3A45C /* level47.txt */,
 				2EC8CB6C1A7342EA00A3A45C /* level48.txt */,
+				2EEA17C01A849F330039D622 /* level49.txt */,
+				2EEA17C11A849F330039D622 /* level50.txt */,
+				2EEA17C21A849F330039D622 /* level51.txt */,
+				2EEA17C31A849F330039D622 /* level52.txt */,
+				2EEA17C41A849F330039D622 /* level53.txt */,
+				2EEA17C51A849F330039D622 /* level54.txt */,
+				2EEA17C61A849F330039D622 /* level55.txt */,
+				2EEA17C71A849F330039D622 /* level56.txt */,
+				2EEA17C81A849F330039D622 /* level57.txt */,
+				2EEA17C91A849F330039D622 /* level58.txt */,
+				2EEA17CA1A849F330039D622 /* level59.txt */,
+				2EEA17CB1A849F330039D622 /* level60.txt */,
+				2EEA17D81A84A2020039D622 /* level61.txt */,
+				2EEA17D91A84A2020039D622 /* level62.txt */,
+				2EEA17DA1A84A2020039D622 /* level63.txt */,
+				2EEA17DB1A84A2020039D622 /* level64.txt */,
+				2EEA17DC1A84A2020039D622 /* level65.txt */,
+				2EEA17DD1A84A2020039D622 /* level66.txt */,
+				2EEA17DE1A84A2020039D622 /* level67.txt */,
+				2EEA17DF1A84A2020039D622 /* level68.txt */,
+				2EEA17E01A84A2020039D622 /* level69.txt */,
+				2EEA17E11A84A2020039D622 /* level70.txt */,
+				2EEA17E21A84A2020039D622 /* level71.txt */,
+				2EEA17F01A84A2ED0039D622 /* level72.txt */,
+				2EEA17E31A84A2020039D622 /* level73.txt */,
+				2EEA17F21A84A57E0039D622 /* level74.txt */,
+				2EEA17F31A84A57E0039D622 /* level75.txt */,
+				2EEA17F41A84A57E0039D622 /* level76.txt */,
+				2EEA17F51A84A57E0039D622 /* level77.txt */,
+				2EEA17F61A84A57E0039D622 /* level78.txt */,
+				2EEA17F71A84A57E0039D622 /* level79.txt */,
+				2EEA17F81A84A57E0039D622 /* level80.txt */,
+				2EEA17F91A84A57E0039D622 /* level81.txt */,
+				2EEA17FA1A84A57E0039D622 /* level82.txt */,
+				2EEA17FB1A84A57E0039D622 /* level83.txt */,
+				2EEA17FC1A84A57E0039D622 /* level84.txt */,
+				2EEA18081A84A8AF0039D622 /* level85.txt */,
+				2EEA18091A84A8AF0039D622 /* level86.txt */,
+				2EEA180A1A84A8AF0039D622 /* level87.txt */,
+				2EEA180B1A84A8AF0039D622 /* level88.txt */,
+				2EEA180C1A84A8AF0039D622 /* level89.txt */,
+				2EEA180D1A84A8AF0039D622 /* level90.txt */,
+				2EEA180E1A84A8AF0039D622 /* level91.txt */,
+				2EEA180F1A84A8AF0039D622 /* level92.txt */,
+				2EEA18101A84A8AF0039D622 /* level93.txt */,
+				2EEA18111A84A8AF0039D622 /* level94.txt */,
+				2EEA18121A84A8AF0039D622 /* level95.txt */,
+				2EEA18131A84A8AF0039D622 /* level96.txt */,
 			);
 			name = levels;
 			sourceTree = "<group>";
@@ -765,37 +909,54 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E61FCC31A68717700364C5E /* level1.txt in Resources */,
+				2EEA181F1A84A8AF0039D622 /* level96.txt in Resources */,
 				2EC8CB621A73210900A3A45C /* level38.txt in Resources */,
 				2EC10B111A7085940096716D /* level12.txt in Resources */,
 				2EC10B281A70ADBB0096716D /* level22.txt in Resources */,
 				2EF629F91A7F0EE000ACBC70 /* 13pause.png in Resources */,
+				2EEA17EE1A84A2020039D622 /* level71.txt in Resources */,
 				2EC8CB771A741D8800A3A45C /* facebook.png in Resources */,
+				2EEA17EF1A84A2020039D622 /* level73.txt in Resources */,
 				2E7ACED21A6B58E0002499C5 /* lock.png in Resources */,
 				2EC10B271A70ADBB0096716D /* level21.txt in Resources */,
+				2EEA17CF1A849F330039D622 /* level52.txt in Resources */,
+				2EEA18001A84A57E0039D622 /* level77.txt in Resources */,
 				2EC10B0D1A7083100096716D /* level10.txt in Resources */,
+				2EEA17D71A849F330039D622 /* level60.txt in Resources */,
+				2EEA18031A84A57E0039D622 /* level80.txt in Resources */,
 				2EF629EC1A7F0BB100ACBC70 /* 06delete.png in Resources */,
 				2EC10B131A7087250096716D /* level13.txt in Resources */,
+				2EEA17E71A84A2020039D622 /* level64.txt in Resources */,
 				2EDBAF691A685E1F006566BD /* more@3x.png in Resources */,
 				2EC8CB6F1A7342EA00A3A45C /* level44.txt in Resources */,
 				2E5B4FBD1A82D31E00C9D793 /* 09allpiecesiPad.png in Resources */,
+				2EEA181D1A84A8AF0039D622 /* level94.txt in Resources */,
 				2E61FCEB1A6B2A0200364C5E /* star@2x.png in Resources */,
+				2EEA17F11A84A2ED0039D622 /* level72.txt in Resources */,
 				2EC0D0981A82CD9B001A369D /* 03place_piece4S.png in Resources */,
 				2E7ACEE81A6B60B6002499C5 /* level5.txt in Resources */,
 				2EC8CB781A741D8800A3A45C /* facebook@2x.png in Resources */,
+				2EEA181E1A84A8AF0039D622 /* level95.txt in Resources */,
+				2EEA17EB1A84A2020039D622 /* level68.txt in Resources */,
 				2EC0D0A11A82CD9B001A369D /* 12restart4S.png in Resources */,
 				2E0DD68E1A6459B90076C5B6 /* Main.storyboard in Resources */,
 				2EDBAF4A1A65ADD2006566BD /* settings.png in Resources */,
 				2EC10B151A7088720096716D /* level14.txt in Resources */,
+				2EEA181B1A84A8AF0039D622 /* level92.txt in Resources */,
 				2E7ACED41A6B58E0002499C5 /* lock@3x.png in Resources */,
 				2E5B4FBB1A82D31E00C9D793 /* 07checkmazeiPad.png in Resources */,
 				2EDBAF671A685E1F006566BD /* more.png in Resources */,
 				2EC10B261A70ADBB0096716D /* level20.txt in Resources */,
 				2EC0D0971A82CD9B001A369D /* 02tap_piece4S.png in Resources */,
 				2EC10B1C1A70A3230096716D /* level16.txt in Resources */,
+				2EEA17CD1A849F330039D622 /* level50.txt in Resources */,
 				2EF629F01A7F0BB100ACBC70 /* 10alltouch.png in Resources */,
+				2EEA17D61A849F330039D622 /* level59.txt in Resources */,
+				2EEA18071A84A57E0039D622 /* level84.txt in Resources */,
 				2EC0D09E1A82CD9B001A369D /* 09allpieces4S.png in Resources */,
 				2EDBAF4E1A65ADD2006566BD /* undo@3x.png in Resources */,
 				2EF629EB1A7F0BB100ACBC70 /* 05undo.png in Resources */,
+				2EEA17E91A84A2020039D622 /* level66.txt in Resources */,
 				2E5B4FBA1A82D31E00C9D793 /* 06deleteiPad.png in Resources */,
 				2EC8CB4F1A72FEDA00A3A45C /* level27.txt in Resources */,
 				2EC10B251A70ADBB0096716D /* level19.txt in Resources */,
@@ -805,31 +966,46 @@
 				2E5B4FBE1A82D31E00C9D793 /* 10alltouchiPad.png in Resources */,
 				2EC8CB531A72FEDA00A3A45C /* level31.txt in Resources */,
 				2EC8CB7F1A741D9500A3A45C /* twitter@3x.png in Resources */,
+				2EEA17D11A849F330039D622 /* level54.txt in Resources */,
 				2EC8CB7E1A741D9500A3A45C /* twitter@2x.png in Resources */,
 				2EDBAF4D1A65ADD2006566BD /* undo@2x.png in Resources */,
 				2EC8CB611A73210900A3A45C /* level37.txt in Resources */,
+				2EEA17FF1A84A57E0039D622 /* level76.txt in Resources */,
 				2EC10B0F1A7084440096716D /* level11.txt in Resources */,
+				2EEA17D01A849F330039D622 /* level53.txt in Resources */,
+				2EEA17D41A849F330039D622 /* level57.txt in Resources */,
 				2EDBAF4C1A65ADD2006566BD /* undo.png in Resources */,
 				2EC0D0961A82CD9B001A369D /* 01start4S.png in Resources */,
 				2EC8CB5A1A731D9200A3A45C /* level35.txt in Resources */,
+				2EEA17FE1A84A57E0039D622 /* level75.txt in Resources */,
 				2EDBAF441A659C4A006566BD /* settings@2x.png in Resources */,
+				2EEA18051A84A57E0039D622 /* level82.txt in Resources */,
 				2EF629ED1A7F0BB100ACBC70 /* 07checkmaze.png in Resources */,
+				2EEA17CC1A849F330039D622 /* level49.txt in Resources */,
+				2EEA17D21A849F330039D622 /* level55.txt in Resources */,
+				2EEA17D51A849F330039D622 /* level58.txt in Resources */,
 				2EC8CB731A7342EA00A3A45C /* level48.txt in Resources */,
+				2EEA18191A84A8AF0039D622 /* level90.txt in Resources */,
 				2EC8CB701A7342EA00A3A45C /* level45.txt in Resources */,
 				2E5B4FB81A82D31E00C9D793 /* 04rotateiPad.png in Resources */,
 				2EC8CB4E1A72FEDA00A3A45C /* level26.txt in Resources */,
 				2EC0D09B1A82CD9B001A369D /* 06delete4S.png in Resources */,
 				2EC8CB551A72FEDA00A3A45C /* level33.txt in Resources */,
 				2EC10B2B1A70B0F00096716D /* level23.txt in Resources */,
+				2EEA17EC1A84A2020039D622 /* level69.txt in Resources */,
 				2E5B4FB61A82D31E00C9D793 /* 02tap_pieceiPad.png in Resources */,
 				2E0DD6B71A64907D0076C5B6 /* star.png in Resources */,
 				2EC10B201A70A5920096716D /* level18.txt in Resources */,
 				2EC8CB5B1A731D9200A3A45C /* level36.txt in Resources */,
 				2EF629EF1A7F0BB100ACBC70 /* 09allpieces.png in Resources */,
+				2EEA17E41A84A2020039D622 /* level61.txt in Resources */,
 				2EC8CB721A7342EA00A3A45C /* level47.txt in Resources */,
 				2EC0D0A21A82CD9B001A369D /* 13pause4S.png in Resources */,
+				2EEA18141A84A8AF0039D622 /* level85.txt in Resources */,
 				2EF629E71A7F0BB100ACBC70 /* 01start.png in Resources */,
+				2EEA181A1A84A8AF0039D622 /* level91.txt in Resources */,
 				2EC10B1A1A709EFE0096716D /* level15.txt in Resources */,
+				2EEA18041A84A57E0039D622 /* level81.txt in Resources */,
 				2EF629E81A7F0BB100ACBC70 /* 02tap_piece.png in Resources */,
 				2E0DD6BC1A6492220076C5B6 /* starhighlighted.png in Resources */,
 				2E61FCED1A6B2A0200364C5E /* starhighlighted@2x.png in Resources */,
@@ -837,23 +1013,34 @@
 				2EF629E91A7F0BB100ACBC70 /* 03place_piece.png in Resources */,
 				2E0DD6931A6459B90076C5B6 /* LaunchScreen.xib in Resources */,
 				2E7ACED31A6B58E0002499C5 /* lock@2x.png in Resources */,
+				2EEA17D31A849F330039D622 /* level56.txt in Resources */,
 				2EC8CB641A73210900A3A45C /* level40.txt in Resources */,
 				2E61FCEC1A6B2A0200364C5E /* star@3x.png in Resources */,
 				2EC0D09A1A82CD9B001A369D /* 05undo4S.png in Resources */,
 				2E5B4FB91A82D31E00C9D793 /* 05undoiPad.png in Resources */,
+				2EEA17ED1A84A2020039D622 /* level70.txt in Resources */,
+				2EEA17E81A84A2020039D622 /* level65.txt in Resources */,
+				2EEA181C1A84A8AF0039D622 /* level93.txt in Resources */,
+				2EEA17FD1A84A57E0039D622 /* level74.txt in Resources */,
+				2EEA17CE1A849F330039D622 /* level51.txt in Resources */,
 				2E14DDD11A7B7BF800939D37 /* pause.png in Resources */,
 				2EC10B0B1A70817B0096716D /* level9.txt in Resources */,
+				2EEA18061A84A57E0039D622 /* level83.txt in Resources */,
 				2EC0D09C1A82CD9B001A369D /* 07checkmaze4S.png in Resources */,
 				2EF629F51A7F0EC700ACBC70 /* 11error.png in Resources */,
 				2EC8CB6D1A7342EA00A3A45C /* level42.txt in Resources */,
 				2EC8CB7D1A741D9500A3A45C /* twitter.png in Resources */,
 				2EC8CB711A7342EA00A3A45C /* level46.txt in Resources */,
+				2EEA18181A84A8AF0039D622 /* level89.txt in Resources */,
 				2E61FCEE1A6B2A0200364C5E /* starhighlighted@3x.png in Resources */,
 				2EC10B2E1A7172910096716D /* level25.txt in Resources */,
 				2E5B4FC01A82D31E00C9D793 /* 12restartiPad.png in Resources */,
 				2E7ACEE41A6B5EBE002499C5 /* level3.txt in Resources */,
 				2EDBAF4B1A65ADD2006566BD /* settings@3x.png in Resources */,
 				2EC0D09D1A82CD9B001A369D /* 08completed4S.png in Resources */,
+				2EEA17E51A84A2020039D622 /* level62.txt in Resources */,
+				2EEA18151A84A8AF0039D622 /* level86.txt in Resources */,
+				2EEA18161A84A8AF0039D622 /* level87.txt in Resources */,
 				2EC8CB791A741D8800A3A45C /* facebook@3x.png in Resources */,
 				2E7ACEEA1A6B6141002499C5 /* level6.txt in Resources */,
 				2E5B4FBF1A82D31E00C9D793 /* 11erroriPad.png in Resources */,
@@ -875,11 +1062,16 @@
 				2EF629EE1A7F0BB100ACBC70 /* 08completed.png in Resources */,
 				2E14DDD21A7B7BF800939D37 /* pause@2x.png in Resources */,
 				2EC8CB511A72FEDA00A3A45C /* level29.txt in Resources */,
+				2EEA18171A84A8AF0039D622 /* level88.txt in Resources */,
 				2EC8CB6E1A7342EA00A3A45C /* level43.txt in Resources */,
 				2EC8CB541A72FEDA00A3A45C /* level32.txt in Resources */,
 				2EC8CB501A72FEDA00A3A45C /* level28.txt in Resources */,
 				2EC8CB521A72FEDA00A3A45C /* level30.txt in Resources */,
 				2EC8CB591A731D9200A3A45C /* level34.txt in Resources */,
+				2EEA17E61A84A2020039D622 /* level63.txt in Resources */,
+				2EEA17EA1A84A2020039D622 /* level67.txt in Resources */,
+				2EEA18021A84A57E0039D622 /* level79.txt in Resources */,
+				2EEA18011A84A57E0039D622 /* level78.txt in Resources */,
 				2EDBAF681A685E1F006566BD /* more@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
