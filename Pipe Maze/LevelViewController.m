@@ -25,8 +25,6 @@
     BOOL _bannerIsVisible; //boolean to tell whether the banner is visible or not
     BOOL firstLoad; //boolean to tell if this is the first time the view is loaded (app start)
     BOOL adShown; //boolean to tell if a full screen ad has been shown before
-    ADBannerView *_rectView; //full screen ad
-    UIView *fullBackground; //superview for full screen ad
     BOOL newTutorial;
 }
 
@@ -48,23 +46,6 @@
     _bannerView = [[ADBannerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 50)];
     _bannerView.delegate = self;
     self.canDisplayBannerAds = YES; //set up banner ad at the bototm of subview
-    
-    fullBackground = [[UIView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height - 64)];
-    UIVisualEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-    UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-    effectView.frame = fullBackground.bounds;
-    fullBackground.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.1];
-    [fullBackground addSubview:effectView]; //sets up view for full screen ads
-    
-    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(15, 15, 30, 30)];
-    [button setTitle:@"X" forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor colorWithRed:0 green:0.117 blue:0.251 alpha:1] forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(hideRectAd) forControlEvents:UIControlEventTouchUpInside];
-    [fullBackground addSubview:button]; //adds cancel button for full screen ad
-
-    
-    _rectView = [[ADBannerView alloc] initWithAdType:ADAdTypeMediumRectangle];
-    _rectView.delegate = self; //create ad for full screen ads
     
     firstLoad = YES; //says that it is app startup
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -164,16 +145,6 @@
             _bannerIsVisible = YES;
         }
     }
-    else {
-        if(!adShown) { //show full screen ad
-            UIView *view = [[UIView alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2 - 150, self.view.bounds.size.height/2 - 170, 300, 250)];
-            view.backgroundColor = [UIColor whiteColor];
-            [fullBackground addSubview:view];
-            [view addSubview:_rectView];
-            [self.view addSubview:fullBackground];
-            [self.view bringSubviewToFront:fullBackground];
-        }
-    }
 }
 
 - (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
@@ -186,15 +157,8 @@
         
         _bannerIsVisible = NO;
     }
-    else { //remove full screen ad
-        [fullBackground removeFromSuperview];
-    }
 }
 
--(void)hideRectAd {
-    adShown = YES;
-    [fullBackground removeFromSuperview];
-}
 
 
 
