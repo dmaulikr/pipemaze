@@ -32,7 +32,7 @@
 
 -(NSInteger)computeStars:(NSInteger)time;
 -(NSInteger)timeForStar:(NSInteger)star;
-
++(NSInteger)computeStars:(NSInteger)time forMaze:(Maze *)maze;
 
 @property id<MazeManagerDelegate> delegate;
 

@@ -34,7 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    worldDA0 = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).worldDAO;
     ADInterstitialAd *ad = [[ADInterstitialAd alloc] init];
     ad.delegate = self;
     self.interstitialPresentationPolicy = ADInterstitialPresentationPolicyAutomatic;
@@ -42,7 +42,9 @@
     sections = [worldDA0 getNumberOfWorlds]; //get the number of sections
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationItem.title = @"Pipeline"; //set tint color and title
-
+    
+    [worldDA0 normalizeStars]; //normalizes the stars in case i change the times
+    
     _bannerView = [[ADBannerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 50)];
     _bannerView.delegate = self;
     self.canDisplayBannerAds = YES; //set up banner ad at the bototm of subview
@@ -76,7 +78,7 @@
     transition = NO;
     adShown = NO;
     [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:0 green:0.117 blue:0.251 alpha:1]];
-    worldDA0 = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).worldDAO; //set bar color to navy and get the DAO object
+    //set bar color to navy and get the DAO object
     
     BOOL unlocked = false;
     BOOL completed = true;

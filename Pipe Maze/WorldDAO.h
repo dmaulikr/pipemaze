@@ -22,4 +22,6 @@
 -(void)updateLevel:(Level *)level forWorld:(World *)world;
 -(void)resetAllLevels;
 
+-(void)normalizeStars;
+
 @end

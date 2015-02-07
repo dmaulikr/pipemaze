@@ -203,6 +203,20 @@
     return 0;
 }
 
++(NSInteger)computeStars:(NSInteger)time forMaze:(Maze *)maze {
+    if(time < [maze.starTimes[4] integerValue])
+        return 5;
+    else if(time < [maze.starTimes[3] integerValue])
+        return 4;
+    else if(time < [maze.starTimes[2] integerValue])
+        return 3;
+    else if(time < [maze.starTimes[1] integerValue])
+        return 2;
+    else
+        return 1;
+    return 0;
+}
+
 -(NSInteger)timeForStar:(NSInteger)star {
     return [self.maze.starTimes[star -1] integerValue];
 }

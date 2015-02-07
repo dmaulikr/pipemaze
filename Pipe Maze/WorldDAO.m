@@ -7,6 +7,8 @@
 //
 
 #import "WorldDAO.h"
+#import "LevelParser.h"
+#import "MazeManager.h"
 
 @interface WorldDAO ()
 @property (nonatomic, strong) NSArray *worlds;
@@ -229,6 +231,19 @@
             level.stars = [NSNumber numberWithInteger:0];
         }
     }
+}
+
+-(void)normalizeStars {
+    for(World *world in self.worlds) {
+        for(Level *level in world.levels) {
+            LevelParser *parser = [[LevelParser alloc] initWithFilename:level.fileName];
+            Maze *maze = [parser loadMaze];
+            NSInteger stars = [MazeManager computeStars:[level.seconds integerValue] forMaze:maze];
+            level.stars = [NSNumber numberWithInteger:stars];
+        }
+    }
+    
+    [self.managedObjectContext save:nil];
 }
 
 
