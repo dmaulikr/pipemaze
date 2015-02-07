@@ -58,7 +58,7 @@
     if(indexPath.section == 1) {
         if(indexPath.row == 0) {
             cell.textLabel.text = @"App Version";
-            cell.detailTextLabel.text = @"1.1 (3)";
+            cell.detailTextLabel.text = @"1.1 (5)";
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.textLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:17.0];
             cell.detailTextLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:17.0];
