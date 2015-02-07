@@ -69,14 +69,14 @@
     BOOL seen = [userDefaults boolForKey:visited];
     goBackBarButton = self.goBackButton;
     if(!seen) {
-        self.navigationItem.rightBarButtonItem = nil;
+        //self.navigationItem.rightBarButtonItem = nil;
         [userDefaults setBool:YES forKey:visited];
         [userDefaults synchronize];
     }
     
-//    if(self.newSlideShow) {
-//        self.navigationItem.rightBarButtonItem = nil;
-//    }
+    if(self.newSlideShow) {
+        self.navigationItem.rightBarButtonItem = nil;
+    }
     
     
     self.pageControl.numberOfPages = images.count;
