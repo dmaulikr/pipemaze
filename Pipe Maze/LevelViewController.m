@@ -181,6 +181,10 @@
     [self performSegueWithIdentifier:@"toSettings" sender:self];
 }
 
+- (IBAction)showProfile:(id)sender {
+    [self performSegueWithIdentifier:@"toProfile" sender:self];
+}
+
 
 #pragma mark - tableview delegate and data source methods
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

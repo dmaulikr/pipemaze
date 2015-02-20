@@ -11,6 +11,7 @@
 
 @interface LevelViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, ADBannerViewDelegate, UIAlertViewDelegate, ADInterstitialAdDelegate>
 - (IBAction)showSettings:(id)sender;
+- (IBAction)showProfile:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

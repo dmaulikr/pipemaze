@@ -191,6 +191,7 @@
         completed.saying = @"you did it!";
         completed.stars = stars;
         [self.view addSubview:backgroundCompletedView];
+        self.navigationItem.leftBarButtonItem.enabled = NO;
         [completed showView:self.view completionHandler:^{
             
         }];

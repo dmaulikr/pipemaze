@@ -5,6 +5,24 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
+        <!--Profile-->
+        <scene sceneID="q7Z-3O-Gcm">
+            <objects>
+                <viewController id="8He-FA-Ls8" customClass="ProfileViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LKD-88-IeQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="lhb-g9-HIc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="H3g-JB-KqD">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Profile" id="hdb-AQ-jxZ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V6r-od-Gf2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="438" y="-416"/>
+        </scene>
         <!--Title-->
         <scene sceneID="JQB-zS-FRF">
             <objects>
@@ -213,6 +231,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="nXW-kf-Nhy">
                         <barButtonItem key="backBarButtonItem" title=" " id="efb-r2-FHH"/>
+                        <barButtonItem key="leftBarButtonItem" image="profile.png" id="o0k-p2-DDK">
+                            <connections>
+                                <action selector="showProfile:" destination="0ZL-VM-31B" id="Sik-5U-KiM"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="settings.png" id="AYq-fO-VQc">
                             <connections>
                                 <action selector="showSettings:" destination="0ZL-VM-31B" id="DLZ-f3-2P4"/>
@@ -224,6 +247,7 @@
                         <segue destination="vXZ-lx-hvc" kind="show" identifier="toMaze" id="zUe-Hi-HAh"/>
                         <segue destination="cEq-O9-HiQ" kind="show" identifier="toSettings" id="TD3-Xn-Iy6"/>
                         <segue destination="oM9-Nv-cKE" kind="show" identifier="toTutorial" id="ZCs-aE-vKD"/>
+                        <segue destination="8He-FA-Ls8" kind="show" identifier="toProfile" id="ukg-4U-6tl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YQr-j7-0g5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -232,6 +256,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="profile.png" width="22" height="22"/>
         <image name="settings.png" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
