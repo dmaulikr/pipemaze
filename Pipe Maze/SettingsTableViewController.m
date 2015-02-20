@@ -55,66 +55,27 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    if(indexPath.section == 1) {
-        if(indexPath.row == 0) {
-            cell.textLabel.text = @"App Version";
-            cell.detailTextLabel.text = @"1.1 (5)";
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.textLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:17.0];
-            cell.detailTextLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:17.0];
-        }
-        if(indexPath.row == 1) {
-            cell.textLabel.text = @"Tutorial";
-            cell.textLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:17.0];
-            cell.detailTextLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:17.0];
-            cell.detailTextLabel.text = @"";
-            
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        }
-        if(indexPath.row == 2) {
-            cell.textLabel.text = @"Themes";
-            cell.textLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:17.0];
-            cell.detailTextLabel.text = nil;
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        }
-    }
     
     if(indexPath.section == 0) {
-        cell.textLabel.text = nil;
-        cell.detailTextLabel.text = nil;
-        UIButton *button = [[UIButton alloc] initWithFrame:cell.bounds];
-        [button setTitle:@"Restore Levels" forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor colorWithRed:1 green:0.252 blue:0.212 alpha:1] forState:UIControlStateNormal];
-        [button setBackgroundImage:[PMConstants imageWithColor:[UIColor colorWithWhite:0.85 alpha:0.9]] forState:UIControlStateHighlighted];
-        button.titleLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:17.0];
-        [button addTarget:self action:@selector(restoreLevels) forControlEvents:UIControlEventTouchUpInside];
-        
-        [cell addSubview:button];
+        [self createRestoreCell:cell];
     }
-    
+    if(indexPath.section == 1) {
+        if(indexPath.row == 0) {
+            [self createAppVersionCell:cell];
+        }
+        if(indexPath.row == 1) {
+            [self createTutorialCell:cell];
+        }
+    }
     if(indexPath.section == 2) {
-        NSArray *arr = @[@"Like us on Facebook", @"Follow us on Twitter"];
-        NSArray *images = @[[UIImage imageNamed:@"facebook"], [UIImage imageNamed:@"twitter"]];
-        cell.textLabel.text = arr[indexPath.row];
-        cell.textLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:17.0];
-        cell.imageView.image = images[indexPath.row];
-        cell.detailTextLabel.text = nil;
+        [self createLikeCell:cell indexPath:indexPath];
     }
-    
     if(indexPath.section == 3) {
-        cell.textLabel.text = nil;
-        cell.detailTextLabel.text = nil;
-        NSArray *arr = @[@"Contact the Developer", @"Report a bug"];
-        UIButton *button = [[UIButton alloc] initWithFrame:cell.bounds];
-        [button setTitle:arr[indexPath.row] forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor colorWithRed:0 green:0.455 blue:0.851 alpha:1] forState:UIControlStateNormal];
-        [button setBackgroundImage:[PMConstants imageWithColor:[UIColor colorWithWhite:0.85 alpha:0.9]] forState:UIControlStateHighlighted];
-        button.titleLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:17.0];
-        [button addTarget:self action:@selector(contact:) forControlEvents:UIControlEventTouchUpInside];
-        [cell addSubview:button];
+        [self createContactCell:cell indexPath:indexPath];
     }
     return cell;
 }
+
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -136,7 +97,6 @@
             else {
                 [[UIApplication sharedApplication] openURL:url];
             }
-            
         }
     }
     
@@ -169,6 +129,8 @@
     [controller dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma mark - restore level methods
+
 -(void)restoreLevels {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Restore All Levels?" message:@"This cannot be undone" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:@"No", nil];
     [alert show];
@@ -179,11 +141,69 @@
         [self removeAllLevelData];
 }
 
-
-
 -(void)removeAllLevelData {
     WorldDAO *worldDA0 = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).worldDAO;
     [worldDA0 resetAllLevels];
 }
+
+
+#pragma mark - Cell Creation Helpers
+
+-(void)createRestoreCell:(UITableViewCell *)cell {
+    cell.textLabel.text = nil;
+    cell.detailTextLabel.text = nil;
+    UIButton *button = [[UIButton alloc] initWithFrame:cell.bounds];
+    [button setTitle:@"Restore Levels" forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor colorWithRed:1 green:0.252 blue:0.212 alpha:1] forState:UIControlStateNormal];
+    [button setBackgroundImage:[PMConstants imageWithColor:[UIColor colorWithWhite:0.85 alpha:0.9]] forState:UIControlStateHighlighted];
+    button.titleLabel.font = [UIFont fontWithName:kFontName size:17.0];
+    [button addTarget:self action:@selector(restoreLevels) forControlEvents:UIControlEventTouchUpInside];
+    
+    [cell addSubview:button];
+}
+
+-(void)createLikeCell:(UITableViewCell *)cell indexPath:(NSIndexPath *)indexPath {
+    NSArray *arr = @[@"Like us on Facebook", @"Follow us on Twitter"];
+    NSArray *images = @[[UIImage imageNamed:@"facebook"], [UIImage imageNamed:@"twitter"]];
+    cell.textLabel.text = arr[indexPath.row];
+    cell.textLabel.font = [UIFont fontWithName:kFontName size:17.0];
+    cell.imageView.image = images[indexPath.row];
+    cell.detailTextLabel.text = nil;
+}
+
+-(void)createContactCell:(UITableViewCell *)cell indexPath:(NSIndexPath *)indexPath {
+    cell.textLabel.text = nil;
+    cell.detailTextLabel.text = nil;
+    NSArray *arr = @[@"Contact the Developer", @"Report a bug"];
+    UIButton *button = [[UIButton alloc] initWithFrame:cell.bounds];
+    [button setTitle:arr[indexPath.row] forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor colorWithRed:0 green:0.455 blue:0.851 alpha:1] forState:UIControlStateNormal];
+    [button setBackgroundImage:[PMConstants imageWithColor:[UIColor colorWithWhite:0.85 alpha:0.9]] forState:UIControlStateHighlighted];
+    button.titleLabel.font = [UIFont fontWithName:kFontName size:17.0];
+    [button addTarget:self action:@selector(contact:) forControlEvents:UIControlEventTouchUpInside];
+    [cell addSubview:button];
+    
+}
+
+-(void)createAppVersionCell:(UITableViewCell *)cell {
+    NSDictionary *infoDictionary = [[NSBundle mainBundle]infoDictionary];
+    NSString *build = infoDictionary[(NSString*)kCFBundleVersionKey];
+    NSString *version = infoDictionary[@"CFBundleShortVersionString"];
+    
+    cell.textLabel.text = @"App Version";
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (%@)", version, build];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.textLabel.font = [UIFont fontWithName:kFontName size:17.0];
+    cell.detailTextLabel.font = [UIFont fontWithName:kFontName size:17.0];
+}
+
+-(void)createTutorialCell:(UITableViewCell *)cell {
+    cell.textLabel.text = @"Tutorial";
+    cell.textLabel.font = [UIFont fontWithName:kFontName size:17.0];
+    cell.detailTextLabel.font = [UIFont fontWithName:kFontName size:17.0];
+    cell.detailTextLabel.text = @"";
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+}
+
 
 @end

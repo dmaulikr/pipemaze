@@ -20,8 +20,6 @@
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 @property (nonatomic, strong) WorldDAO *worldDAO;
-@property (nonatomic, strong) UIColor *pipeColor;
-@property (nonatomic, strong) UIColor *blockColor;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;

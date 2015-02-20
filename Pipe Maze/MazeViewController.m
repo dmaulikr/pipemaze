@@ -75,7 +75,7 @@
     titleView.backgroundColor = [UIColor clearColor];
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, 200, 20)];
     titleLabel.text = self.level.levelName;
-    titleLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:21.0];
+    titleLabel.font = [UIFont fontWithName:kFontName size:21.0];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.textColor = [UIColor whiteColor];
     [titleView addSubview:titleLabel];
@@ -84,7 +84,7 @@
     timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, 200, 20)];
     timeLabel.text = @"00:00";
     timeLabel.textAlignment = NSTextAlignmentCenter;
-    timeLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:15.0];
+    timeLabel.font = [UIFont fontWithName:kFontName size:15.0];
     timeLabel.textColor = [UIColor whiteColor];
     [titleView addSubview:timeLabel];
     elapsed = -2;

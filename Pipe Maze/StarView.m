@@ -22,7 +22,6 @@
     if(self) {
         starArray = [[NSMutableArray alloc] init];
         self.stars = 0;
-        [self createView];
     }
     
     return self;
@@ -61,7 +60,6 @@
     
     for(int i = 0; i < 5; i++) {
         UIImageView *image = [[UIImageView alloc] initWithFrame:CGRectMake(starSize * i, 0, starSize, starSize)];
-        image.tintColor = [UIColor redColor];
         if(self.stars > i) {
             image.image = [UIImage imageNamed:@"starhighlighted"];
         }
@@ -71,6 +69,29 @@
         [self addSubview:image];
         [starArray addObject:image];
     }
+}
+
+-(void)updateStarFrame:(CGRect)frame {
+    CGFloat starSize = 0;
+    if(frame.size.width/5 > frame.size.height) {
+        starSize = frame.size.height;
+    }
+    else {
+        starSize = frame.size.width/5;
+    }
+    
+    for(int i = 0; i < 5; i++) {
+        UIImageView *image = [[UIImageView alloc] initWithFrame:CGRectMake(starSize * i, 0, starSize, starSize)];
+        if(self.stars > i) {
+            image.image = [UIImage imageNamed:@"starhighlighted"];
+        }
+        else {
+            image.image = [UIImage imageNamed:@"star"];
+        }
+        [self addSubview:image];
+        [starArray addObject:image];
+    }
+
 }
 
 -(void)updateStars:(NSInteger)stars {
@@ -86,5 +107,18 @@
         }
     }
 }
+
+-(void)setNewFrame:(CGRect)frame {
+    self.frame = frame;
+    [self.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+    [starArray removeAllObjects];
+    [self createView];
+}
+
+//-(void)setFrame:(CGRect)frame {
+//    [self.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
+//    [starArray removeAllObjects];
+//    [self updateStarFrame:frame];
+//}
 
 @end

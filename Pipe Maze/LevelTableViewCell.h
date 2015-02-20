@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "StarView.h"
+#import "PMConstants.h"
+#import "Level.h"
 
 @interface LevelTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) StarView *starView;
-@property (nonatomic, strong) UIView *colorView;
 @property (nonatomic, strong) UIImageView *lockedImageView;
 @property (nonatomic, strong) UILabel *levelLabel;
 @property (nonatomic, strong) UILabel *timeLabel;
+
+-(void)setLevelAttributes:(Level *)level;
 @end

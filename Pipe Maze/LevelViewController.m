@@ -40,6 +40,8 @@
     self.interstitialPresentationPolicy = ADInterstitialPresentationPolicyAutomatic;
     
     sections = [worldDA0 getNumberOfWorlds]; //get the number of sections
+    [self.tableView registerClass:[LevelTableViewCell class] forCellReuseIdentifier:@"cell"];
+    
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationItem.title = @"Pipeline"; //set tint color and title
     
@@ -125,14 +127,6 @@
     // Dispose of any resources that can be recreated.
 }
 
--(BOOL)shouldAutorotate {
-    return YES;
-}
-
--(NSUInteger)supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskAllButUpsideDown;
-}
-
 #pragma mark - Ad methods
 -(void)bannerViewDidLoadAd:(ADBannerView *)banner {
     if(banner == _bannerView) {
@@ -160,9 +154,6 @@
         _bannerIsVisible = NO;
     }
 }
-
-
-
 
 -(void)interstitialAd:(ADInterstitialAd *)interstitialAd didFailWithError:(NSError *)error {
     
@@ -195,47 +186,7 @@
     LevelTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     World *world = [worldDA0 getWorldAtIndex:indexPath.section];
     Level *level = [worldDA0 getLevelForWorld:world atIndex:indexPath.section * 12 + indexPath.row + 1];
-    if(!cell.levelLabel) {
-        cell.levelLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 10, cell.bounds.size.width - 160, 30)];
-        cell.levelLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:18.0];
-        cell.levelLabel.textColor = [UIColor colorWithRed:0 green:0.117 blue:0.251 alpha:1];
-        [cell addSubview:cell.levelLabel];
-    }
-    cell.levelLabel.text = level.levelName;
-    CGSize textSize = [[cell.levelLabel text] sizeWithAttributes:@{NSFontAttributeName:[cell.levelLabel font]}];
-    CGFloat strikeWidth = textSize.width;
-    cell.levelLabel.frame = CGRectMake(30, 10, strikeWidth, 30);
-    
-    if(!cell.starView) {
-        cell.starView = [[StarView alloc] initWithFrame:CGRectMake(cell.bounds.size.width - 160, 25, 100, 30)];
-        [cell addSubview:cell.starView];
-    }
-    [cell.starView updateStars: [level.stars integerValue]];
-    
-    if(!cell.timeLabel) {
-        cell.timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 35, cell.bounds.size.width - 160, 30)];
-        cell.timeLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:15.0];
-        cell.timeLabel.textColor = [UIColor lightGrayColor];
-        [cell addSubview:cell.timeLabel];
-    }
-    
-    NSInteger seconds = [level.seconds integerValue];
-    NSInteger minutes = seconds/60;
-    seconds%=60;
-    cell.timeLabel.text = [NSString stringWithFormat:@"%02li:%02li", (long)minutes, (long)seconds];;
-    
-    if(!cell.lockedImageView) {
-        cell.lockedImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 25, 20, 20)];
-        [cell addSubview:cell.lockedImageView];
-    }
-    if(![level.available boolValue]) {
-        cell.lockedImageView.image = [UIImage imageNamed:@"lock"];
-    }
-    else {
-        cell.lockedImageView.image = nil;
-    }
-    
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    [cell setLevelAttributes:level];
     return cell;
 }
 
@@ -251,7 +202,7 @@
 
 -(NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
     if(section == sections - 1)
-        return @" \n ";
+        return @" \n\n ";
     else
         return nil;
 }

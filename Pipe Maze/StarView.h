@@ -15,5 +15,6 @@
 -(instancetype)initWithFrame:(CGRect)frame stars:(NSInteger)stars;
 
 -(void)updateStars:(NSInteger)stars;
+-(void)setNewFrame:(CGRect)frame;
 
 @end

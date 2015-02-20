@@ -7,6 +7,7 @@
 //
 
 #import "TutorialViewController.h"
+#import "PMConstants.h"
 
 #define visited @"visited"
 
@@ -30,7 +31,7 @@
     
     taskLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, self.view.bounds.size.height -60, self.view.bounds.size.width - 20, 30)];
     taskLabel.textAlignment = NSTextAlignmentCenter;
-    taskLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:16.0];
+    taskLabel.font = [UIFont fontWithName:kFontName size:16.0];
     taskLabel.textColor = [UIColor blackColor];
     
     desc = @[@"the goal is to complete the maze", @"tap a piece to select it", @"then tap where you want to place it", @"tap the piece again to rotate it", @"you can undo a move if you please", @"or you can delete it by holding it down", @"touch the play button to check the maze", @"hopefully you get this screen", @"make sure all the pieces are used", @"and they all touch", @"or you'll get this screen", @"you can restart whenever you want", @"or pause if needed. have fun!", @"stars are based on time. faster the better"];

@@ -8,6 +8,7 @@
 
 #import "LevelView.h"
 #import "StarView.h"
+#import "PMConstants.h"
 
 @interface LevelView ()
 @property (nonatomic, strong) UIColor *color;
@@ -87,7 +88,7 @@
     level.text = [NSString stringWithFormat:@"%li", (long)self.level];
     level.textAlignment = NSTextAlignmentCenter;
     level.textColor = [UIColor darkGrayColor];
-    level.font = [UIFont fontWithName:@"STHeitiTC-Light" size:self.bounds.size.width/3.214];
+    level.font = [UIFont fontWithName:kFontName size:self.bounds.size.width/3.214];
     [self addSubview:level];
         
     StarView *stars = [[StarView alloc] initWithFrame:CGRectMake(0, banner.bounds.size.height * 0.5, banner.bounds.size.width, banner.bounds.size.height * 0.5) stars:self.stars];

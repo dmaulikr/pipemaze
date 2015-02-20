@@ -12,6 +12,8 @@
 @interface PMConstants : NSObject
 
 + (UIImage *)imageWithColor:(UIColor *)color;
++ (UIColor *)getPipeColor;
++ (UIColor *)getBlockColor;
 
 enum {
     MazePieceStraight = 2,
@@ -29,5 +31,12 @@ enum {
     PieceDirectionNone = 4
 } typedef PieceDirection;
 
+
+extern NSString *const kFontName;
+
+extern NSString *const kUserProfilePicture;
+extern NSString *const kUserProfileName;
+extern NSString *const kUserFacebookLoggedIn;
+extern NSString *const kTwitterUserLoggedIn;
 
 @end

@@ -86,15 +86,14 @@
 #pragma mark - View Creators
 
 -(void)createView {
-    AppDelegate *app = [[UIApplication sharedApplication] delegate];
     
     self.longGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longSelected:)];
     self.longGesture.minimumPressDuration = 0.3;
     [self addGestureRecognizer:self.longGesture];
     
     CGSize size = self.frame.size;
-    self.pipeColor = app.pipeColor;
-    self.blockColor = app.blockColor;
+    self.pipeColor = [PMConstants getPipeColor];
+    self.blockColor = [PMConstants getBlockColor];
     
     switch (self.piece) {
         case MazePieceStraight:

@@ -54,7 +54,7 @@
     CGFloat xOff = self.bounds.size.width/2 - size.width/2;
     self.remainingLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, height + size.height + 0.1*self.frame.size.height, self.frame.size.width, 30)];
     self.remainingLabel.text = [NSString stringWithFormat:@"x%li", (long)self.num];
-    self.remainingLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:18.0];
+    self.remainingLabel.font = [UIFont fontWithName:kFontName size:18.0];
     self.remainingLabel.textAlignment = NSTextAlignmentCenter;
     
     [self addSubview:self.remainingLabel];

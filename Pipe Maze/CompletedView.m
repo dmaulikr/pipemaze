@@ -51,7 +51,7 @@
     self.compeltionLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, self.bounds.size.width - 40, 30)];
     self.compeltionLabel.text = self.saying;
     self.compeltionLabel.textAlignment = NSTextAlignmentCenter;
-    self.compeltionLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:22.0];
+    self.compeltionLabel.font = [UIFont fontWithName:kFontName size:22.0];
     [self addSubview:self.compeltionLabel];
     
     
@@ -68,7 +68,7 @@
     [self.dismissButton setBackgroundImage:[PMConstants imageWithColor:[UIColor colorWithWhite:1.0 alpha:0.9]] forState:UIControlStateNormal];
     [self.dismissButton setBackgroundImage:[PMConstants imageWithColor:[UIColor colorWithWhite:0.85 alpha:0.9]] forState:UIControlStateHighlighted];
     [self.dismissButton setTitleColor:[UIColor colorWithRed:0 green:0.478 blue:1.0 alpha:1] forState:UIControlStateNormal];
-    self.dismissButton.titleLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:17.0];
+    self.dismissButton.titleLabel.font = [UIFont fontWithName:kFontName size:17.0];
     [self.dismissButton addTarget:self action:@selector(buttonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.dismissButton];
     

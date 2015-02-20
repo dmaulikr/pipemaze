@@ -54,7 +54,7 @@
     self.pauseLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, width, 30)];
     self.pauseLabel.text = @"pause";
     self.pauseLabel.textAlignment = NSTextAlignmentCenter;
-    self.pauseLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:21.0];
+    self.pauseLabel.font = [UIFont fontWithName:kFontName size:21.0];
     [self addSubview:self.pauseLabel];
     
     UIView *sepView = [[UIView alloc] initWithFrame:CGRectMake(0, height - BUTTON_HEIGHT, width, BUTTON_HEIGHT)];
@@ -65,7 +65,7 @@
     self.resumeButton = [[UIButton alloc] initWithFrame:CGRectMake(0, height - BUTTON_HEIGHT, width/2 - 1, BUTTON_HEIGHT)];
     [self.resumeButton setTitle:@"resume" forState:UIControlStateNormal];
     [self.resumeButton setTitleColor:[UIColor colorWithRed:0.18 green:0.356 blue:0.537 alpha:1.0] forState:UIControlStateNormal];
-    [self.resumeButton.titleLabel setFont:[UIFont fontWithName:@"STHeitiTC-Light" size:18.0]];
+    [self.resumeButton.titleLabel setFont:[UIFont fontWithName:kFontName size:18.0]];
     [self.resumeButton addTarget:self action:@selector(resume) forControlEvents:UIControlEventTouchUpInside];
     [self.resumeButton setBackgroundImage:[PMConstants imageWithColor:[UIColor colorWithWhite:1.0 alpha:0.9]] forState:UIControlStateNormal];
     [self.resumeButton setBackgroundImage:[PMConstants imageWithColor:[UIColor colorWithWhite:0.85 alpha:0.9]] forState:UIControlStateHighlighted];
@@ -75,7 +75,7 @@
     self.quitButton = [[UIButton alloc] initWithFrame:CGRectMake(width/2 + 1, height - BUTTON_HEIGHT, width/2, BUTTON_HEIGHT)];
     [self.quitButton setTitle:@"quit" forState:UIControlStateNormal];
     [self.quitButton setTitleColor:[UIColor colorWithRed:1 green:0.252 blue:0.212 alpha:1] forState:UIControlStateNormal];
-    [self.quitButton.titleLabel setFont:[UIFont fontWithName:@"STHeitiTC-Light" size:18.0]];
+    [self.quitButton.titleLabel setFont:[UIFont fontWithName:kFontName size:18.0]];
     [self.quitButton addTarget:self action:@selector(quit) forControlEvents:UIControlEventTouchUpInside];
     [self.quitButton setBackgroundImage:[PMConstants imageWithColor:[UIColor colorWithWhite:1.0 alpha:0.9]] forState:UIControlStateNormal];
     [self.quitButton setBackgroundImage:[PMConstants imageWithColor:[UIColor colorWithWhite:0.85 alpha:0.9]] forState:UIControlStateHighlighted];
@@ -90,7 +90,7 @@
     
     self.timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 100, self.bounds.size.width - 20, 30)];
     self.timeLabel.text = [NSString stringWithFormat:@"%lis - %lis - %lis - %lis - %lis", (long)[self.manager timeForStar:1], (long)[self.manager timeForStar:2], (long)[self.manager timeForStar:3], (long)[self.manager timeForStar:4], (long)[self.manager timeForStar:5]];
-    self.timeLabel.font = [UIFont fontWithName:@"STHeitiTC-Light" size:16.0];
+    self.timeLabel.font = [UIFont fontWithName:kFontName size:16.0];
     self.timeLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:self.timeLabel];
 }
