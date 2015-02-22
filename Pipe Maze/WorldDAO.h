@@ -25,4 +25,16 @@
 -(void)normalizeStars;
 -(BOOL)unlockLevel;
 
+#pragma mark - statistic graph methods
+-(NSInteger)getCompletedLevels;
+-(NSInteger)getTotalLevels;
+-(NSInteger)getNumberOfStars;
+-(NSInteger)getPossibleNumberOfStars;
+-(NSInteger)getPossibleAverageOfStars;
+-(float)getAverageNumberOfStars;
+-(NSInteger)getNumberOfFiveStarLevels;
+
+#pragma mark - statistic text methods
+-(NSInteger)getAverageTime;
+
 @end

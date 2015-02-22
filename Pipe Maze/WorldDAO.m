@@ -263,7 +263,7 @@
     for(int i = 0; i < [self getNumberOfWorlds]; i++) {
         World *world = [self getWorldAtIndex:i];
         for(int j = 0; j < world.levels.count; j++) {
-            Level *level = [self getLevelForWorld:world atIndex:i*12 + j + 1]; //get level
+            Level *level = [self getLevelForWorld:world atIndex:i*world.levels.count + j + 1]; //get level
             if(![level.available boolValue]) {
                 level.available = [NSNumber numberWithBool:YES];
                 [self updateLevel:level forWorld:world];
@@ -278,6 +278,88 @@
     }
     return NO;
 }
+
+#pragma mark - statistic methods
+
+-(NSInteger)getTotalLevels {
+    NSInteger num = 0;
+    for(int i = 0; i< [self getNumberOfWorlds]; i++) {
+        World *world = [self getWorldAtIndex:i];
+        num += world.levels.count;
+    }
+    return num;
+}
+
+-(NSInteger)getCompletedLevels {
+    NSInteger num = 0;
+    for(int i = 0; i< [self getNumberOfWorlds]; i++) {
+        World *world = [self getWorldAtIndex:i];
+        for(int j = 0; j< world.levels.count; j++) {
+            Level *level = [self getLevelForWorld:world atIndex:i* world.levels.count + j + 1];
+            if([level.completed boolValue]) {
+                num++;
+            }
+        }
+    }
+    return num;
+}
+
+-(NSInteger)getNumberOfStars {
+    NSInteger num = 0;
+    for(int i = 0; i< [self getNumberOfWorlds]; i++) {
+        World *world = [self getWorldAtIndex:i];
+        for(int j = 0; j< world.levels.count; j++) {
+            Level *level = [self getLevelForWorld:world atIndex:i* world.levels.count + j + 1];
+            num += [level.stars integerValue];
+        }
+    }
+    return num;
+}
+
+-(NSInteger)getPossibleNumberOfStars {
+    return [self getTotalLevels] * 5;
+}
+
+-(float)getAverageNumberOfStars {
+    float stars = (float)[self getNumberOfStars];
+    float levels = (float)[self getCompletedLevels];
+    return stars/levels;
+}
+
+-(NSInteger)getPossibleAverageOfStars {
+    return 5;
+}
+
+-(NSInteger)getNumberOfFiveStarLevels {
+    NSInteger num = 0;
+    for(int i = 0; i< [self getNumberOfWorlds]; i++) {
+        World *world = [self getWorldAtIndex:i];
+        for(int j = 0; j< world.levels.count; j++) {
+            Level *level = [self getLevelForWorld:world atIndex:i* world.levels.count + j + 1];
+            if([level.stars integerValue] == 5) {
+                num++;
+            }
+        }
+    }
+    return num;
+
+}
+
+#pragma mark - statistic text methods
+
+-(NSInteger)getAverageTime {
+    NSInteger num = 0;
+    for(int i = 0; i< [self getNumberOfWorlds]; i++) {
+        World *world = [self getWorldAtIndex:i];
+        for(int j = 0; j< world.levels.count; j++) {
+            Level *level = [self getLevelForWorld:world atIndex:i* world.levels.count + j + 1];
+            num += [level.seconds integerValue];
+        }
+    }
+    return num;
+}
+
+
 
 
 

@@ -84,9 +84,8 @@
     [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:0 green:0.117 blue:0.251 alpha:1]];
     //set bar color to navy and get the DAO object
     
-    if([worldDA0 unlockLevel]) {
-        [self.tableView reloadData];
-    }
+    [worldDA0 unlockLevel];
+    [self.tableView reloadData];
     
     if(!firstLoad) {
         [self requestInterstitialAdPresentation];

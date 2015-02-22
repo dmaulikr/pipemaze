@@ -9,6 +9,7 @@
 #import "ProfileViewController.h"
 #import "ProfileHeaderView.h"
 #import "Statistic.h"
+#import "StatisticGenerator.h"
 
 #define kTableViewCellIdentifier @"tablecell"
 #define kCollectionViewCellIdentifier @"collectioncell"
@@ -16,7 +17,9 @@
 #define kAchievementIndex 1
 #define kStatisticsIndex 0
 
-@interface ProfileViewController ()
+@interface ProfileViewController () {
+    StatisticGenerator *_statGenerator;
+}
 @property (nonatomic, strong) UISegmentedControl *control;
 @property (nonatomic, strong) UICollectionView *mainCollectionView;
 @end
@@ -26,6 +29,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [PMConstants getGrayBackgroundColor];
+    _statGenerator = [[StatisticGenerator alloc] init];
+    [_statGenerator createStatistics];
+    
     CGFloat height = self.navigationController.navigationBar.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height;
     ProfileHeaderView *header = [[ProfileHeaderView alloc] initWithFrame:CGRectMake(0, height, self.view.bounds.size.width, 165)];
     [header setProfileData:@{kUserProfileFirstName : @"Jack",
@@ -37,8 +43,8 @@
     
     //segmented control allocation
     self.control = [[UISegmentedControl alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2 - 120, height + header.bounds.size.height + 15, 240, 35)];
-    [self.control insertSegmentWithTitle:@"Statistics" atIndex:0 animated:YES];
-    [self.control insertSegmentWithTitle:@"Achievements" atIndex:1 animated:YES];
+    [self.control insertSegmentWithTitle:@"Statistics" atIndex:0 animated:NO];
+    [self.control insertSegmentWithTitle:@"Achievements" atIndex:1 animated:NO];
     [self.control setTintColor:[PMConstants getNavyFontColor]];
     self.control.selectedSegmentIndex = 0;
     [self.control addTarget:self action:@selector(changeIndex) forControlEvents:UIControlEventValueChanged];
@@ -113,11 +119,12 @@
 }
 
 -(NSInteger)numberOfStatisticsShown:(id)sender {
-    return 10;
+    return [_statGenerator getNumberOfStatistics];
 }
 
 -(Statistic *)statisticForIndex:(NSInteger)index {
-    return nil;
+    NSLog(@"%@",[_statGenerator getStatisticAtIndex:index]);
+    return [_statGenerator getStatisticAtIndex:index];
 }
 
 #pragma mark - Achievement Delegate Methods

@@ -40,8 +40,8 @@ enum {
 } typedef PieceDirection;
 
 enum {
-    StatisticTypeChart,
-    StatisticTypeText
+    StatisticTypeMaximumValue,
+    StatisticTypeMinimumValue
 } typedef StatisticType;
 
 

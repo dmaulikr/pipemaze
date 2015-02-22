@@ -26,6 +26,7 @@
 		2E55C8C21A994CD500274226 /* AchievementsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E55C8C11A994CD500274226 /* AchievementsCollectionViewCell.m */; };
 		2E55C8C51A99584200274226 /* StatisticTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E55C8C41A99584200274226 /* StatisticTableViewCell.m */; };
 		2E55C8C81A995D0C00274226 /* Statistic.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E55C8C71A995D0C00274226 /* Statistic.m */; };
+		2E55C8CB1A99751F00274226 /* StatisticGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E55C8CA1A99751F00274226 /* StatisticGenerator.m */; };
 		2E5B4FB51A82D31E00C9D793 /* 01startiPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E5B4FA81A82D31E00C9D793 /* 01startiPad.png */; };
 		2E5B4FB61A82D31E00C9D793 /* 02tap_pieceiPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E5B4FA91A82D31E00C9D793 /* 02tap_pieceiPad.png */; };
 		2E5B4FB71A82D31E00C9D793 /* 03place_pieceiPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E5B4FAA1A82D31E00C9D793 /* 03place_pieceiPad.png */; };
@@ -230,6 +231,8 @@
 		2E55C8C41A99584200274226 /* StatisticTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticTableViewCell.m; sourceTree = "<group>"; };
 		2E55C8C61A995D0C00274226 /* Statistic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Statistic.h; sourceTree = "<group>"; };
 		2E55C8C71A995D0C00274226 /* Statistic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Statistic.m; sourceTree = "<group>"; };
+		2E55C8C91A99751F00274226 /* StatisticGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticGenerator.h; sourceTree = "<group>"; };
+		2E55C8CA1A99751F00274226 /* StatisticGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticGenerator.m; sourceTree = "<group>"; };
 		2E5B4FA81A82D31E00C9D793 /* 01startiPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 01startiPad.png; path = images/tutorials/01startiPad.png; sourceTree = "<group>"; };
 		2E5B4FA91A82D31E00C9D793 /* 02tap_pieceiPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 02tap_pieceiPad.png; path = images/tutorials/02tap_pieceiPad.png; sourceTree = "<group>"; };
 		2E5B4FAA1A82D31E00C9D793 /* 03place_pieceiPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 03place_pieceiPad.png; path = images/tutorials/03place_pieceiPad.png; sourceTree = "<group>"; };
@@ -740,6 +743,8 @@
 			children = (
 				2E55C8C61A995D0C00274226 /* Statistic.h */,
 				2E55C8C71A995D0C00274226 /* Statistic.m */,
+				2E55C8C91A99751F00274226 /* StatisticGenerator.h */,
+				2E55C8CA1A99751F00274226 /* StatisticGenerator.m */,
 				2E61FCCE1A68745800364C5E /* Maze.h */,
 				2E61FCCF1A68745800364C5E /* Maze.m */,
 				2E61FCD11A69B74B00364C5E /* MazeManager.h */,
@@ -1027,6 +1032,7 @@
 				2EC10B181A708BAE0096716D /* Level.m in Sources */,
 				2EDBAF551A65CCD5006566BD /* World.m in Sources */,
 				2E61FCDC1A6AE86400364C5E /* MazeMove.m in Sources */,
+				2E55C8CB1A99751F00274226 /* StatisticGenerator.m in Sources */,
 				2E4112761A79DFB100C09C67 /* NavigationViewController.m in Sources */,
 				2E55C8BE1A994C3500274226 /* StatisticsCollectionViewCell.m in Sources */,
 				2EDBAF601A6811EE006566BD /* PMConstants.m in Sources */,

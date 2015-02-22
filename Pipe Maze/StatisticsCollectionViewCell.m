@@ -14,6 +14,7 @@
 @interface StatisticsCollectionViewCell () {
     UISwipeGestureRecognizer *swipeGesture;
     UITableView *_tableView;
+    
 }
 
 @end
@@ -59,7 +60,11 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     StatisticTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCellIdentifier forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell setStatistic:nil];
+    Statistic *stat = nil;
+    if(self.delegate) {
+        stat = [self.delegate statisticForIndex:indexPath.row];
+    }
+    [cell setStatistic:stat];
     return cell;
 }
 
