@@ -9,6 +9,11 @@
 #import "SettingsTableViewController.h"
 #import "WorldDAO.h"
 
+#define kRestoreSection 0
+#define kAppVersionTutorialSection 1
+#define kLikeSection 2
+#define kContactSection 3
+
 @interface SettingsTableViewController ()
 
 @end
@@ -38,10 +43,10 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-   if(section == 0)
+   if(section == kRestoreSection)
        return 1;
-    if(section == 1)
-        return 2;
+    if(section == kAppVersionTutorialSection)
+        return 3;
     
     return 2;
 }
@@ -56,21 +61,24 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    if(indexPath.section == 0) {
+    if(indexPath.section == kRestoreSection) {
         [self createRestoreCell:cell];
     }
-    if(indexPath.section == 1) {
+    if(indexPath.section == kAppVersionTutorialSection) {
         if(indexPath.row == 0) {
             [self createAppVersionCell:cell];
         }
         if(indexPath.row == 1) {
             [self createTutorialCell:cell];
         }
+        if(indexPath.row == 2) {
+            [self createAppReviewCell:cell];
+        }
     }
-    if(indexPath.section == 2) {
+    if(indexPath.section == kLikeSection) {
         [self createLikeCell:cell indexPath:indexPath];
     }
-    if(indexPath.section == 3) {
+    if(indexPath.section == kContactSection) {
         [self createContactCell:cell indexPath:indexPath];
     }
     return cell;
@@ -79,7 +87,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if(indexPath.section == 2){
+    if(indexPath.section == kLikeSection){
         NSArray *urls = @[@"http://www.facebook.com/pipemazegame", @"http://www.twitter.com/pipemazegame"];
         NSURL *url = [NSURL URLWithString:urls[indexPath.row]];
         if(indexPath.row == 0) {
@@ -100,8 +108,21 @@
         }
     }
     
-    if(indexPath.section == 1 && indexPath.row == 1) {
+    if(indexPath.section == kAppVersionTutorialSection && indexPath.row == 1) {
         [self performSegueWithIdentifier:@"toTutorials" sender:self];
+    }
+    
+    if(indexPath.section == kAppVersionTutorialSection && indexPath.row == 2) {
+//        NSString *str = @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?";
+//        // Here is the app id from itunesconnect
+//        str = [NSString stringWithFormat:@"%@961382659", str];
+//        NSString *str = @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=John+Arendt&id=961382659";
+//        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0 && [[[UIDevice currentDevice] systemVersion] floatValue] < 7.1) {
+//            str = @"itms-apps://itunes.apple.com/app/id961";
+//        }
+//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+        
+         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=961382659"]];
     }
 }
 
@@ -142,7 +163,7 @@
 }
 
 -(void)removeAllLevelData {
-    WorldDAO *worldDA0 = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).worldDAO;
+    WorldDAO *worldDA0 = [WorldDAO sharedDAOSession];
     [worldDA0 resetAllLevels];
 }
 
@@ -200,7 +221,13 @@
 -(void)createTutorialCell:(UITableViewCell *)cell {
     cell.textLabel.text = @"Tutorial";
     cell.textLabel.font = [UIFont fontWithName:kFontName size:17.0];
-    cell.detailTextLabel.font = [UIFont fontWithName:kFontName size:17.0];
+    cell.detailTextLabel.text = @"";
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+}
+
+-(void)createAppReviewCell:(UITableViewCell *)cell {
+    cell.textLabel.text = @"Rate On App Store";
+    cell.textLabel.font = [UIFont fontWithName:kFontName size:17.0];
     cell.detailTextLabel.text = @"";
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 }

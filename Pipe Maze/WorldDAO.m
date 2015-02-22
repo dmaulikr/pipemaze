@@ -21,6 +21,15 @@
     return [(AppDelegate *) [[UIApplication sharedApplication] delegate] managedObjectContext];
 }
 
++ (id)sharedDAOSession {
+    static WorldDAO *dao = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        dao = [[self alloc] init];
+    });
+    return dao;
+}
+
 -(instancetype)init {
     self = [super init];
     if(self) {
@@ -246,6 +255,28 @@
     }
     
     [self.managedObjectContext save:nil];
+}
+
+    //This is in charge of unlocking new levels as they become available
+-(BOOL)unlockLevel {
+    BOOL unlocked = NO;
+    for(int i = 0; i < [self getNumberOfWorlds]; i++) {
+        World *world = [self getWorldAtIndex:i];
+        for(int j = 0; j < world.levels.count; j++) {
+            Level *level = [self getLevelForWorld:world atIndex:i*12 + j + 1]; //get level
+            if(![level.available boolValue]) {
+                level.available = [NSNumber numberWithBool:YES];
+                [self updateLevel:level forWorld:world];
+                unlocked = YES; //unlock new level
+                return YES;
+            }
+            else {
+                if(!level.completed.boolValue)
+                    return NO;
+            }
+        }
+    }
+    return NO;
 }
 
 

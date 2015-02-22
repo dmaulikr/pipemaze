@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PMConstants.h"
+#import "StatisticsCollectionViewCell.h"
+#import "AchievementsCollectionViewCell.h"
 
-@interface ProfileViewController : UIViewController
+@interface ProfileViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, StatisticsCollectionViewCellDelegate, AchievementCollectionViewCellDelegate>
 
 @end

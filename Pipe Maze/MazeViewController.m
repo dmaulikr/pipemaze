@@ -293,7 +293,7 @@
         self.level.completed = [NSNumber numberWithBool:YES];
         self.level.seconds = [NSNumber numberWithInteger:elapsed/2];
         self.level.stars = [NSNumber numberWithInteger:[manager computeStars:floor(elapsed/2)]];
-        WorldDAO * worldDA0 = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).worldDAO;
+        WorldDAO * worldDA0 = [WorldDAO sharedDAOSession];
         [worldDA0 updateLevel:self.level forWorld:nil];
     }
     

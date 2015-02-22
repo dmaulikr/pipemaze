@@ -11,9 +11,17 @@
 
 @interface PMConstants : NSObject
 
+#define mark - utility classes
+
 + (UIImage *)imageWithColor:(UIColor *)color;
 + (UIColor *)getPipeColor;
 + (UIColor *)getBlockColor;
++ (UIColor *)getNavyFontColor;
++ (UIColor *)getFacebookBlue;
++ (UIColor *)getTwitterBlue;
++ (UIColor *)getGrayBackgroundColor;
+
+#pragma mark - enums
 
 enum {
     MazePieceStraight = 2,
@@ -31,12 +39,23 @@ enum {
     PieceDirectionNone = 4
 } typedef PieceDirection;
 
+enum {
+    StatisticTypeChart,
+    StatisticTypeText
+} typedef StatisticType;
+
+
+#pragma mark - constants
 
 extern NSString *const kFontName;
 
 extern NSString *const kUserProfilePicture;
-extern NSString *const kUserProfileName;
+extern NSString *const kUserProfileFirstName;
+extern NSString *const kUserProfileLastName;
+extern NSString *const kUserProfileTitle;
 extern NSString *const kUserFacebookLoggedIn;
 extern NSString *const kTwitterUserLoggedIn;
+
+
 
 @end

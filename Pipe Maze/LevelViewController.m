@@ -34,7 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    worldDA0 = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).worldDAO;
+    worldDA0 = [WorldDAO sharedDAOSession];
     ADInterstitialAd *ad = [[ADInterstitialAd alloc] init];
     ad.delegate = self;
     self.interstitialPresentationPolicy = ADInterstitialPresentationPolicyAutomatic;
@@ -76,35 +76,16 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+    if(self.view.bounds.size.height == 480) {
+        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+    }
     transition = NO;
     adShown = NO;
     [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:0 green:0.117 blue:0.251 alpha:1]];
     //set bar color to navy and get the DAO object
     
-    BOOL unlocked = false;
-    BOOL completed = true;
-    //This is in charge of unlocking new levels as they become available
-    for(int i = 0; i < [worldDA0 getNumberOfWorlds]; i++) {
-        World *world = [worldDA0 getWorldAtIndex:i];
-        for(int j = 0; j < world.levels.count; j++) {
-            if(unlocked || !completed) //if a new level has been unlocked, break
-                break;
-            Level *level = [worldDA0 getLevelForWorld:world atIndex:i*12 + j + 1]; //get level
-            if(![level.available boolValue]) {
-                level.available = [NSNumber numberWithBool:YES];
-                [worldDA0 updateLevel:level forWorld:world];
-                unlocked = YES; //unlock new level
-            }
-            else {
-                if(level.completed.boolValue)
-                    completed = true;
-                else
-                    completed = false;
-            }
-        }
-        if(unlocked || !completed)
-            break;
+    if([worldDA0 unlockLevel]) {
+        [self.tableView reloadData];
     }
     
     if(!firstLoad) {
@@ -114,8 +95,6 @@
     else {
         adShown = YES;
     }
-
-    [self.tableView reloadData];
 }
 
 -(void)viewDidDisappear:(BOOL)animated {

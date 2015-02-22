@@ -56,7 +56,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MazePieceCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor colorWithRed:0.957 green:0.957 blue:0.957 alpha:1.0];
+    cell.backgroundColor = [PMConstants getGrayBackgroundColor];
     cell.layer.borderColor = [UIColor lightGrayColor].CGColor;
     cell.layer.borderWidth = 0.5f;
     cell.piece = nil;

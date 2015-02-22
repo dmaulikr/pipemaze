@@ -52,7 +52,7 @@
     //set level label attributes
     self.levelLabel.frame = CGRectMake(30, 10, width - 160, 30);
     self.levelLabel.font = [UIFont fontWithName:kFontName size:18.0];
-    self.levelLabel.textColor = [UIColor colorWithRed:0 green:0.117 blue:0.251 alpha:1];
+    self.levelLabel.textColor = [PMConstants getNavyFontColor];
     self.levelLabel.text = level.levelName;
 
     //set star view attributes

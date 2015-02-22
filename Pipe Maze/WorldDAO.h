@@ -14,7 +14,7 @@
 
 @interface WorldDAO : NSObject
 
--(instancetype)init;
++ (id)sharedDAOSession;
 
 -(World *)getWorldAtIndex:(NSInteger)index;
 -(NSInteger)getNumberOfWorlds;
@@ -23,5 +23,6 @@
 -(void)resetAllLevels;
 
 -(void)normalizeStars;
+-(BOOL)unlockLevel;
 
 @end

@@ -36,13 +36,30 @@
     return [UIColor colorWithRed:0.18 green:0.356 blue:0.537 alpha:1.0];
 }
 
++ (UIColor *)getNavyFontColor {
+    return [UIColor colorWithRed:0 green:0.117 blue:0.251 alpha:1];
+}
+
++ (UIColor *)getFacebookBlue {
+    return [UIColor colorWithRed:0.1967 green:0.2967 blue:0.5067 alpha:1];
+}
+
++ (UIColor *)getTwitterBlue {
+    return [UIColor colorWithRed:0.3333 green:0.6745 blue:0.9333 alpha:1];
+}
+
++ (UIColor *)getGrayBackgroundColor {
+    return [UIColor colorWithRed:0.957 green:0.957 blue:0.957 alpha:1.0];
+}
 
 #pragma mark - constants
 
 NSString *const kFontName = @"STHeitiTC-Light";
 
 NSString *const kUserProfilePicture = @"kUserProfilePicture";
-NSString *const kUserProfileName = @"kUserProfileName";
+NSString *const kUserProfileFirstName = @"kUserProfileFirstName";
+NSString *const kUserProfileLastName = @"kUserProfileLastName";
+NSString *const kUserProfileTitle = @"kUserProfileTitle";
 NSString *const kUserFacebookLoggedIn = @"kUserFacebookLoggedIn";
 NSString *const kTwitterUserLoggedIn = @"kUserTwitterLoggedIn";
 

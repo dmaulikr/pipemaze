@@ -21,6 +21,11 @@
 		2E14DDCD1A7B2DEB00939D37 /* MazePieceCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E14DDCC1A7B2DEB00939D37 /* MazePieceCollectionViewCell.m */; };
 		2E14DDD61A7B834500939D37 /* PauseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E14DDD51A7B834500939D37 /* PauseView.m */; };
 		2E4112761A79DFB100C09C67 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4112751A79DFB100C09C67 /* NavigationViewController.m */; };
+		2E55C8BB1A97F70800274226 /* profilepicture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2E55C8BA1A97F70800274226 /* profilepicture.jpg */; };
+		2E55C8BE1A994C3500274226 /* StatisticsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E55C8BD1A994C3500274226 /* StatisticsCollectionViewCell.m */; };
+		2E55C8C21A994CD500274226 /* AchievementsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E55C8C11A994CD500274226 /* AchievementsCollectionViewCell.m */; };
+		2E55C8C51A99584200274226 /* StatisticTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E55C8C41A99584200274226 /* StatisticTableViewCell.m */; };
+		2E55C8C81A995D0C00274226 /* Statistic.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E55C8C71A995D0C00274226 /* Statistic.m */; };
 		2E5B4FB51A82D31E00C9D793 /* 01startiPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E5B4FA81A82D31E00C9D793 /* 01startiPad.png */; };
 		2E5B4FB61A82D31E00C9D793 /* 02tap_pieceiPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E5B4FA91A82D31E00C9D793 /* 02tap_pieceiPad.png */; };
 		2E5B4FB71A82D31E00C9D793 /* 03place_pieceiPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E5B4FAA1A82D31E00C9D793 /* 03place_pieceiPad.png */; };
@@ -216,6 +221,15 @@
 		2E14DDD51A7B834500939D37 /* PauseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PauseView.m; sourceTree = "<group>"; };
 		2E4112741A79DFB100C09C67 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
 		2E4112751A79DFB100C09C67 /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
+		2E55C8BA1A97F70800274226 /* profilepicture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = profilepicture.jpg; path = images/profilepicture.jpg; sourceTree = "<group>"; };
+		2E55C8BC1A994C3500274226 /* StatisticsCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticsCollectionViewCell.h; sourceTree = "<group>"; };
+		2E55C8BD1A994C3500274226 /* StatisticsCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticsCollectionViewCell.m; sourceTree = "<group>"; };
+		2E55C8C01A994CD400274226 /* AchievementsCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementsCollectionViewCell.h; sourceTree = "<group>"; };
+		2E55C8C11A994CD500274226 /* AchievementsCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievementsCollectionViewCell.m; sourceTree = "<group>"; };
+		2E55C8C31A99584200274226 /* StatisticTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticTableViewCell.h; sourceTree = "<group>"; };
+		2E55C8C41A99584200274226 /* StatisticTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticTableViewCell.m; sourceTree = "<group>"; };
+		2E55C8C61A995D0C00274226 /* Statistic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Statistic.h; sourceTree = "<group>"; };
+		2E55C8C71A995D0C00274226 /* Statistic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Statistic.m; sourceTree = "<group>"; };
 		2E5B4FA81A82D31E00C9D793 /* 01startiPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 01startiPad.png; path = images/tutorials/01startiPad.png; sourceTree = "<group>"; };
 		2E5B4FA91A82D31E00C9D793 /* 02tap_pieceiPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 02tap_pieceiPad.png; path = images/tutorials/02tap_pieceiPad.png; sourceTree = "<group>"; };
 		2E5B4FAA1A82D31E00C9D793 /* 03place_pieceiPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 03place_pieceiPad.png; path = images/tutorials/03place_pieceiPad.png; sourceTree = "<group>"; };
@@ -420,6 +434,7 @@
 				2E61FCE51A6B291F00364C5E /* Frameworks */,
 				2E61FCC41A68717C00364C5E /* levels */,
 				2EDBAF4F1A65B61B006566BD /* Images */,
+				2E55C8BA1A97F70800274226 /* profilepicture.jpg */,
 				2E0DD67E1A6459B90076C5B6 /* Pipe Maze */,
 				2E0DD69B1A6459B90076C5B6 /* Pipe MazeTests */,
 				2E0DD67D1A6459B90076C5B6 /* Products */,
@@ -442,6 +457,7 @@
 				2E0DD6841A6459B90076C5B6 /* AppDelegate.m */,
 				2E0DD68C1A6459B90076C5B6 /* Main.storyboard */,
 				2E0DD6B51A6481740076C5B6 /* View Controllers */,
+				2E55C8BF1A994C4300274226 /* Reusable Cells */,
 				2E0DD6B41A6481680076C5B6 /* Views */,
 				2EDBAF561A65CCDE006566BD /* Models */,
 				2E0DD68F1A6459B90076C5B6 /* Images.xcassets */,
@@ -483,8 +499,6 @@
 			children = (
 				2EA5A9211A9708AE00AF8D87 /* ProfileHeaderView.h */,
 				2EA5A9221A9708AE00AF8D87 /* ProfileHeaderView.m */,
-				2E7ACECC1A6B52E3002499C5 /* LevelTableViewCell.h */,
-				2E7ACECD1A6B52E3002499C5 /* LevelTableViewCell.m */,
 				2E61FCD41A6AC92900364C5E /* CompletedView.h */,
 				2E61FCD51A6AC92900364C5E /* CompletedView.m */,
 				2E0DD6B81A6490960076C5B6 /* StarView.h */,
@@ -493,8 +507,6 @@
 				2E0DD6B21A6481620076C5B6 /* LevelView.m */,
 				2E0DD6BD1A649C360076C5B6 /* MazeView.h */,
 				2E0DD6BE1A649C360076C5B6 /* MazeView.m */,
-				2E14DDCB1A7B2DEB00939D37 /* MazePieceCollectionViewCell.h */,
-				2E14DDCC1A7B2DEB00939D37 /* MazePieceCollectionViewCell.m */,
 				2EDBAF581A681116006566BD /* PiecesView.h */,
 				2EDBAF591A681116006566BD /* PiecesView.m */,
 				2EDBAF5B1A68112B006566BD /* MazePieceView.h */,
@@ -524,6 +536,23 @@
 				2E61FCDE1A6AFF1900364C5E /* SettingsTableViewController.m */,
 			);
 			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		2E55C8BF1A994C4300274226 /* Reusable Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2E55C8BC1A994C3500274226 /* StatisticsCollectionViewCell.h */,
+				2E55C8BD1A994C3500274226 /* StatisticsCollectionViewCell.m */,
+				2E55C8C01A994CD400274226 /* AchievementsCollectionViewCell.h */,
+				2E55C8C11A994CD500274226 /* AchievementsCollectionViewCell.m */,
+				2E7ACECC1A6B52E3002499C5 /* LevelTableViewCell.h */,
+				2E7ACECD1A6B52E3002499C5 /* LevelTableViewCell.m */,
+				2E14DDCB1A7B2DEB00939D37 /* MazePieceCollectionViewCell.h */,
+				2E14DDCC1A7B2DEB00939D37 /* MazePieceCollectionViewCell.m */,
+				2E55C8C31A99584200274226 /* StatisticTableViewCell.h */,
+				2E55C8C41A99584200274226 /* StatisticTableViewCell.m */,
+			);
+			name = "Reusable Cells";
 			sourceTree = "<group>";
 		};
 		2E5B4FC21A82D32600C9D793 /* iPad tutorials */ = {
@@ -709,6 +738,8 @@
 		2EDBAF561A65CCDE006566BD /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2E55C8C61A995D0C00274226 /* Statistic.h */,
+				2E55C8C71A995D0C00274226 /* Statistic.m */,
 				2E61FCCE1A68745800364C5E /* Maze.h */,
 				2E61FCCF1A68745800364C5E /* Maze.m */,
 				2E61FCD11A69B74B00364C5E /* MazeManager.h */,
@@ -906,6 +937,7 @@
 				2EF629EF1A7F0BB100ACBC70 /* 09allpieces.png in Resources */,
 				2EEA17E41A84A2020039D622 /* level61.txt in Resources */,
 				2EC8CB721A7342EA00A3A45C /* level47.txt in Resources */,
+				2E55C8BB1A97F70800274226 /* profilepicture.jpg in Resources */,
 				2EC0D0A21A82CD9B001A369D /* 13pause4S.png in Resources */,
 				2EEA18141A84A8AF0039D622 /* level85.txt in Resources */,
 				2EF629E71A7F0BB100ACBC70 /* 01start.png in Resources */,
@@ -996,17 +1028,21 @@
 				2EDBAF551A65CCD5006566BD /* World.m in Sources */,
 				2E61FCDC1A6AE86400364C5E /* MazeMove.m in Sources */,
 				2E4112761A79DFB100C09C67 /* NavigationViewController.m in Sources */,
+				2E55C8BE1A994C3500274226 /* StatisticsCollectionViewCell.m in Sources */,
 				2EDBAF601A6811EE006566BD /* PMConstants.m in Sources */,
 				2E0DD6C21A64BE8C0076C5B6 /* WorldDAO.m in Sources */,
+				2E55C8C51A99584200274226 /* StatisticTableViewCell.m in Sources */,
 				2E61FCD61A6AC92900364C5E /* CompletedView.m in Sources */,
 				2E61FCD91A6AE6BC00364C5E /* UndoStack.m in Sources */,
 				2EDBAF5A1A681116006566BD /* PiecesView.m in Sources */,
 				2E61FCD31A69B74B00364C5E /* MazeManager.m in Sources */,
 				2E7ACEB71A6B3D05002499C5 /* TutorialViewController.m in Sources */,
 				2EA5A9231A9708AE00AF8D87 /* ProfileHeaderView.m in Sources */,
+				2E55C8C21A994CD500274226 /* AchievementsCollectionViewCell.m in Sources */,
 				2EA5A9201A9707D400AF8D87 /* ProfileViewController.m in Sources */,
 				2E0DD6B31A6481620076C5B6 /* LevelView.m in Sources */,
 				2E61FCCD1A6871F800364C5E /* MazeViewController.m in Sources */,
+				2E55C8C81A995D0C00274226 /* Statistic.m in Sources */,
 				2EF629FC1A8137C700ACBC70 /* LevelViewController.m in Sources */,
 				2E0DD6BF1A649C360076C5B6 /* MazeView.m in Sources */,
 				2E61FCD01A68745800364C5E /* Maze.m in Sources */,
