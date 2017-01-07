@@ -11,7 +11,7 @@
 
 @interface PMConstants : NSObject
 
-#define mark - utility classes
+#pragma mark - utility classes
 
 + (UIImage *)imageWithColor:(UIColor *)color;
 + (UIColor *)getPipeColor;
@@ -28,7 +28,7 @@ enum {
     MazePieceCorner = 1,
     MazePieceBlock = 0,
     MazePieceEmpty = 3
-    
+
 } typedef MazePieces;
 
 enum {

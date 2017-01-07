@@ -16,7 +16,7 @@
 
 @end
 
-@interface AchievementsCollectionViewCell : UICollectionViewCell
+@interface AchievementsCollectionViewCell : UICollectionViewCell<UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property id<AchievementCollectionViewCellDelegate> delegate;
 

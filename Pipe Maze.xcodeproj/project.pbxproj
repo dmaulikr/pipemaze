@@ -829,7 +829,7 @@
 		2E0DD6741A6459B90076C5B6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "John Arendt";
 				TargetAttributes = {
 					2E0DD67B1A6459B90076C5B6 = {
@@ -1117,6 +1117,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1183,6 +1184,7 @@
 				INFOPLIST_FILE = "Pipe Maze/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.JohnArendt.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "Pipe Maze";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1199,6 +1201,7 @@
 				INFOPLIST_FILE = "Pipe Maze/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.JohnArendt.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "Pipe Maze";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1219,6 +1222,7 @@
 				);
 				INFOPLIST_FILE = "Pipe MazeTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.JohnArendt.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "Pipe MazeTests";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pipe Maze.app/Pipe Maze";
 			};
@@ -1234,6 +1238,7 @@
 				);
 				INFOPLIST_FILE = "Pipe MazeTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.JohnArendt.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "Pipe MazeTests";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pipe Maze.app/Pipe Maze";
 			};
